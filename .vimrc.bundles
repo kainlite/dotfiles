@@ -1,0 +1,71 @@
+set nocompatible
+
+filetype off
+
+" tpopes stuff
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-rbenv'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sleuth'
+Plug 'reinh/vim-makegreen'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-rails'
+
+" Phoenix projections
+Plug 'c-brenn/phoenix.vim'
+Plug 'tpope/vim-projectionist'
+
+" Toggle quickfix
+Plug 'milkypostman/vim-togglelist'
+
+" Solarized
+Plug 'altercation/vim-colors-solarized'
+
+" Args magic
+Plug 'nelstrom/vim-qargs'
+
+" Git changes real time
+Plug 'airblade/vim-gitgutter'
+
+" Stylus/css highlighting
+Plug 'wavded/vim-stylus'
+
+" Visual indent guides
+Plug 'nathanaelkane/vim-indent-guides'
+
+" Autocomplete for quotes, etc
+Plug 'Raimondi/delimitMate'
+Plug 'gregkh/kernel-coding-style'
+Plug 'nsf/gocode', {'rtp': 'vim/'}
+Plug 'slashmili/alchemist.vim'
+Plug 'pangloss/vim-javascript'
+
+" Syntax highlighting
+Plug 'mxw/vim-jsx'
+Plug 'moll/vim-node'
+Plug 'vim-ruby/vim-ruby'
+Plug 'rust-lang/rust.vim'
+Plug 'scrooloose/syntastic'
+Plug 'elixir-lang/vim-elixir'
+Plug 'jelera/vim-javascript-syntax'
+
+" Snippets
+Plug 'tomtom/tlib_vim'
+Plug 'othree/html5.vim'
+Plug 'honza/vim-snippets'
+Plug 'garbas/vim-snipmate'
+Plug 'thoughtbot/vim-rspec'
+Plug 'jamescarr/snipmate-nodejs'
+Plug 'MarcWeber/vim-addon-mw-utils'
+
+filetype on
