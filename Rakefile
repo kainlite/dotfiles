@@ -19,6 +19,8 @@ task :install do
   puts %x{sh fonts/install.sh}
   puts %x{rm -rf fonts}
   puts %x{cp ~/.dotfiles/theme.zsh-theme ~/.oh-my-zsh/themes/}
+  puts %x{ln -s .git_config git/config}
+  puts %x{ln -s .git_hooks git/hooks}
 
   copy_files
 end
