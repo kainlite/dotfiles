@@ -197,7 +197,7 @@ map <Up> <Nop>
 map <Down> <Nop>
 
 " Autocall and key binding
-autocmd BufWritePre *.rb,*.erb,*.py,*.js,*.html,*.txt,*.csv,*.tsv,*.jsx,*.ex,*.eex call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre *.rb,*.erb,*.py,*.js,*.html,*.txt,*.csv,*.tsv,*.jsx,*.ex,*.eex,* call <SID>StripTrailingWhitespaces()
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 
 " Strip annoying whitespaces
@@ -213,10 +213,12 @@ function! <SID>StripTrailingWhitespaces()
   call cursor(l, c)
 endfunction
 
-map <leader>j :Tjavascript
-map <leader>v :Tview
-map <leader>c :Tcontroller
-map <leader>m :Tmodel
+map <leader>j :Tjavascript 
+map <leader>h :Ttest 
+map <leader>v :Tview 
+map <leader>t :Ttemplate 
+map <leader>c :Tcontroller 
+map <leader>m :Tmodel 
 map <leader>k :SetLinuxFormatting<cr><cr>
 map <leader>a :A<cr>
 map <leader>z :R<cr>
