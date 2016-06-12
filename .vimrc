@@ -214,12 +214,12 @@ function! <SID>StripTrailingWhitespaces()
   call cursor(l, c)
 endfunction
 
-map <leader>j :Tjavascript
-map <leader>h :Ttest
-map <leader>v :Tview
-map <leader>t :Ttemplate
-map <leader>c :Tcontroller
-map <leader>m :Tmodel
+map <leader>j :Tjavascript<Space>
+map <leader>h :Ttest<Space>
+map <leader>v :Tview<Space>
+map <leader>t :Ttemplate<Space>
+map <leader>c :Tcontroller<Space>
+map <leader>m :Tmodel<Space>
 map <leader>k :SetLinuxFormatting<cr><cr>
 map <leader>a :A<cr>
 map <leader>z :R<cr>
