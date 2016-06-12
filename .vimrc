@@ -48,6 +48,7 @@ set incsearch
 set hlsearch
 set number
 set nobomb
+set nofoldenable
 
 " make searches case-sensitive only if they contain upper-case characters
 set ignorecase smartcase
@@ -122,9 +123,9 @@ augroup vimrcEx
 
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
-  
+
   autocmd BufNewFile,BufRead *.prawn setf ruby
-  
+
   " Indent p tags
   " autocmd FileType html,eruby if g:html_indent_tags !~ '\\|p\>' | let g:html_indent_tags .= '\|p\|li\|dt\|dd' | endif
 
@@ -213,12 +214,12 @@ function! <SID>StripTrailingWhitespaces()
   call cursor(l, c)
 endfunction
 
-map <leader>j :Tjavascript 
-map <leader>h :Ttest 
-map <leader>v :Tview 
-map <leader>t :Ttemplate 
-map <leader>c :Tcontroller 
-map <leader>m :Tmodel 
+map <leader>j :Tjavascript
+map <leader>h :Ttest
+map <leader>v :Tview
+map <leader>t :Ttemplate
+map <leader>c :Tcontroller
+map <leader>m :Tmodel
 map <leader>k :SetLinuxFormatting<cr><cr>
 map <leader>a :A<cr>
 map <leader>z :R<cr>
