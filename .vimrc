@@ -88,7 +88,7 @@ syntax on
 " 'cindent' is on in C files, etc.
 " Also load indent files, to automatically do language-dependent indenting.
 " filetype plugin indent on
-filetype indent off
+filetype indent on
 " use emacs-style tab completion when selecting files, etc
 set wildmode=longest,list
 " make tab completion for files/buffers act like bash
@@ -105,11 +105,12 @@ augroup vimrcEx
   " Clear all autocmds in the group
   autocmd!
   autocmd FileType text setlocal textwidth=78
+
   " Jump to last cursor position unless it's invalid or in an event handler
-  autocmd BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \   exe "normal g`\"" |
-        \ endif
+  " autocmd BufReadPost *
+  "       \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  "       \   exe "normal g`\"" |
+  "       \ endif
 
   "for ruby, autoindent with two spaces, always expand tabs
   autocmd FileType rb,ruby,haml,eruby,yaml,html,tmpl,javascript,sass,cucumber,js,jsx,ex,eex set ai sw=2 sts=2 et
