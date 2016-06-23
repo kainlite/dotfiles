@@ -5,7 +5,7 @@ desc "install the dot files into user's home directory"
 task :install do
   install_oh_my_zsh
   switch_to_zsh
-  
+
   puts %x{rm -rf $HOME/.dotfiles/.vim/bundle}
   puts %x{mkdir $HOME/.dotfiles/.vim/bundle}
   puts %x{git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim}
@@ -21,6 +21,9 @@ task :install do
   puts %x{cp ~/.dotfiles/theme.zsh-theme ~/.oh-my-zsh/themes/}
   puts %x{ln -s .git_config git/config}
   puts %x{ln -s .git_hooks git/hooks}
+  puts %x{sudo npm install -g syntastic-react}
+  puts %x{sudo npm install -g jshint}
+  puts %x{sudo npm install -g react-tools}
 
   copy_files
 end
@@ -46,9 +49,9 @@ private
 
 def copy_files
   replace_all = true
-  
+
   files = %w[
-    .vimrc .vimrc.bundles .vim .zshrc .private .irbrc .gitignore .gitmodules .gitconfig .githelpers 
+    .vimrc .vimrc.bundles .vim .zshrc .private .irbrc .gitignore .gitmodules .gitconfig .githelpers
     .gemrc .muttrc .git_template .xmodmap .jrubyrc .bashrc .autotest .tmux.conf
     .pyenv .rbenv .oh-my-zsh .nvm
   ]

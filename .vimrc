@@ -42,6 +42,8 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set autoindent
+set cindent
+set smartindent
 set laststatus=2
 set showmatch
 set incsearch
@@ -96,7 +98,15 @@ set wildmenu
 let mapleader=","
 noremap <leader>s :update<CR>
 let g:syntastic_check_on_open=0
-let g:jsx_ext_required = 0
+let delimitMate_expand_cr=1
+let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
+
+au BufRead,BufNewFile *.json set filetype=json
+let g:syntastic_json_checkers=['jsonlint']
+
+" mxw/vim-jsx
+" let g:jsx_ext_required = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
@@ -119,7 +129,7 @@ augroup vimrcEx
   autocmd Filetype prolog set syntax=prolog
 
   autocmd BufNewFile,BufRead *.ejs set filetype=html
-  autocmd BufNewFile,BufRead *.jsx set filetype=html
+  autocmd BufNewFile,BufRead *.jsx set filetype=javascript
   autocmd! BufRead,BufNewFile *.sass setfiletype sass
 
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
