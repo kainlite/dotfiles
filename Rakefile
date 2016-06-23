@@ -53,7 +53,7 @@ def copy_files
   files = %w[
     .vimrc .vimrc.bundles .vim .zshrc .private .irbrc .gitignore .gitmodules .gitconfig .githelpers
     .gemrc .muttrc .git_template .xmodmap .jrubyrc .bashrc .autotest .tmux.conf
-    .pyenv .rbenv .oh-my-zsh .nvm
+    .pyenv .rbenv .oh-my-zsh .nvm .eslintrc
   ]
 
   files.each do |file|
