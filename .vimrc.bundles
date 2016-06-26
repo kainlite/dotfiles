@@ -2,6 +2,10 @@ set nocompatible
 
 filetype off
 
+" Phoenix projections
+Plug 'c-brenn/phoenix.vim'
+Plug 'tpope/vim-projectionist'
+
 " tpopes stuff
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-fugitive'
@@ -20,11 +24,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'reinh/vim-makegreen'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails'
-
-" Phoenix projections
-Plug 'c-brenn/phoenix.vim'
-Plug 'tpope/vim-projectionist'
-
 " Toggle quickfix
 Plug 'milkypostman/vim-togglelist'
 
