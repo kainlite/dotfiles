@@ -20,7 +20,7 @@ autoload -U compinit
 compinit
 unsetopt correct
 
-# Added slash when changing dirs 
+# Added slash when changing dirs
 zstyle ':completion:*' special-dirs true
 
 # Colorize terminal
@@ -37,6 +37,7 @@ alias meteors='meteor --settings settings.json'
 alias mt='DEBUG=1 JASMINE_DEBUG=1 VELOCITY_DEBUG=1 mrt --settings settings.json'
 alias node='node --harmony'
 alias pacupgrade='pacaur -Syua'
+alias sshcam="ssh $REMOTEHOST ffmpeg -an -f video4linux2 -s 640x480 -i /dev/video0 -r 10 -b:v 500k -f matroska - | mplayer - -idle -demuxer matroska"
 
 # Nicer history
 export HISTSIZE=10000
@@ -121,8 +122,8 @@ alias sr="screen -r"
 alias hugs="hugs -98 -E'nvim'"
 
 # Restore the last backgrounded task with Ctrl-V
-function foreground_task() { 
-  fg 
+function foreground_task() {
+  fg
 }
 
 # Define a widget called "run_info", mapped to our function above.
