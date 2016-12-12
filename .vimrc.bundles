@@ -52,7 +52,7 @@ Plug 'pangloss/vim-javascript'
 " Syntax highlighting
 " Check it later, right now it fucks up CR
 " Plug 'mxw/vim-jsx'
-Plug 'elzr/vim-json'
+" Plug 'elzr/vim-json'
 Plug 'moll/vim-node'
 Plug 'vim-ruby/vim-ruby'
 Plug 'rust-lang/rust.vim'
