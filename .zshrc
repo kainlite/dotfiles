@@ -99,6 +99,7 @@ plugins=(git ruby rails bundler gem git-extras github fcatena tmux rehash archli
 
 source $ZSH/oh-my-zsh.sh
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="/home/kainlite/.chefdk/gem/ruby/2.3.0/bin:$PATH"
 
 # Nvm
 source ~/.nvm/nvm.sh
@@ -144,3 +145,7 @@ bindkey '^[[1;5D' backward-word
 c() { cd ~/Webs/$1; }
 _c() { _files -W ~/Webs -/; }
 compdef _c c
+
+if [[ -e '/usr/share/doc/pkgfile/command-not-found.zsh' ]]; then
+  source '/usr/share/doc/pkgfile/command-not-found.zsh'
+fi
