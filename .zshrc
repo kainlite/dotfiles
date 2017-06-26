@@ -67,7 +67,7 @@ function cdf() { cd *$1*/ } # stolen from @topfunky
 
 # Autostart tmux
 export TERM=screen-256color
-# ZSH_TMUX_AUTOSTART="true"
+ZSH_TMUX_AUTOSTART="true"
 
 function up()
 {
