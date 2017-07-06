@@ -1,5 +1,5 @@
-# Set custom prompt
 ZSH_THEME=theme
+# Set custom prompt
 ZSH=$HOME/.oh-my-zsh
 DISABLE_CORRECTION="true"
 # DISABLE_UPDATE_PROMPT="true"
@@ -45,7 +45,7 @@ export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 
 # Use nvim as the editor
-export EDITOR=nvim
+export EDITOR=vim
 # GNU Screen sets -o vi if EDITOR=vi, so we have to force it back.
 set -o vi
 
@@ -66,7 +66,9 @@ function mcd() { mkdir -p $1 && cd $1 }
 function cdf() { cd *$1*/ } # stolen from @topfunky
 
 # Autostart tmux
+# screen-256color
 export TERM=screen-256color
+set -g default-terminal "screen-256color"
 ZSH_TMUX_AUTOSTART="true"
 
 function up()
@@ -79,10 +81,10 @@ function up()
     test $DIR != "/" && echo $DIR/$TARGET
 }
 
-alias vim="stty stop '' -ixoff ; nvim"
-alias vims="stty stop '' -ixoff ; nvim -S ~/.dotfiles/Session.vim"
-alias vimrc="nvim ~/.vimrc"
-alias zshrc="nvim ~/.zshrc"
+alias vim="stty stop '' -ixoff ; vim"
+alias vims="stty stop '' -ixoff ; vim -S ~/.dotfiles/Session.vim"
+alias vimrc="vim ~/.vimrc"
+alias zshrc="vim ~/.zshrc"
 
 # `Frozing' tty, so after any command terminal settings will be restored
 ttyctl -f
