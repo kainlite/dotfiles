@@ -66,9 +66,10 @@ function mcd() { mkdir -p $1 && cd $1 }
 function cdf() { cd *$1*/ } # stolen from @topfunky
 
 # Autostart tmux
-# screen-256color
-export TERM=screen-256color
-set -g default-terminal "screen-256color"
+# export TERM=screen-256color
+set -g xterm-keys on
+export TERM=xterm-256color
+set -g default-terminal "xterm-256color"
 ZSH_TMUX_AUTOSTART="true"
 
 function up()
