@@ -1,3 +1,5 @@
+DISABLE_AUTO_TITLE=true
+
 ZSH_THEME=theme
 # Set custom prompt
 ZSH=$HOME/.oh-my-zsh
