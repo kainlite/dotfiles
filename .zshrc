@@ -104,7 +104,10 @@ plugins=(git ruby rails bundler gem git-extras github fcatena tmux rehash archli
 
 source $ZSH/oh-my-zsh.sh
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.exenv/bin:$PATH"
 export PATH="/home/kainlite/.chefdk/gem/ruby/2.3.0/bin:$PATH"
+
+eval "$(exenv init -)"
 
 # Nvm
 source ~/.nvm/nvm.sh

@@ -10,3 +10,6 @@
 [submodule ".nvm"]
 	path = .nvm
 	url = https://github.com/creationix/nvm.git
+[submodule ".exenv"]
+	path = .exenv
+	url = git://github.com/mururu/exenv.git
