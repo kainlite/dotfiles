@@ -13,3 +13,6 @@
 [submodule ".exenv"]
 	path = .exenv
 	url = git://github.com/mururu/exenv.git
+[submodule ".evm"]
+	path = .evm
+	url = https://github.com/robisonsantos/evm
