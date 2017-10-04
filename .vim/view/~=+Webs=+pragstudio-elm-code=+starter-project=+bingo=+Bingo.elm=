@@ -107,7 +107,7 @@ setlocal norelativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
 setlocal noscrollbind
-setlocal shiftwidth=2
+setlocal shiftwidth=4
 setlocal noshortname
 setlocal signcolumn=auto
 setlocal nosmartindent
@@ -140,7 +140,7 @@ if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 8
-normal! 012|
+normal! 011|
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

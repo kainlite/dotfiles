@@ -141,6 +141,8 @@ augroup vimrcEx
   autocmd BufNewFile,BufRead *.jsx set filetype=javascript
   autocmd! BufRead,BufNewFile *.sass setfiletype sass
 
+  autocmd bufRead *.elm set sw=4 ts=4 et
+
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
 
