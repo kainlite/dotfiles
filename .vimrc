@@ -105,6 +105,9 @@ let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 au BufRead,BufNewFile *.json set filetype=json
 let g:syntastic_json_checkers=['jsonlint']
 
+" Elm format on save
+let g:elm_format_autosave = 1
+
 " mxw/vim-jsx
 " let g:jsx_ext_required = 0
 
