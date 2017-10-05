@@ -96,9 +96,8 @@ ttyctl -f
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 
 # Java exports
-export J2REDIR=/opt/java/jre
-export PATH=$PATH:/opt/java/jre/bin
-export JAVA_HOME=${JAVA_HOME:-/opt/java/jre}
+# archlinux-java set java-8-openjdk/jre
+export JAVA_HOME=${JAVA_HOME:-/usr/lib/jvm/default-runtime}
 
 plugins=(git ruby rails bundler gem git-extras github fcatena tmux rehash archlinux systemd vagrant rbenv elixir phoenix)
 
