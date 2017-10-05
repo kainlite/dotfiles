@@ -97,7 +97,7 @@ export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/
 
 # Java exports
 # archlinux-java set java-8-openjdk/jre
-export JAVA_HOME=${JAVA_HOME:-/usr/lib/jvm/default-runtime}
+export JAVA_HOME=/usr/lib/jvm/default-runtime
 
 plugins=(git ruby rails bundler gem git-extras github fcatena tmux rehash archlinux systemd vagrant rbenv elixir phoenix)
 
