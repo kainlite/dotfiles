@@ -163,3 +163,6 @@ fi
 
 # Allow minikube to use docker env
 # eval $(minikube docker-env)
+
+# Direnv
+eval "$(direnv hook zsh)"
