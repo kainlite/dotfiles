@@ -71,6 +71,7 @@ function cdf() { cd *$1*/ } # stolen from @topfunky
 # export TERM=screen-256color
 set -g xterm-keys on
 export TERM=xterm-256color
+export ZSH_TMUX_TERM=xterm-256color
 set -g default-terminal "xterm-256color"
 ZSH_TMUX_AUTOSTART="true"
 
