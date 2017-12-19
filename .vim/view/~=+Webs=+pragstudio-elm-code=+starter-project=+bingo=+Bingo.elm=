@@ -123,7 +123,7 @@ setlocal synmaxcol=3000
 if &syntax != 'elm'
 setlocal syntax=elm
 endif
-setlocal tabstop=2
+setlocal tabstop=4
 setlocal tagcase=
 setlocal tags=
 setlocal textwidth=0
@@ -135,12 +135,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 8 - ((7 * winheight(0) + 24) / 49)
+let s:l = 18 - ((17 * winheight(0) + 24) / 49)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-8
-normal! 011|
+18
+normal! 055|
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

@@ -42,7 +42,7 @@ alias pacupgrade='pacaur -Syua'
 alias sshcam="ssh $REMOTEHOST ffmpeg -an -f video4linux2 -s 640x480 -i /dev/video0 -r 10 -b:v 500k -f matroska - | mplayer - -idle -demuxer matroska"
 
 # Nicer history
-export HISTSIZE=10000
+export HISTSIZE=1000000000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 
@@ -161,3 +161,9 @@ compdef _c c
 if [[ -e '/usr/share/doc/pkgfile/command-not-found.zsh' ]]; then
   source '/usr/share/doc/pkgfile/command-not-found.zsh'
 fi
+
+# Allow minikube to use docker env
+# eval $(minikube docker-env)
+
+# Direnv
+eval "$(direnv hook zsh)"
