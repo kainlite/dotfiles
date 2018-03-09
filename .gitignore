@@ -60,6 +60,7 @@
 /.subversion
 /.toot
 /.tox
+/.vim
 /.vim-tmp
 /.vim/.netrwhist
 /.vim-fuf-data
