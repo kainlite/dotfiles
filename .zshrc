@@ -43,6 +43,7 @@ alias node='node --harmony'
 alias pacupgrade='pacaur -Syua'
 alias sshcam="ssh $REMOTEHOST ffmpeg -an -f video4linux2 -s 640x480 -i /dev/video0 -r 10 -b:v 500k -f matroska - | mplayer - -idle -demuxer matroska"
 alias webcamtest="mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video0"
+alias truefree="free -m | awk 'NR==3 {print \$4 \" MB\"}'"
 
 # Nicer history
 export HISTSIZE=1000000000
