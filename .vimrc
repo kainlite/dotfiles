@@ -97,22 +97,22 @@ set wildmode=longest,list
 set wildmenu
 let mapleader=","
 noremap <leader>s :update<CR>
-let g:syntastic_check_on_open=0
-let delimitMate_expand_cr=1
-let g:syntastic_javascript_checkers = ['jsxhint']
-let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
-
-au BufRead,BufNewFile *.json set filetype=json
-let g:syntastic_json_checkers=['jsonlint']
-
-" Syntastic conf for elm
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-
-let g:elm_syntastic_show_warnings = 1
-
-" Elm format on save
-let g:elm_format_autosave = 1
+" let g:syntastic_check_on_open=0
+" let delimitMate_expand_cr=1
+" let g:syntastic_javascript_checkers = ['jsxhint']
+" let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
+"
+" au BufRead,BufNewFile *.json set filetype=json
+" let g:syntastic_json_checkers=['jsonlint']
+"
+" " Syntastic conf for elm
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+"
+" let g:elm_syntastic_show_warnings = 1
+"
+" " Elm format on save
+" let g:elm_format_autosave = 1
 
 " mxw/vim-jsx
 " let g:jsx_ext_required = 0
