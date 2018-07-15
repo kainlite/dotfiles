@@ -50,7 +50,7 @@ export HISTSIZE=1000000000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 
-# Use nvim as the editor
+# Use vim as the editor
 export EDITOR=vim
 # GNU Screen sets -o vi if EDITOR=vi, so we have to force it back.
 set -o vi
@@ -72,10 +72,11 @@ function mcd() { mkdir -p $1 && cd $1 }
 function cdf() { cd *$1*/ } # stolen from @topfunky
 
 # Autostart tmux
-# export TERM=screen-256color
 set -g xterm-keys on
-export TERM=xterm-256color
-set -g default-terminal "xterm-256color"
+# export TERM=xterm-256color
+# set -g default-terminal "xterm-256color"
+export TERM=screen-256color
+set -g default-terminal "screen-256color"
 ZSH_TMUX_AUTOSTART="true"
 
 function up()
@@ -135,7 +136,7 @@ alias ccopy="xclip -sel clip"
 alias cpaste="xclip -sel clip -o"
 alias s="screen"
 alias sr="screen -r"
-alias hugs="hugs -98 -E'nvim'"
+alias hugs="hugs -98 -E'vim'"
 
 # Restore the last backgrounded task with Ctrl-V
 function foreground_task() {
