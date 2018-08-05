@@ -167,7 +167,10 @@ if [[ -e '/usr/share/doc/pkgfile/command-not-found.zsh' ]]; then
 fi
 
 # Allow minikube to use docker env
-# eval $(minikube docker-env)
+if pgrep -f minikube > /dev/null
+then
+    eval $(minikube docker-env)
+fi
 
 # Direnv
 eval "$(direnv hook zsh)"
