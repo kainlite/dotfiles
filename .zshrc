@@ -1,3 +1,5 @@
+zmodload zsh/zprof
+
 DISABLE_AUTO_TITLE=true
 
 ZSH_THEME=theme
@@ -19,7 +21,7 @@ setopt hist_no_store
 
 # Initialize completion
 autoload -U compinit
-compinit
+compinit -C
 unsetopt correct
 
 # Added slash when changing dirs
@@ -104,7 +106,7 @@ export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/
 # archlinux-java set java-8-openjdk/jre
 export JAVA_HOME=/usr/lib/jvm/default-runtime
 
-plugins=(git ruby rails bundler gem git-extras github fcatena tmux rehash archlinux systemd vagrant rbenv elixir phoenix)
+plugins=(git ruby bundler git-extras tmux archlinux systemd vagrant rbenv)
 
 source $ZSH/oh-my-zsh.sh
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -113,12 +115,12 @@ export PATH="$HOME/.exenv/bin:$PATH"
 export PATH="/home/kainlite/.chefdk/gem/ruby/2.3.0/bin:$PATH"
 
 # load the erlang vm manager
-source $HOME/.evm/scripts/evm
+# source $HOME/.evm/scripts/evm
 
-eval "$(exenv init -)"
+# eval "$(exenv init -)"
 
 # Nvm
-source ~/.nvm/nvm.sh
+# source ~/.nvm/nvm.sh
 
 # Add paths
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
@@ -174,3 +176,5 @@ fi
 
 # Direnv
 eval "$(direnv hook zsh)"
+
+zprof
