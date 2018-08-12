@@ -1,5 +1,3 @@
-zmodload zsh/zprof
-
 DISABLE_AUTO_TITLE=true
 
 ZSH_THEME=theme
@@ -176,5 +174,3 @@ fi
 
 # Direnv
 eval "$(direnv hook zsh)"
-
-zprof
