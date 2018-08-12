@@ -2,10 +2,6 @@ set nocompatible
 
 filetype off
 
-" Phoenix projections
-Plug 'c-brenn/phoenix.vim'
-Plug 'tpope/vim-projectionist'
-
 " tpopes stuff
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-fugitive'
@@ -21,9 +17,9 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
-Plug 'reinh/vim-makegreen'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails'
+
 " Toggle quickfix
 Plug 'milkypostman/vim-togglelist'
 
@@ -44,19 +40,12 @@ Plug 'nathanaelkane/vim-indent-guides'
 
 " Autocomplete for quotes, etc
 Plug 'Raimondi/delimitMate'
-Plug 'gregkh/kernel-coding-style'
 Plug 'nsf/gocode', {'rtp': 'vim/'}
-Plug 'slashmili/alchemist.vim'
-Plug 'pangloss/vim-javascript'
 
 " Syntax highlighting
-" Check it later, right now it fucks up CR
-" Plug 'mxw/vim-jsx'
-" Plug 'elzr/vim-json'
 Plug 'moll/vim-node'
 Plug 'vim-ruby/vim-ruby'
 Plug 'rust-lang/rust.vim'
-" Plug 'vim-syntastic/syntastic'
 Plug 'elixir-lang/vim-elixir'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'elmcast/elm-vim'
@@ -64,10 +53,7 @@ Plug 'elmcast/elm-vim'
 " Snippets
 Plug 'tomtom/tlib_vim'
 Plug 'othree/html5.vim'
-Plug 'honza/vim-snippets'
-Plug 'garbas/vim-snipmate'
 Plug 'thoughtbot/vim-rspec'
-Plug 'jamescarr/snipmate-nodejs'
 Plug 'MarcWeber/vim-addon-mw-utils'
 
 filetype on
