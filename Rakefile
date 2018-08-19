@@ -51,8 +51,8 @@ def copy_files
   replace_all = true
 
   files = %w[
-    .vimrc .vimrc.bundles .vim .zshrc .private .irbrc .gitignore .gitmodules .gitconfig .githelpers
-    .gemrc .muttrc .git_template .xmodmap .jrubyrc .bashrc .autotest .tmux.conf
+    .vimrc .vimrc.bundles .vim .zshrc .irbrc .gitignore .gitmodules .gitconfig
+    .gemrc .muttrc .git_template .xmodmap .bashrc .tmux.conf
     .pyenv .rbenv .oh-my-zsh .nvm .eslintrc
   ]
 
