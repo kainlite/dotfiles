@@ -223,7 +223,7 @@ endfunction
 map <leader>j :Tjavascript<Space>
 map <leader>h :Ttest<Space>
 map <leader>v :Tview<Space>
-map <leader>t :Ttemplate<Space>
+map <leader>t :NERDTree<cr>
 map <leader>c :Tcontroller<Space>
 map <leader>m :Tmodel<Space>
 map <leader>k :SetLinuxFormatting<cr><cr>

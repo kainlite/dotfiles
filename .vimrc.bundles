@@ -20,6 +20,9 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails'
 
+" Navigation
+Plug 'scrooloose/nerdtree'
+
 " Toggle quickfix
 Plug 'milkypostman/vim-togglelist'
 
