@@ -16,6 +16,3 @@
 [submodule ".evm"]
 	path = .evm
 	url = https://github.com/robisonsantos/evm
-[submodule "dotfiles"]
-	path = dotfiles
-	url = https://github.com/kainlite/dotfiles
