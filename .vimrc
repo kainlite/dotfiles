@@ -220,13 +220,10 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
-map <leader>j :Tjavascript<Space>
-map <leader>h :Ttest<Space>
-map <leader>v :Tview<Space>
-map <leader>t :NERDTree<cr>
-map <leader>c :Tcontroller<Space>
-map <leader>m :Tmodel<Space>
-map <leader>k :SetLinuxFormatting<cr><cr>
+map <leader>r :NERDTree<cr>
+map <leader>t :tabedit<Space>
+map <leader>v :vsplit<Space>
+map <leader>h :split<cr><cr>
 map <leader>a :A<cr>
 map <leader>z :R<cr>
 
