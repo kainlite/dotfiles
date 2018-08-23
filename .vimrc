@@ -59,9 +59,9 @@ set hidden
 " remember more commands and search history
 set history=10000
 set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set autoindent
 set cindent
 set smartindent
@@ -93,7 +93,7 @@ set undodir=~/.vim/undodir
 set shell=zsh
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
-set t_ti= t_te=
+" set t_ti= t_te=
 " keep more context when scrolling off the end of a buffer
 set scrolloff=3
 " Store temporary files in a central spot
