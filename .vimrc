@@ -119,6 +119,9 @@ set wildmenu
 let mapleader=","
 noremap <leader>s :update<CR>
 
+" Yank directly to the clipboard
+map <C-C> :%y+<CR>
+
 " " Elm format on save
 " let g:elm_format_autosave = 1
 
