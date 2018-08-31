@@ -247,7 +247,7 @@ endfunction
 map <leader>r :NERDTree<cr>
 map <leader>t :tabedit<Space>
 map <leader>v :vsplit<Space>
-map <leader>h :split<cr><cr>
+map <leader>h :split<Space>
 map <leader>a :A<cr>
 map <leader>z :R<cr>
 
