@@ -125,6 +125,9 @@ map <C-C> :%y+<CR>
 " " Elm format on save
 " let g:elm_format_autosave = 1
 
+" Disable scratch window for omnicompletion
+set completeopt-=preview
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
