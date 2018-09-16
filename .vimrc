@@ -254,6 +254,9 @@ map <leader>h :split<Space>
 map <leader>a :A<cr>
 map <leader>z :R<cr>
 
+map <leader>g :GoRun<cr>
+map <leader>m :GoBuild<cr>
+
 " set mode paste in insert mode and line number
 set pastetoggle=<C-p>
 noremap <leader>n :set paste<CR>:put  *<CR>:set nopaste<CR>
