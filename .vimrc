@@ -256,6 +256,7 @@ map <leader>z :R<cr>
 
 map <leader>g :GoRun<cr>
 map <leader>m :GoBuild<cr>
+map <leader>gt :GoTest<cr>
 
 " set mode paste in insert mode and line number
 set pastetoggle=<C-p>
