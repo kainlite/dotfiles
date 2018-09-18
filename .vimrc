@@ -301,6 +301,9 @@ let g:surround_113 = "#{\r}"   " v
 let g:surround_45 = "<% \r %>"    " -
 let g:surround_61 = "<%= \r %>"   " =
 
+" Auto generate imports go on save
+let g:go_fmt_command = "goimports"
+
 map <Leader>y <Plug>Yssurround=<cr>
 map <Leader>i <Plug>Yssurround-<cr>
 map <leader># ysiw#
