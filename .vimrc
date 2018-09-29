@@ -136,15 +136,9 @@ augroup vimrcEx
     autocmd!
     autocmd FileType text setlocal textwidth=78
 
-    " Jump to last cursor position unless it's invalid or in an event handler
-    " autocmd BufReadPost *
-    "       \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    "       \   exe "normal g`\"" |
-    "       \ endif
-
     "for ruby, autoindent with two spaces, always expand tabs
     autocmd FileType rb,ruby,haml,eruby,yaml,html,tmpl,javascript,sass,cucumber,js,jsx,ex,eex set ai sw=2 sts=2 et
-    autocmd FileType c,cpp set ai tabstop=8 softtabstop=8 shiftwidth=8 expandtab
+    autocmd FileType c,cpp set ai tabstop=4 softtabstop=4 shiftwidth=4 expandtab
     autocmd FileType python set sw=4 sts=4 et
     autocmd Filetype prolog set syntax=prolog
 
@@ -159,8 +153,7 @@ augroup vimrcEx
 
     autocmd BufNewFile,BufRead *.prawn setf ruby
 
-    " Indent p tags
-    " autocmd FileType html,eruby if g:html_indent_tags !~ '\\|p\>' | let g:html_indent_tags .= '\|p\|li\|dt\|dd' | endif
+    au BufRead,BufNewFile *.gotpl,*.gohtml set filetype=gohtmltmpl
 
     " Don't syntax highlight markdown because it's often wrong
     autocmd! FileType mkd setlocal syn=off
@@ -174,6 +167,7 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
 set background=dark
+let g:rehash256 = 1
 colorscheme solarized
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -211,16 +205,6 @@ nnoremap _ts :silent !tmux set status<CR>
 " for linux and windows users (using the control key)
 map <c-a> gT
 map <c-s> gt
-map <c-1> 1gt
-map <c-2> 2gt
-map <c-3> 3gt
-map <c-4> 4gt
-map <c-5> 5gt
-map <c-6> 6gt
-map <c-7> 7gt
-map <c-8> 8gt
-map <c-9> 9gt
-map <c-0> :tablast<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ARROW KEYS ARE UNACCEPTABLE
@@ -303,6 +287,9 @@ let g:surround_61 = "<%= \r %>"   " =
 
 " Auto generate imports go on save
 let g:go_fmt_command = "goimports"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_generate_tags = 1
 
 map <Leader>y <Plug>Yssurround=<cr>
 map <Leader>i <Plug>Yssurround-<cr>
