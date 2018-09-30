@@ -48,3 +48,5 @@
   templatedir = ~/.git_template
 [gist]
   username = kainlite
+[url "git@bitbucket.org:"]
+	insteadOf = https://bitbucket.org/

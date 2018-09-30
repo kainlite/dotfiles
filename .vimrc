@@ -155,6 +155,8 @@ augroup vimrcEx
 
     au BufRead,BufNewFile *.gotpl,*.gohtml set filetype=gohtmltmpl
 
+    autocmd FileType make set sw=4 sts=4 noet
+
     " Don't syntax highlight markdown because it's often wrong
     autocmd! FileType mkd setlocal syn=off
 
