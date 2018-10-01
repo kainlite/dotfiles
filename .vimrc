@@ -159,6 +159,8 @@ augroup vimrcEx
 
     " For everything else use this default to prevent the tab _casqueada_
     autocmd Filetype * set sw=4 sts=4  ts=4 et
+
+    autocmd BufRead * retab
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
