@@ -19,7 +19,7 @@ setopt hist_no_store
 
 # Initialize completion
 autoload -U compinit
-compinit
+compinit -C
 unsetopt correct
 
 # Added slash when changing dirs
@@ -34,19 +34,25 @@ alias ll='ls -lG'
 alias gadd='git add --all .'
 alias gc='git commit -S '
 alias git='LANGUAGE=en_US.UTF-8 git'
+alias glog='git log --graph --color'
+alias glogs='git log --stat --color -p'
 alias dotfiles_update="cd ~/.dotfiles; rake update; cd -"
 alias meteors='meteor --settings settings.json'
 alias mt='DEBUG=1 JASMINE_DEBUG=1 VELOCITY_DEBUG=1 mrt --settings settings.json'
 alias node='node --harmony'
 alias pacupgrade='pacaur -Syua'
 alias sshcam="ssh $REMOTEHOST ffmpeg -an -f video4linux2 -s 640x480 -i /dev/video0 -r 10 -b:v 500k -f matroska - | mplayer - -idle -demuxer matroska"
+alias webcamtest="mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video0"
+alias truefree="free -m | awk 'NR==3 {print \$4 \" MB\"}'"
+alias dockerrmv="docker ps --filter status=dead --filter status=exited -aq | xargs docker rm -v"
+alias dockerrmi="docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs -r docker rmi"
 
 # Nicer history
 export HISTSIZE=1000000000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 
-# Use nvim as the editor
+# Use vim as the editor
 export EDITOR=vim
 # GNU Screen sets -o vi if EDITOR=vi, so we have to force it back.
 set -o vi
@@ -68,8 +74,9 @@ function mcd() { mkdir -p $1 && cd $1 }
 function cdf() { cd *$1*/ } # stolen from @topfunky
 
 # Autostart tmux
-# export TERM=screen-256color
 set -g xterm-keys on
+# export TERM=screen-256color
+# set -g default-terminal "screen-256color"
 export TERM=xterm-256color
 export ZSH_TMUX_TERM=xterm-256color
 set -g default-terminal "xterm-256color"
@@ -100,7 +107,7 @@ export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/
 # archlinux-java set java-8-openjdk/jre
 export JAVA_HOME=/usr/lib/jvm/default-runtime
 
-plugins=(git ruby rails bundler gem git-extras github fcatena tmux rehash archlinux systemd vagrant rbenv elixir phoenix)
+plugins=(git ruby bundler git-extras tmux archlinux systemd vagrant rbenv kubectl)
 
 source $ZSH/oh-my-zsh.sh
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -109,12 +116,12 @@ export PATH="$HOME/.exenv/bin:$PATH"
 export PATH="/home/kainlite/.chefdk/gem/ruby/2.3.0/bin:$PATH"
 
 # load the erlang vm manager
-source $HOME/.evm/scripts/evm
+# source $HOME/.evm/scripts/evm
 
-eval "$(exenv init -)"
+# eval "$(exenv init -)"
 
 # Nvm
-source ~/.nvm/nvm.sh
+# source ~/.nvm/nvm.sh
 
 # Add paths
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
@@ -132,7 +139,7 @@ alias ccopy="xclip -sel clip"
 alias cpaste="xclip -sel clip -o"
 alias s="screen"
 alias sr="screen -r"
-alias hugs="hugs -98 -E'nvim'"
+alias hugs="hugs -98 -E'vim'"
 
 # Restore the last backgrounded task with Ctrl-V
 function foreground_task() {
@@ -163,7 +170,10 @@ if [[ -e '/usr/share/doc/pkgfile/command-not-found.zsh' ]]; then
 fi
 
 # Allow minikube to use docker env
-# eval $(minikube docker-env)
+if pgrep -f minikube > /dev/null
+then
+    eval $(minikube docker-env)
+fi
 
 # Direnv
 eval "$(direnv hook zsh)"

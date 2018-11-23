@@ -28,9 +28,9 @@ prompt_end() {
   if [[ -n $CURRENT_BG ]]; then
     echo -n "%{%k%F{$CURRENT_BG}%}"
   else
-    echo -n "%{%k%}"
+    echo -n "%{%k%}$"
   fi
-  echo -n "%{%f%}"
+  echo -n "%{%f%} $"
   CURRENT_BG=''
 }
 
@@ -82,7 +82,7 @@ prompt_git() {
     zstyle ':vcs_info:*' actionformats ' %u%c'
     vcs_info
     echo -n "${ref/refs\/heads\// }${vcs_info_msg_0_%% }${mode}${gstatus}"
-   	prompt_segment NONE default " "
+   	prompt_segment NONE default ""
   fi
 }
 

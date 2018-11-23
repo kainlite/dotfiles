@@ -1,34 +1,55 @@
-" vim:set ts=2 sts=2 sw=2 expandtab:
+" vim:set ts=4 sts=4 sw=4 expandtab:
 " This is kainlite vimrc
 
 " Load bundles
 if filereadable(expand("~/.vimrc.bundles"))
-  call plug#begin('~/.vim/plugged')
-  source ~/.vimrc.bundles
-  call plug#end()
+    call plug#begin('~/.vim/plugged')
+    source ~/.vimrc.bundles
+    call plug#end()
 endif
 
 " Set encoding if available
 if has('multi_byte')
-  set encoding=utf-8
-  setglobal fileencoding=utf-8
-  set fileencodings=ucs-bom,utf-8,latin1
+    set encoding=utf-8
+    setglobal fileencoding=utf-8
+    set fileencodings=ucs-bom,utf-8,latin1
 endif
 
 " Set spellcheck
 if has('spell')
-  set spelllang=en_us
-  nnoremap _s :set spell!<CR>
+    set spelllang=en_us
+    nnoremap _s :set spell!<CR>
 endif
 
 if !exists('g:fugitive_git_executable')
-  let g:fugitive_git_executable='LC_ALL=en_US git'
+    let g:fugitive_git_executable='LC_ALL=en_US git'
 endif
 
 if exists('+writebackup')
-  set nobackup
-  set writebackup
+    set nobackup
+    set writebackup
 endif
+
+" Tell vim to remember certain things when we exit
+"  '50  :  marks will be remembered for up to 10 previously edited files
+"  "1000 :  will save up to 100 lines for each register
+"  :200  :  up to 20 lines of command-line history will be remembered
+"  %    :  saves and restores the buffer list
+"  n... :  where to save the viminfo files
+set viminfo='50,\"1000,:200,%,n~/.viminfo
+
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+
+augroup resCur
+  autocmd!
+  autocmd BufWinEnter * call ResCur()
+augroup END
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -38,9 +59,9 @@ set hidden
 " remember more commands and search history
 set history=10000
 set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set autoindent
 set cindent
 set smartindent
@@ -72,7 +93,7 @@ set undodir=~/.vim/undodir
 set shell=zsh
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
-set t_ti= t_te=
+" set t_ti= t_te=
 " keep more context when scrolling off the end of a buffer
 set scrolloff=3
 " Store temporary files in a central spot
@@ -97,65 +118,49 @@ set wildmode=longest,list
 set wildmenu
 let mapleader=","
 noremap <leader>s :update<CR>
-let g:syntastic_check_on_open=0
-let delimitMate_expand_cr=1
-let g:syntastic_javascript_checkers = ['jsxhint']
-let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 
-au BufRead,BufNewFile *.json set filetype=json
-let g:syntastic_json_checkers=['jsonlint']
+" Yank directly to the clipboard
+map <C-C> :%y+<CR>
 
-" Syntastic conf for elm
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+" " Elm format on save
+" let g:elm_format_autosave = 1
 
-let g:elm_syntastic_show_warnings = 1
-
-" Elm format on save
-let g:elm_format_autosave = 1
-
-" mxw/vim-jsx
-" let g:jsx_ext_required = 0
+" Disable scratch window for omnicompletion
+set completeopt-=preview
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup vimrcEx
-  " Clear all autocmds in the group
-  autocmd!
-  autocmd FileType text setlocal textwidth=78
+    " Clear all autocmds in the group
+    autocmd!
+    autocmd FileType text setlocal textwidth=78
 
-  " Jump to last cursor position unless it's invalid or in an event handler
-  " autocmd BufReadPost *
-  "       \ if line("'\"") > 0 && line("'\"") <= line("$") |
-  "       \   exe "normal g`\"" |
-  "       \ endif
+    "for ruby, autoindent with two spaces, always expand tabs
+    autocmd FileType rb,ruby,haml,eruby,yaml,html,tmpl,javascript,sass,cucumber,js,jsx,ex,eex set ai sw=4 sts=4 et
+    autocmd FileType c,cpp set ai tabstop=4 softtabstop=4 shiftwidth=4 et
+    autocmd FileType python set sw=4 sts=4 et
+    autocmd Filetype prolog set syntax=prolog et
 
-  "for ruby, autoindent with two spaces, always expand tabs
-  autocmd FileType rb,ruby,haml,eruby,yaml,html,tmpl,javascript,sass,cucumber,js,jsx,ex,eex set ai sw=2 sts=2 et
-  autocmd FileType c,cpp set ai tabstop=8 softtabstop=8 shiftwidth=8 expandtab
-  autocmd FileType python set sw=4 sts=4 et
-  autocmd Filetype prolog set syntax=prolog
+    autocmd BufNewFile,BufRead *.ejs set filetype=html
+    autocmd BufNewFile,BufRead *.jsx set filetype=javascript
+    autocmd! BufRead,BufNewFile *.sass setfiletype sass
 
-  autocmd BufNewFile,BufRead *.ejs set filetype=html
-  autocmd BufNewFile,BufRead *.jsx set filetype=javascript
-  autocmd! BufRead,BufNewFile *.sass setfiletype sass
+    autocmd bufRead *.elm set sw=4 ts=4 et
 
-  autocmd bufRead *.elm set sw=4 ts=4 et
+    autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt; et
+    autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt; et
 
-  autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
-  autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
+    autocmd BufNewFile,BufRead *.prawn setf ruby et
 
-  autocmd BufNewFile,BufRead *.prawn setf ruby
+    au BufRead,BufNewFile *.gotpl,*.gohtml set filetype=gohtmltmpl et
 
-  " Indent p tags
-  " autocmd FileType html,eruby if g:html_indent_tags !~ '\\|p\>' | let g:html_indent_tags .= '\|p\|li\|dt\|dd' | endif
+    autocmd FileType make set sw=4 sts=4 noet
 
-  " Don't syntax highlight markdown because it's often wrong
-  autocmd! FileType mkd setlocal syn=off
+    " For everything else use this default to prevent the tab _casqueada_
+    autocmd Filetype * set sw=4 sts=4  ts=4 et
 
-  " For everything else use this default to prevent the tab _casqueada_
-  autocmd Filetype * set sw=2 sts=2  ts=2 expandtab
+    autocmd BufRead * retab
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -163,6 +168,7 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
 set background=dark
+let g:rehash256 = 1
 colorscheme solarized
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -190,7 +196,7 @@ imap <c-c> <esc>
 
 " Clear the search buffer when hitting return
 function! MapCR()
-  nnoremap <cr> :nohlsearch<cr>
+    nnoremap <cr> :nohlsearch<cr>
 endfunction
 
 nnoremap <leader><leader> <c-^>
@@ -200,16 +206,6 @@ nnoremap _ts :silent !tmux set status<CR>
 " for linux and windows users (using the control key)
 map <c-a> gT
 map <c-s> gt
-map <c-1> 1gt
-map <c-2> 2gt
-map <c-3> 3gt
-map <c-4> 4gt
-map <c-5> 5gt
-map <c-6> 6gt
-map <c-7> 7gt
-map <c-8> 8gt
-map <c-9> 9gt
-map <c-0> :tablast<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ARROW KEYS ARE UNACCEPTABLE
@@ -225,26 +221,27 @@ nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 
 " Strip annoying whitespaces
 function! <SID>StripTrailingWhitespaces()
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  %s/\s\+$//e
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
 endfunction
 
-map <leader>j :Tjavascript<Space>
-map <leader>h :Ttest<Space>
-map <leader>v :Tview<Space>
-map <leader>t :Ttemplate<Space>
-map <leader>c :Tcontroller<Space>
-map <leader>m :Tmodel<Space>
-map <leader>k :SetLinuxFormatting<cr><cr>
+map <leader>r :NERDTree<cr>
+map <leader>t :tabedit<Space>
+map <leader>v :vsplit<Space>
+map <leader>h :split<Space>
 map <leader>a :A<cr>
 map <leader>z :R<cr>
+
+map <leader>g :GoRun<cr>
+map <leader>m :GoBuild<cr>
+map <leader>gt :GoTest<cr>
 
 " set mode paste in insert mode and line number
 set pastetoggle=<C-p>
@@ -289,6 +286,12 @@ let g:surround_113 = "#{\r}"   " v
 let g:surround_45 = "<% \r %>"    " -
 let g:surround_61 = "<%= \r %>"   " =
 
+" Auto generate imports go on save
+let g:go_fmt_command = "goimports"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_generate_tags = 1
+
 map <Leader>y <Plug>Yssurround=<cr>
 map <Leader>i <Plug>Yssurround-<cr>
 map <leader># ysiw#
@@ -299,40 +302,40 @@ autocmd FileType eruby let b:surround_35 = "#{\r}"
 
 " Fix arrows for vim
 if &term =~ '^screen' && exists('$TMUX')
-  set mouse+=a
-  " tmux knows the extended mouse mode
-  set ttymouse=xterm2
-  " tmux will send xterm-style keys when xterm-keys is on
-  execute "set <xUp>=\e[1;*A"
-  execute "set <xDown>=\e[1;*B"
-  execute "set <xRight>=\e[1;*C"
-  execute "set <xLeft>=\e[1;*D"
-  map <Esc>OH <Home>
-  map! <Esc>OH <Home>
-  map <Esc>OF <End>
-  map! <Esc>OF <End>
-  execute "set <Insert>=\e[2;*~"
-  execute "set <Delete>=\e[3;*~"
-  execute "set <PageUp>=\e[5;*~"
-  execute "set <PageDown>=\e[6;*~"
-  execute "set <xF1>=\e[1;*P"
-  execute "set <xF2>=\e[1;*Q"
-  execute "set <xF3>=\e[1;*R"
-  execute "set <xF4>=\e[1;*S"
-  execute "set <F5>=\e[15;*~"
-  execute "set <F6>=\e[17;*~"
-  execute "set <F7>=\e[18;*~"
-  execute "set <F8>=\e[19;*~"
-  execute "set <F9>=\e[20;*~"
-  execute "set <F10>=\e[21;*~"
-  execute "set <F11>=\e[23;*~"
-  execute "set <F12>=\e[24;*~"
+    set mouse+=a
+    " tmux knows the extended mouse mode
+    set ttymouse=xterm2
+    " tmux will send xterm-style keys when xterm-keys is on
+    execute "set <xUp>=\e[1;*A"
+    execute "set <xDown>=\e[1;*B"
+    execute "set <xRight>=\e[1;*C"
+    execute "set <xLeft>=\e[1;*D"
+    map <Esc>OH <Home>
+    map! <Esc>OH <Home>
+    map <Esc>OF <End>
+    map! <Esc>OF <End>
+    execute "set <Insert>=\e[2;*~"
+    execute "set <Delete>=\e[3;*~"
+    execute "set <PageUp>=\e[5;*~"
+    execute "set <PageDown>=\e[6;*~"
+    execute "set <xF1>=\e[1;*P"
+    execute "set <xF2>=\e[1;*Q"
+    execute "set <xF3>=\e[1;*R"
+    execute "set <xF4>=\e[1;*S"
+    execute "set <F5>=\e[15;*~"
+    execute "set <F6>=\e[17;*~"
+    execute "set <F7>=\e[18;*~"
+    execute "set <F8>=\e[19;*~"
+    execute "set <F9>=\e[20;*~"
+    execute "set <F10>=\e[21;*~"
+    execute "set <F11>=\e[23;*~"
+    execute "set <F12>=\e[24;*~"
 endif
 
 if has('gui_running')
-  " Make shift-insert work like in Xterm
-  map <S-Insert> <MiddleMouse>
-  map! <S-Insert> <MiddleMouse>
+    " Make shift-insert work like in Xterm
+    map <S-Insert> <MiddleMouse>
+    map! <S-Insert> <MiddleMouse>
 endif
 
 let $JS_CMD='node'
