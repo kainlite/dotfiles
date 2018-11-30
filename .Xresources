@@ -101,3 +101,8 @@ URxvt*foreground: #657b83
 !! white dark/light
 *color7: #eee8d5
 *color15: #fdf6e3
+
+!! Copy and paste and it doesn't work :(
+!! URxvt.keysym.C-M-c: builtin-string:
+!! URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+!! URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
