@@ -177,3 +177,9 @@ fi
 
 # Direnv
 eval "$(direnv hook zsh)"
+
+# urxvt
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+
+# Disable bell
+xset -b
