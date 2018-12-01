@@ -75,11 +75,11 @@ function cdf() { cd *$1*/ } # stolen from @topfunky
 
 # Autostart tmux
 set -g xterm-keys on
-# export TERM=screen-256color
-# set -g default-terminal "screen-256color"
-export TERM=xterm-256color
-set -g default-terminal "xterm-256color"
-ZSH_TMUX_AUTOSTART="true"
+export TERM=screen-256color
+set -g default-terminal "screen-256color"
+# export TERM=xterm-256color
+# set -g default-terminal "xterm-256color"
+ZSH_TMUX_AUTOSTART="false"
 
 function up()
 {
