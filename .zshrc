@@ -183,3 +183,9 @@ eval "$(direnv hook zsh)"
 
 # Disable bell
 xset -b
+
+if [[ -z "${SSH_AUTH_SOCK}" ]]; then
+  dbus-update-activation-environment --systemd DISPLAY
+  eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+  export SSH_AUTH_SOCK
+fi
