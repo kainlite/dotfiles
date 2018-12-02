@@ -56,7 +56,7 @@ local function run_once(cmd_arr)
     end
 end
 
-run_once({ "urxvtd", "unclutter -root", "flameshot", "megasync" }) -- entries must be separated by commas
+run_once({ "urxvtd", "unclutter -root", "flameshot", "megasync", "xscreensaver -nosplash" }) -- entries must be separated by commas
 
 -- This function implements the XDG autostart specification
 --[[
@@ -93,7 +93,7 @@ local editor       = os.getenv("EDITOR") or "vim"
 local gui_editor   = "gvim"
 local browser      = "google-chrome-beta"
 local guieditor    = "gvim"
-local scrlocker    = "slock"
+local scrlocker    = "xscreensaver-command -lock"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
