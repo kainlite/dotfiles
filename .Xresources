@@ -102,7 +102,10 @@ URxvt*foreground: #657b83
 *color7: #eee8d5
 *color15: #fdf6e3
 
-!! Copy and paste and it does not work :(
+!! Disable annoying unicode toggle
+URxvt.iso14755 : false
+URxvt*iso14755: false
+!! Copy and paste (if iso14755 is enabled it does not work)
 !! URxvt.keysym.C-M-c: builtin-string:
-!! URxvt.keysym.Shift-Control-V: eval:paste_clipboard
-!! URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
