@@ -19,6 +19,5 @@ If you're using Awesome WM, then you will need to download the themes here (or t
 
 ### Handy package list:
 aur: `pacaur -S awesome-freedesktop-git`
-pacman: `pacman -S unclutter scrot mpd mpc dmenu xsel alsa-utils playerctl awesome-terminal-fonts xscreensaver`
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kainlite/dotfiles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+pacman: `pacman -S unclutter scrot mpd mpc dmenu xsel alsa-utils playerctl awesome-terminal-fonts xscreensaver`
