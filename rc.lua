@@ -754,6 +754,9 @@ naughty.config.presets.spotify = {
 }
 table.insert(naughty.dbus.config.mapping, {{appname = "Spotify"}, naughty.config.presets.spotify})
 
+-- For the rest of the notifications --
+naughty.config.defaults['icon_size'] = 50
+
 client.connect_signal("property::maximized", border_adjust)
 client.connect_signal("focus", border_adjust)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
