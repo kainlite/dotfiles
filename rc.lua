@@ -56,7 +56,7 @@ local function run_once(cmd_arr)
     end
 end
 
-run_once({ "urxvtd", "unclutter -root", "flameshot", "megasync", "xscreensaver -nosplash" }) -- entries must be separated by commas
+run_once({ "urxvtd", "unclutter -root", "flameshot", "megasync", "xscreensaver -nosplash", "xsettingsd" }) -- entries must be separated by commas
 
 -- This function implements the XDG autostart specification
 --[[

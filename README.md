@@ -18,6 +18,6 @@ If you're using Awesome WM, then you will need to download the themes here (or t
 ### [awesome-copycats](https://github.com/lcpz/awesome-copycats)
 
 ### Handy package list:
-aur: `pacaur -S awesome-freedesktop-git`
+aur: `pacaur -S awesome-freedesktop-git xsettingsd-git`
 
 pacman: `pacman -S unclutter scrot mpd mpc dmenu xsel alsa-utils playerctl awesome-terminal-fonts xscreensaver`
