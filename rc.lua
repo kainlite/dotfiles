@@ -658,6 +658,10 @@ awful.rules.rules = {
 
     { rule = { class = "Gimp", role = "gimp-image-window" },
           properties = { maximized = true } },
+
+    -- Slack mini thing
+    { rule = { class = "Slack Call Minipanel" },
+      properties = { floating = true, ontop = true } },
 }
 -- }}}
 
