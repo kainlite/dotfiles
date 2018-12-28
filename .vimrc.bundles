@@ -64,4 +64,8 @@ Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink
 Plug 'SirVer/ultisnips'
 Plug 'ctrlpvim/ctrlp.vim'
 
+" Templating
+Plug 'elzr/vim-json'
+Plug 'google/vim-jsonnet'
+
 filetype on
