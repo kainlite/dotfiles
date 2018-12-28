@@ -151,6 +151,7 @@ augroup vimrcEx
 
     autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt; et
     autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt; et
+    autocmd Filetype *.txt set tw=0 noet
 
     autocmd BufNewFile,BufRead *.json *.jsonnet *.libjsonnet set filetype=json sw=4 ts=4 et
 
@@ -161,7 +162,7 @@ augroup vimrcEx
     autocmd FileType make set sw=4 sts=4 noet
 
     " For everything else use this default to prevent the tab _casqueada_
-    autocmd Filetype * set sw=4 sts=4  ts=4 et
+    autocmd Filetype * set sw=4 sts=4  ts=4 tw=0 et
 
     autocmd BufRead * retab
 augroup END
