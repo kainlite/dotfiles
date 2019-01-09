@@ -141,6 +141,7 @@ augroup vimrcEx
     autocmd FileType c,cpp set ai tabstop=4 softtabstop=4 shiftwidth=4 et
     autocmd FileType python set sw=4 sts=4 et
     autocmd Filetype prolog set syntax=prolog et
+    autocmd Filetype json,jsonnet,libjsonnet set syntax=json et
 
     autocmd BufNewFile,BufRead *.ejs set filetype=html
     autocmd BufNewFile,BufRead *.jsx set filetype=javascript
@@ -151,6 +152,8 @@ augroup vimrcEx
     autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt; et
     autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt; et
     autocmd Filetype *.txt set tw=0 noet
+
+    autocmd BufNewFile,BufRead *.json *.jsonnet *.libjsonnet set filetype=json sw=4 ts=4 et
 
     autocmd BufNewFile,BufRead *.prawn setf ruby et
 
