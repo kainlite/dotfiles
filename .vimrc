@@ -173,7 +173,7 @@ augroup END
 syntax enable
 set background=dark
 let g:rehash256 = 1
-colorscheme solarized
+colorscheme gruvbox
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
