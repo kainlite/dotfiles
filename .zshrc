@@ -47,6 +47,15 @@ alias truefree="free -m | awk 'NR==3 {print \$4 \" MB\"}'"
 alias dockerrmv="docker ps --filter status=dead --filter status=exited -aq | xargs docker rm -v"
 alias dockerrmi="docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs -r docker rmi"
 
+# Somewhat important aliases
+alias cat='bat'
+alias ping='prettyping --nolegend'
+alias preview="fzf --preview 'bat --color \"always\" {}'"
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+alias help='tldr'
+alias man='tldr'
+
 # Nicer history
 export HISTSIZE=10000000
 export HISTFILE="$HOME/.history"
