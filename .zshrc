@@ -77,9 +77,11 @@ function cdf() { cd *$1*/ } # stolen from @topfunky
 set -g xterm-keys on
 # export TERM=screen-256color
 # set -g default-terminal "screen-256color"
-export TERM=xterm-256color
-export ZSH_TMUX_TERM=xterm-256color
-set -g default-terminal "xterm-256color"
+
+# This config doesn't add spaces to the end of the line, but home/end doesn't work
+# export TERM=xterm-256color
+# export ZSH_TMUX_TERM=xterm-256color
+# set -g default-terminal "xterm-256color"
 ZSH_TMUX_AUTOSTART="true"
 
 function up()
@@ -165,9 +167,9 @@ c() { cd ~/Webs/$1; }
 _c() { _files -W ~/Webs -/; }
 compdef _c c
 
-if [[ -e '/usr/share/doc/pkgfile/command-not-found.zsh' ]]; then
-  source '/usr/share/doc/pkgfile/command-not-found.zsh'
-fi
+# if [[ -e '/usr/share/doc/pkgfile/command-not-found.zsh' ]]; then
+#   source '/usr/share/doc/pkgfile/command-not-found.zsh'
+# fi
 
 # Allow minikube to use docker env
 if pgrep -f minikube > /dev/null
