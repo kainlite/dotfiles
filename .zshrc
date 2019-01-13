@@ -79,9 +79,9 @@ set -g xterm-keys on
 # set -g default-terminal "screen-256color"
 
 # This config doesn't add spaces to the end of the line, but home/end doesn't work
-# export TERM=xterm-256color
-# export ZSH_TMUX_TERM=xterm-256color
-# set -g default-terminal "xterm-256color"
+export TERM=xterm-256color
+export ZSH_TMUX_TERM=xterm-256color
+set -g default-terminal "xterm-256color"
 ZSH_TMUX_AUTOSTART="true"
 
 function up()
