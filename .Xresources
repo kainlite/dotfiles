@@ -178,3 +178,9 @@ URxvt.color250: #d5c4a1
 !! !! white dark/light
 !! *color7: #eee8d5
 !! *color15: #fdf6e3
+
+
+URxvt.keysym.Home: \033[1~
+URxvt.keysym.End: \033[4~
+URxvt.keysym.KP_Home: \033[1~
+URxvt.keysym.KP_End:  \033[4~
