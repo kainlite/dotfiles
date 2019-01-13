@@ -79,7 +79,7 @@ set -g xterm-keys on
 # set -g default-terminal "screen-256color"
 
 # This config doesn't add spaces to the end of the line, but home/end doesn't work
-export TERM=tmux-256color
+# export TERM=tmux-256color
 export ZSH_TMUX_TERM=tmux-256color
 set -g default-terminal "tmux-256color"
 ZSH_TMUX_AUTOSTART="true"
@@ -192,3 +192,5 @@ if [[ -z "${SSH_AUTH_SOCK}" ]]; then
   export SSH_AUTH_SOCK
 fi
 
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
