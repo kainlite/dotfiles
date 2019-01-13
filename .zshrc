@@ -48,7 +48,7 @@ alias dockerrmv="docker ps --filter status=dead --filter status=exited -aq | xar
 alias dockerrmi="docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs -r docker rmi"
 
 # Nicer history
-export HISTSIZE=1000000000
+export HISTSIZE=10000000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 
