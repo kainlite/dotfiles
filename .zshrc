@@ -217,7 +217,7 @@ alias vagrant='gbt_vagrant'
 # GBT Configuration
 export GBT_CAR_DIR_FG='40;40;40'
 export GBT_CAR_DIR_BG='146;231;116'
-export GBT_CAR_BG='40;40;40'
+export GBT_CAR_BG='90;90;90'
 export GBT_CAR_FG='250;189;47'
 export GBT_CAR_OS_DISPLAY=0
 export GBT_CAR_STATUS_DISPLAY=0
