@@ -48,7 +48,7 @@ alias dockerrmv="docker ps --filter status=dead --filter status=exited -aq | xar
 alias dockerrmi="docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs -r docker rmi"
 
 # Somewhat important aliases
-alias cat='bat'
+alias cat='bat -p'
 alias ping='prettyping --nolegend'
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
