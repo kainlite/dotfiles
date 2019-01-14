@@ -32,8 +32,15 @@ URxvt.lineSpace:            0
 !! URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1
 !! URxvt*font: xft:Monospace:pixelsize=14
 !! URxvt*boldFont: xft:Monospace:pixelsize=14
-URxvt.font: xft:DejaVu Sans Mono for Powerline:antialias=true:pixelsize=14, xft:DejaVu Sans:pixelsize=14:antialias=true
-URxvt.boldFont: xft:DejaVu Sans Mono for Powerline:style=bold:antialias=true:pixelsize=14, xft:DejaVu Sans:pixelsize=14:antialias=true
+URxvt.font: xft:DejaVu Sans Mono for Powerline:antialias=true:pixelsize=14, \
+            xft:DejaVu Sans:pixelsize=14:antialias=true, \
+            xft:Terminus:pixelsize=14, \
+            xft:Inconsolata\ for\ Powerline:pixelsize=14, \
+            xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true
+URxvt.boldFont: xft:DejaVu Sans Mono for Powerline:style=bold:antialias=true:pixelsize=14, \
+                xft:DejaVu Sans:pixelsize=14:antialias=true, Terminus:pixelsize=14, \
+                xft:Inconsolata\ for\ Powerline:pixelsize=14, \
+                xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true
 
 ! Fix font space
 URxvt*letterSpace: -1
