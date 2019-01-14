@@ -1,6 +1,6 @@
 DISABLE_AUTO_TITLE=true
 
-ZSH_THEME=theme
+ZSH_THEME=gbt
 # Set custom prompt
 ZSH=$HOME/.oh-my-zsh
 DISABLE_CORRECTION="true"
@@ -204,13 +204,12 @@ fi
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
 
-# Testing:
-# # GBT magic
-# export GBT__HOME='/usr/share/gbt'
-# source "$GBT__HOME/sources/gbts/cmd/local.sh"
-# alias docker='gbt_docker'
-# alias mysql='gbt_mysql'
-# alias screen='gbt_screen'
-# alias ssh='gbt_ssh'
-# alias su='gbt_su'
-# alias vagrant='gbt_vagrant'
+# GBT magic
+export GBT__HOME='/usr/share/gbt'
+source "$GBT__HOME/sources/gbts/cmd/local.sh"
+alias docker='gbt_docker'
+alias mysql='gbt_mysql'
+alias screen='gbt_screen'
+alias ssh='gbt_ssh'
+alias su='gbt_su'
+alias vagrant='gbt_vagrant'
