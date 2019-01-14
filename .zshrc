@@ -208,9 +208,9 @@ bindkey "${terminfo[kend]}" end-of-line
 export GBT__HOME='/usr/share/gbt'
 source "$GBT__HOME/sources/gbts/cmd/local.sh"
 alias docker='gbt_docker'
-alias mysql='gbt_mysql'
-alias screen='gbt_screen'
-alias ssh='gbt_ssh'
+# alias mysql='gbt_mysql'
+# alias screen='gbt_screen'
+# alias ssh='gbt_ssh'
 alias su='gbt_su'
 alias vagrant='gbt_vagrant'
 
