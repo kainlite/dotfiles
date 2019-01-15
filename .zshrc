@@ -118,7 +118,7 @@ export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/
 # archlinux-java set java-8-openjdk/jre
 export JAVA_HOME=/usr/lib/jvm/default-runtime
 
-plugins=(git ruby bundler git-extras tmux archlinux systemd vagrant rbenv kubectl)
+plugins=(git ruby bundler git-extras tmux archlinux systemd vagrant rbenv kubectl safe-paste)
 
 source $ZSH/oh-my-zsh.sh
 export PATH="$HOME/.rbenv/bin:$PATH"
