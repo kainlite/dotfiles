@@ -270,6 +270,9 @@ nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gl :Glog<CR>
 nnoremap <Leader>gp :Git push<CR>
 
+" Force save
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+
 " Invisibles characters setup
 nmap <Leader>L :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
