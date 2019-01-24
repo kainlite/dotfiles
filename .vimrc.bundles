@@ -65,7 +65,8 @@ Plug 'SirVer/ultisnips'
 Plug 'ctrlpvim/ctrlp.vim'
 
 " Templating
-Plug 'elzr/vim-json'
+Plug 'XadillaX/json-formatter.vim'
+Plug 'leshill/vim-json'
 Plug 'google/vim-jsonnet'
 
 Plug 'morhetz/gruvbox'
