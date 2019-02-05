@@ -267,7 +267,8 @@ map <leader>m :GoBuild<cr>
 map <leader>gt :GoTest<cr>
 
 nnoremap <C-N> :bnext<CR>
-nnoremap <C-M> :bprev<CR>
+nnoremap <C-m> :bprev<CR>
+nnoremap <C-X> :bd<CR>
 
 " set mode paste in insert mode and line number
 set pastetoggle=<C-p>
