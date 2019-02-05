@@ -231,7 +231,7 @@ map <c-a> gT
 map <c-s> gt
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ARROW KEYS ARE UNACCEPTABLE
+" Disable arrow keys in command and visual mode
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <Left> <Nop>
 map <Right> <Nop>
@@ -265,6 +265,9 @@ map <leader>z :R<cr>
 map <leader>g :GoRun<cr>
 map <leader>m :GoBuild<cr>
 map <leader>gt :GoTest<cr>
+
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-M> :bprev<CR>
 
 " set mode paste in insert mode and line number
 set pastetoggle=<C-p>
