@@ -20,8 +20,12 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails'
 
+" Autocompletion
+Plug 'ervandew/supertab'
+
 " Navigation
 Plug 'scrooloose/nerdtree'
+Plug 'ap/vim-buftabline'
 
 " Toggle quickfix
 Plug 'milkypostman/vim-togglelist'
