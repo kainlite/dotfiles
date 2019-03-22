@@ -266,6 +266,8 @@ map <leader>g :GoRun<cr>
 map <leader>m :GoBuild<cr>
 map <leader>gt :GoTest<cr>
 
+map <leader>p :%!python -m json.tool<cr>
+
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-m> :bprev<CR>
 nnoremap <C-X> :bd<CR>
