@@ -76,7 +76,6 @@ Plug 'google/vim-jsonnet'
 Plug 'morhetz/gruvbox'
 
 " Gists
-Plug 'mattn/webapi-vim'
-Plug 'mattn/gist-vim'
+Plug 'keith/gist.vim'
 
 filetype on
