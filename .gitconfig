@@ -52,3 +52,5 @@
 	insteadOf = https://bitbucket.org/
 [github]
 	user = kainlite
+[diff "sopsdiffer"]
+	textconv = sops -d
