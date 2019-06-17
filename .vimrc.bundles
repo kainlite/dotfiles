@@ -56,6 +56,9 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'elmcast/elm-vim'
 
+" Alignment
+Plug 'godlygeek/tabular'
+
 " Snippets
 Plug 'tomtom/tlib_vim'
 Plug 'othree/html5.vim'

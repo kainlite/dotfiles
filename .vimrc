@@ -375,3 +375,8 @@ if has('gui_running')
 endif
 
 let $JS_CMD='node'
+
+nmap <Leader>f= :Tabularize /=<CR>
+vmap <Leader>f= :Tabularize /=<CR>
+nmap <Leader>f :Tabularize /:\zs<CR>
+vmap <Leader>f :Tabularize /:\zs<CR>
