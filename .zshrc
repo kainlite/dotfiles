@@ -49,7 +49,7 @@ alias dockerrmi="docker images --no-trunc | grep '<none>' | awk '{ print $3 }' |
 
 # Somewhat important aliases
 alias cat='bat -p'
-alias ping='prettyping --nolegend'
+alias pping='prettyping --nolegend'
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
