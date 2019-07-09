@@ -380,3 +380,6 @@ nmap <Leader>f= :Tabularize /=<CR>
 vmap <Leader>f= :Tabularize /=<CR>
 nmap <Leader>f :Tabularize /:\zs<CR>
 vmap <Leader>f :Tabularize /:\zs<CR>
+
+" Enable auto-fmt for terraform files
+let terraform_fmt_on_save=1
