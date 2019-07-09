@@ -81,4 +81,7 @@ Plug 'morhetz/gruvbox'
 " Gists
 Plug 'keith/gist.vim'
 
+" Terraform
+Plug 'hashivim/vim-terraform'
+
 filetype on
