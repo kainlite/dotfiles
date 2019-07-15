@@ -25,7 +25,7 @@ Plug 'ervandew/supertab'
 
 " Navigation
 Plug 'scrooloose/nerdtree'
-Plug 'ap/vim-buftabline'
+" Plug 'ap/vim-buftabline'
 
 " Toggle quickfix
 Plug 'milkypostman/vim-togglelist'
