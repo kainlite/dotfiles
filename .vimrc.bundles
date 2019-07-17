@@ -83,5 +83,7 @@ Plug 'keith/gist.vim'
 
 " Terraform
 Plug 'hashivim/vim-terraform'
+Plug 'vim-syntastic/syntastic'
+Plug 'juliosueiras/vim-terraform-completion'
 
 filetype on
