@@ -383,6 +383,7 @@ vmap <Leader>f :Tabularize /:\zs<CR>
 
 " Enable auto-fmt for terraform files
 let terraform_fmt_on_save=1
+let g:syntastic_terraform_tffilter_plan = 1
 let g:terraform_align=0
 
 " Syntastic Config
@@ -409,11 +410,22 @@ let g:syntastic_terraform_tffilter_plan = 1
 let g:terraform_completion_keys = 1
 
 " (Optional) Default: 1, enable(1)/disable(0) terraform module registry completion
-let g:terraform_registry_module_completion = 0
+let g:terraform_registry_module_completion = 1
+
+
+" let g:deoplete#omni_patterns = {}
+" let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
+" let g:deoplete#enable_at_startup = 1
+" call deoplete#initialize()
 
 let g:deoplete#omni_patterns = {}
 
-let g:deoplete#omni_patterns = {}
-let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
-let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('omni_patterns', {
+\ 'complete_method': 'omnifunc',
+\ 'terraform': '[^ *\t"{=$]\w*',
+\})
+
 call deoplete#initialize()
+call neomake#configure#automake('w')
+
+call MapCR()
