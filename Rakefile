@@ -24,6 +24,8 @@ task :install do
   puts %x{sudo npm install -g syntastic-react}
   puts %x{sudo npm install -g jshint}
   puts %x{sudo npm install -g react-tools}
+  puts %x{mkdir -p ~/.tmux/plugins}
+  puts %x{ln -s .tpm ~/.tmux/plugins/tpm}
 
   copy_files
 end
