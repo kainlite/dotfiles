@@ -92,6 +92,8 @@ set nobomb
 set nofoldenable
 set modifiable
 set nomodeline
+" Ask to reload changes if there are external modifications
+set autoread
 
 " make searches case-sensitive only if they contain upper-case characters
 set ignorecase smartcase

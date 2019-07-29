@@ -96,4 +96,7 @@ Plug 'juliosueiras/vim-terraform-completion'
 Plug 'majutsushi/tagbar'
 Plug 'neomake/neomake'
 
+" To catch events from tmux
+Plug 'tmux-plugins/vim-tmux-focus-events'
+
 filetype on
