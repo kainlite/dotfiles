@@ -144,6 +144,11 @@ noremap <leader>s :update<CR>
 " Yank directly to the clipboard
 map <C-C> :%y+<CR>
 
+" Move between the quicklist files
+map <F11> :cp<CR>
+map <F12> :cn<CR>
+
+
 " " Elm format on save
 " let g:elm_format_autosave = 1
 
