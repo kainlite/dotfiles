@@ -36,7 +36,11 @@ endif
 "  :200  :  up to 20 lines of command-line history will be remembered
 "  %    :  saves and restores the buffer list
 "  n... :  where to save the viminfo files
+if has('nvim')
+set viminfo='50,\"1000,:200,%,n~/.nviminfo
+else
 set viminfo='50,\"1000,:200,%,n~/.viminfo
+endif
 
 function! ResCur()
   if line("'\"") <= line("$")
