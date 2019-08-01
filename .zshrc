@@ -55,6 +55,7 @@ export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias help='tldr'
 alias man='tldr'
+alias vim='nvim'
 
 # Nicer history
 export HISTSIZE=10000000
