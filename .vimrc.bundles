@@ -25,6 +25,7 @@ Plug 'ervandew/supertab'
 
 " Navigation
 Plug 'scrooloose/nerdtree'
+Plug 'Nopik/vim-nerdtree-direnter'
 " Plug 'ap/vim-buftabline'
 
 " Toggle quickfix

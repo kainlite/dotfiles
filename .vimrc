@@ -270,6 +270,10 @@ function! <SID>StripTrailingWhitespaces()
     retab
 endfunction
 
+" autocmd VimEnter * NERDTree
+autocmd BufWinEnter * NERDTreeMirror
+let NERDTreeMapOpenInTab='<ENTER>'
+
 map <leader>r :NERDTree<cr>
 map <leader>t :tabedit<Space>
 map <leader>v :vsplit<Space>
