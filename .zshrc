@@ -159,6 +159,12 @@ export PATH="$HOME/.tfenv/bin:$PATH"
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
 export PATH="$HOME/bin:$PATH:$HOME/Android/sdk/platform-tools"
 
+# Cargo
+source $HOME/.cargo/env
+
+# Krew path
+PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 # Go path
 export GOPATH=$HOME/Webs/go
 export PATH=$PATH:$GOPATH/bin
@@ -245,3 +251,6 @@ export GBT_CAR_FG='250;189;47'
 export GBT_CAR_OS_DISPLAY=0
 export GBT_CAR_STATUS_DISPLAY=0
 export GBT_CAR_DIR_DEPTH='9999'
+
+source '/opt/kube-ps1/kube-ps1.sh'
+PROMPT='$(kube_ps1) '$PROMPT

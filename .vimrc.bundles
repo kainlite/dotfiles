@@ -96,8 +96,12 @@ Plug 'vim-syntastic/syntastic'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'majutsushi/tagbar'
 Plug 'neomake/neomake'
+Plug 'Yggdroot/indentLine'
 
 " To catch events from tmux
 Plug 'tmux-plugins/vim-tmux-focus-events'
+
+" To identify bad indentation on files
+Plug 'inkarkat/vim-IndentConsistencyCop'
 
 filetype on
