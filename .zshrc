@@ -22,6 +22,9 @@ autoload -U compinit
 compinit -C
 unsetopt correct
 
+# Autoload extra modules
+zmodload zsh/net/tcp
+
 # Added slash when changing dirs
 zstyle ':completion:*' special-dirs true
 
@@ -42,7 +45,7 @@ alias mt='DEBUG=1 JASMINE_DEBUG=1 VELOCITY_DEBUG=1 mrt --settings settings.json'
 alias node='node --harmony'
 alias pacupgrade='pacaur -Syua'
 alias sshcam="ssh $REMOTEHOST ffmpeg -an -f video4linux2 -s 640x480 -i /dev/video0 -r 10 -b:v 500k -f matroska - | mplayer - -idle -demuxer matroska"
-alias webcamtest="mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video0"
+alias webcamtest="mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video4"
 alias truefree="free -m | awk 'NR==3 {print \$4 \" MB\"}'"
 alias dockerrmv="docker ps --filter status=dead --filter status=exited -aq | xargs docker rm -v"
 alias dockerrmi="docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs -r docker rmi"
@@ -138,13 +141,13 @@ export PATH=$PATH:$USER_BASE_PATH/bin
 # archlinux-java set java-8-openjdk/jre
 export JAVA_HOME=/usr/lib/jvm/default-runtime
 
-plugins=(git ruby bundler git-extras tmux archlinux systemd vagrant rbenv kubectl safe-paste terraform)
+plugins=(git ruby bundler git-extras tmux archlinux systemd vagrant rbenv kubectl safe-paste terraform kube-ps1)
 
 source $ZSH/oh-my-zsh.sh
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.exenv/bin:$PATH"
-
-export PATH="/home/kainlite/.chefdk/gem/ruby/2.3.0/bin:$PATH"
+export PATH="$HOME/.tfenv/bin:$PATH"
+export PATH="$HOME/.chefdk/gem/ruby/2.3.0/bin:$PATH"
 
 # load the erlang vm manager
 # source $HOME/.evm/scripts/evm
@@ -154,6 +157,9 @@ export PATH="/home/kainlite/.chefdk/gem/ruby/2.3.0/bin:$PATH"
 # Nvm
 # source ~/.nvm/nvm.sh
 
+# Cargo
+source $HOME/.cargo/env
+
 # Add paths
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
 export PATH="$HOME/bin:$PATH:$HOME/Android/sdk/platform-tools"
@@ -161,6 +167,9 @@ export PATH="$HOME/bin:$PATH:$HOME/Android/sdk/platform-tools"
 # Go path
 export GOPATH=$HOME/Webs/go
 export PATH=$PATH:$GOPATH/bin
+
+# Krew path
+PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Gpg
 export GNUPGHOME="$HOME/.gnupg"
@@ -184,8 +193,8 @@ zle -N foreground_task
 bindkey "\Cv" foreground_task
 
 # Back and forth history search for current command (fix for tmux)
-bindkey "${terminfo[kcuu1]}" up-line-or-search
-bindkey "${terminfo[kcud1]}" down-line-or-search
+# bindkey "${terminfo[kcuu1]}" up-line-or-search
+# bindkey "${terminfo[kcud1]}" down-line-or-search
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 
@@ -223,8 +232,8 @@ if [[ -z "${SSH_AUTH_SOCK}" ]]; then
   export SSH_AUTH_SOCK
 fi
 
-bindkey "${terminfo[khome]}" beginning-of-line
-bindkey "${terminfo[kend]}" end-of-line
+# bindkey "${terminfo[khome]}" beginning-of-line
+# bindkey "${terminfo[kend]}" end-of-line
 
 # GBT magic
 export GBT__HOME='/usr/share/gbt'
@@ -244,3 +253,18 @@ export GBT_CAR_FG='250;189;47'
 export GBT_CAR_OS_DISPLAY=0
 export GBT_CAR_STATUS_DISPLAY=0
 export GBT_CAR_DIR_DEPTH='9999'
+
+# Make the screen looks ok :/
+# export QT_AUTO_SCREEN_SCALE_FACTOR=1
+unset QA_AUTO_SCREEN_SCALE_FACTOR
+export QT_SCALE_FACTOR=1.5
+export GDK_SCALE=2
+
+PROMPT='$(kube_ps1) '$PROMPT
+export SBT_CREDENTIALS=~/.ivy2/.nexus_credentials
+
+PATH="/home/gabriel/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/gabriel/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/gabriel/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/gabriel/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/gabriel/perl5"; export PERL_MM_OPT;

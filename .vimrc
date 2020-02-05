@@ -1,33 +1,33 @@
-" vim:set ts=4 sts=4 sw=4 expandtab:
+" vim:set ts=2 sts=2 sw=2 expandtab:
 " This is kainlite vimrc
 
 " Load bundles
 if filereadable(expand("~/.vimrc.bundles"))
-    call plug#begin('~/.vim/plugged')
-    source ~/.vimrc.bundles
-    call plug#end()
+  call plug#begin('~/.vim/plugged')
+  source ~/.vimrc.bundles
+  call plug#end()
 endif
 
 " Set encoding if available
 if has('multi_byte')
-    set encoding=utf-8
-    setglobal fileencoding=utf-8
-    set fileencodings=ucs-bom,utf-8,latin1
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  set fileencodings=ucs-bom,utf-8,latin1
 endif
 
 " Set spellcheck
 if has('spell')
-    set spelllang=en_us
-    nnoremap _s :set spell!<CR>
+  set spelllang=en_us
+  nnoremap _s :set spell!<CR>
 endif
 
 if !exists('g:fugitive_git_executable')
-    let g:fugitive_git_executable='LC_ALL=en_US git'
+  let g:fugitive_git_executable='LC_ALL=en_US git'
 endif
 
 if exists('+writebackup')
-    set nobackup
-    set writebackup
+  set nobackup
+  set writebackup
 endif
 
 " Tell vim to remember certain things when we exit
@@ -37,9 +37,9 @@ endif
 "  %    :  saves and restores the buffer list
 "  n... :  where to save the viminfo files
 if has('nvim')
-set viminfo='50,\"1000,:200,%,n~/.nviminfo
+  set viminfo='50,\"1000,:200,%,n~/.nviminfo
 else
-set viminfo='50,\"1000,:200,%,n~/.viminfo
+  set viminfo='50,\"1000,:200,%,n~/.viminfo
 endif
 
 function! ResCur()
@@ -81,9 +81,9 @@ set hidden
 " remember more commands and search history
 set history=10000
 set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set autoindent
 set cindent
 set smartindent
@@ -162,43 +162,39 @@ set completeopt-=preview
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup vimrcEx
-    " Clear all autocmds in the group
-    autocmd!
-    autocmd FileType text setlocal textwidth=78
+" Clear all autocmds in the group
+" autocmd!
+autocmd FileType text setlocal textwidth=78
 
-    "for ruby, autoindent with two spaces, always expand tabs
-    autocmd FileType rb,ruby,haml,eruby,yml,yaml,html,tmpl,javascript,sass,cucumber,js,jsx,ex,eex set ai sw=2 sts=2 et
+autocmd Filetype * set sw=2 sts=2  ts=2 tw=0 et
 
-    autocmd FileType c,cpp set ai tabstop=4 softtabstop=4 shiftwidth=4 et
-    autocmd FileType python set sw=4 sts=4 et
-    autocmd Filetype prolog set syntax=prolog et
+autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,jsx set ai ts=2 sw=2 sts=2 et
 
-    autocmd BufNewFile,BufRead *.ejs set filetype=html
-    autocmd BufNewFile,BufRead *.jsx set filetype=javascript
-    autocmd! BufRead,BufNewFile *.sass setfiletype sass
+autocmd FileType c,cpp set ai tabstop=4 softtabstop=4 shiftwidth=4 et
+autocmd FileType python set sw=4 sts=4 et
+autocmd Filetype prolog set syntax=prolog et
 
-    autocmd bufRead elm set sw=4 ts=4 et
+autocmd BufNewFile,BufRead *.ejs set filetype=html
+autocmd BufNewFile,BufRead *.jsx set filetype=javascript
+autocmd! BufRead,BufNewFile *.sass setfiletype sass
 
-    autocmd BufRead mkd  set ai formatoptions=tcroqn2 comments=n:&gt; et
-    autocmd BufRead markdown  set ai formatoptions=tcroqn2 comments=n:&gt; et
-    autocmd Filetype txt set tw=0 noet
+autocmd bufRead elm set sw=4 ts=4 et
 
-    autocmd Filetype json set filetype=js sw=4 ts=4 et
-    autocmd Filetype jsonnet set filetype=js sw=4 ts=4 et
-    autocmd Filetype libjsonnet set filetype=js sw=4 ts=4 et
+autocmd BufRead mkd  set ai formatoptions=tcroqn2 comments=n:&gt; et
+autocmd BufRead markdown  set ai formatoptions=tcroqn2 comments=n:&gt; et
+autocmd Filetype txt set tw=0 noet
 
-    autocmd BufNewFile,BufRead *.prawn setf ruby et
+autocmd Filetype json set filetype=js sw=4 ts=4 et
+autocmd Filetype jsonnet set filetype=js sw=4 ts=4 et
+autocmd Filetype libjsonnet set filetype=js sw=4 ts=4 et
 
-    au BufRead,BufNewFile *.gotpl,*.gohtml set filetype=gohtmltmpl et
+autocmd BufNewFile,BufRead *.prawn setf ruby et
 
-    autocmd FileType make set sw=4 sts=4 noet
+au BufRead,BufNewFile *.gotpl,*.gohtml set filetype=gohtmltmpl et
 
-    " For everything else use this default to prevent the tab _casqueada_
-    autocmd Filetype * set sw=4 sts=4  ts=4 tw=0 et
+autocmd FileType make set sw=4 sts=4 noet
 
-    autocmd BufRead * retab
-augroup END
+autocmd BufRead * retab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR
@@ -233,7 +229,7 @@ imap <c-c> <esc>
 
 " Clear the search buffer when hitting return
 function! MapCR()
-    nnoremap <cr> :nohlsearch<cr>
+  nnoremap <cr> :nohlsearch<cr>
 endfunction
 
 nnoremap <leader><leader> <c-^>
@@ -258,17 +254,21 @@ nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 
 " Strip annoying whitespaces
 function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-    retab
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+  retab
 endfunction
+
+" autocmd VimEnter * NERDTree
+autocmd BufWinEnter * NERDTreeMirror
+let NERDTreeMapOpenInTab='<ENTER>'
 
 map <leader>r :NERDTree<cr>
 map <leader>t :tabedit<Space>
@@ -315,7 +315,8 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " Invisibles characters setup
 nmap <Leader>L :set list!<CR>
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▶\ ,trail:·,extends:\#,nbsp:.
+autocmd VimEnter * :IndentGuidesEnable
 
 " Toggler
 nmap <script> <silent> <leader>w :call ToggleQuickfixList()<CR>
@@ -349,40 +350,40 @@ autocmd FileType eruby let b:surround_35 = "#{\r}"
 
 " Fix arrows for vim
 if &term =~ '^screen' && exists('$TMUX')
-    set mouse+=a
-    " tmux knows the extended mouse mode
-    set ttymouse=xterm2
-    " tmux will send xterm-style keys when xterm-keys is on
-    execute "set <xUp>=\e[1;*A"
-    execute "set <xDown>=\e[1;*B"
-    execute "set <xRight>=\e[1;*C"
-    execute "set <xLeft>=\e[1;*D"
-    map <Esc>OH <Home>
-    map! <Esc>OH <Home>
-    map <Esc>OF <End>
-    map! <Esc>OF <End>
-    execute "set <Insert>=\e[2;*~"
-    execute "set <Delete>=\e[3;*~"
-    execute "set <PageUp>=\e[5;*~"
-    execute "set <PageDown>=\e[6;*~"
-    execute "set <xF1>=\e[1;*P"
-    execute "set <xF2>=\e[1;*Q"
-    execute "set <xF3>=\e[1;*R"
-    execute "set <xF4>=\e[1;*S"
-    execute "set <F5>=\e[15;*~"
-    execute "set <F6>=\e[17;*~"
-    execute "set <F7>=\e[18;*~"
-    execute "set <F8>=\e[19;*~"
-    execute "set <F9>=\e[20;*~"
-    execute "set <F10>=\e[21;*~"
-    execute "set <F11>=\e[23;*~"
-    execute "set <F12>=\e[24;*~"
+  set mouse+=a
+  " tmux knows the extended mouse mode
+  set ttymouse=xterm2
+  " tmux will send xterm-style keys when xterm-keys is on
+  execute "set <xUp>=\e[1;*A"
+  execute "set <xDown>=\e[1;*B"
+  execute "set <xRight>=\e[1;*C"
+  execute "set <xLeft>=\e[1;*D"
+  map <Esc>OH <Home>
+  map! <Esc>OH <Home>
+  map <Esc>OF <End>
+  map! <Esc>OF <End>
+  execute "set <Insert>=\e[2;*~"
+  execute "set <Delete>=\e[3;*~"
+  execute "set <PageUp>=\e[5;*~"
+  execute "set <PageDown>=\e[6;*~"
+  execute "set <xF1>=\e[1;*P"
+  execute "set <xF2>=\e[1;*Q"
+  execute "set <xF3>=\e[1;*R"
+  execute "set <xF4>=\e[1;*S"
+  execute "set <F5>=\e[15;*~"
+  execute "set <F6>=\e[17;*~"
+  execute "set <F7>=\e[18;*~"
+  execute "set <F8>=\e[19;*~"
+  execute "set <F9>=\e[20;*~"
+  execute "set <F10>=\e[21;*~"
+  execute "set <F11>=\e[23;*~"
+  execute "set <F12>=\e[24;*~"
 endif
 
 if has('gui_running')
-    " Make shift-insert work like in Xterm
-    map <S-Insert> <MiddleMouse>
-    map! <S-Insert> <MiddleMouse>
+  " Make shift-insert work like in Xterm
+  map <S-Insert> <MiddleMouse>
+  map! <S-Insert> <MiddleMouse>
 endif
 
 let $JS_CMD='node'
@@ -432,9 +433,9 @@ let g:terraform_registry_module_completion = 1
 let g:deoplete#omni_patterns = {}
 
 call deoplete#custom#option('omni_patterns', {
-\ 'complete_method': 'omnifunc',
-\ 'terraform': '[^ *\t"{=$]\w*',
-\})
+      \ 'complete_method': 'omnifunc',
+      \ 'terraform': '[^ *\t"{=$]\w*',
+      \})
 
 call deoplete#initialize()
 call neomake#configure#automake('w')

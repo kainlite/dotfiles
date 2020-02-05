@@ -4,11 +4,13 @@
 
 URxvt.title:                Skynet
 
-Xft.dpi:                    96
-Xft.antialias:              false
+Xft.dpi:                    180
 Xft.rgba:                   rgb
 Xft.hinting:                true
-Xft.hintstyle:              hintslight
+Xft.autohint:               0
+Xft.lcdfilter:              lcddefault
+Xft.hintstyle:              hintfull
+Xft.antialias:              1
 
 !-------------------------------------------------------------------------------
 ! URxvt settings
@@ -32,14 +34,14 @@ URxvt.lineSpace:            0
 !! URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1
 !! URxvt*font: xft:Monospace:pixelsize=14
 !! URxvt*boldFont: xft:Monospace:pixelsize=14
-URxvt.font: xft:DejaVu Sans Mono for Powerline:antialias  = true:pixelsize=14, \
-            xft:DejaVu Sans:pixelsize                     = 14:antialias=true, \
-            xft:Terminus:pixelsize                        = 14, \
-            xft:Inconsolata\ for\ Powerline:pixelsize     = 14, \
+URxvt.font: xft:DejaVu Sans Mono for Powerline:antialias  = true:pixelsize=30, \
+            xft:DejaVu Sans:pixelsize                     = 30:antialias=true, \
+            xft:Terminus:pixelsize                        = 30, \
+            xft:Inconsolata\ for\ Powerline:pixelsize     = 30, \
             xft:Source\ Code\ Pro\ Medium:pixelsize       = 13:antialias=true:hinting=true
-URxvt.boldFont: xft:DejaVu Sans Mono for Powerline:style  = bold:antialias=true:pixelsize=14, \
-                xft:DejaVu Sans:pixelsize                 = 14:antialias=true, Terminus:pixelsize=14, \
-                xft:Inconsolata\ for\ Powerline:pixelsize = 14, \
+URxvt.boldFont: xft:DejaVu Sans Mono for Powerline:style  = bold:antialias=true:pixelsize=30, \
+                xft:DejaVu Sans:pixelsize                 = 30:antialias=true, Terminus:pixelsize=30, \
+                xft:Inconsolata\ for\ Powerline:pixelsize = 30, \
                 xft:Source\ Code\ Pro\ Medium:pixelsize   = 13:antialias=true:hinting=true
 
 ! Fix font space
@@ -50,9 +52,9 @@ URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false
 
 ! Perl extensions
-URxvt.perl-ext-common:      default,matcher
-URxvt.matcher.button:       1
-URxvt.urlLauncher:          google-chrome-beta
+! URxvt.perl-ext-common:      default,matcher
+! URxvt.matcher.button:       1
+! URxvt.urlLauncher:          google-chrome-beta
 
 ! Cursor
 URxvt.cursorBlink:          true
@@ -190,10 +192,10 @@ URxvt.keysym.End: \033[4~
 URxvt.keysym.KP_Home: \033[1~
 URxvt.keysym.KP_End:  \033[4~
 
-urxvt*perl-lib:        /usr/lib/urxvt/perl/
-urxvt*perl-ext:        default,matcher
-urxvt*perl-ext-common: default,matcher
-urxvt*urlLauncher:     /usr/bin/google-chrome
-URxvt.url-select.launcher: /usr/bin/google-chrome
-urxvt*matcher.button:  1
+! urxvt*perl-lib:        /usr/lib/urxvt/perl/
+! urxvt*perl-ext:        default,matcher
+! urxvt*perl-ext-common: default,matcher
+! urxvt*urlLauncher:     /usr/bin/google-chrome
+! URxvt.url-select.launcher: /usr/bin/google-chrome
+! urxvt*matcher.button:  1
 !! urxvt*matcher.pattern.1:   \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]

@@ -1,7 +1,7 @@
 [user]
-	name = kainlite
-	email = kainlite@gmail.com
-  username = kainlite
+	name = Gabriel Garrido
+	email = gabriel@caylent.com
+        username = gg-caylent
 	signingkey = 37757CCF
 [diff]
 [color]
@@ -45,7 +45,7 @@
   excludesfile = ~/.gitignore_global
 
 [init]
-  templatedir = ~/.git_template
+	templateDir = /home/gabriel/.git_template/
 [gist]
   username = kainlite
 [url "git@bitbucket.org:"]
@@ -54,3 +54,5 @@
 	user = kainlite
 [diff "sopsdiffer"]
 	textconv = sops -d
+[rerere]
+	enabled = 1
