@@ -72,6 +72,9 @@ Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink
 Plug 'SirVer/ultisnips'
 Plug 'ctrlpvim/ctrlp.vim'
 
+" Rust
+Plug 'racer-rust/vim-racer'
+
 " Templating
 Plug 'XadillaX/json-formatter.vim'
 Plug 'leshill/vim-json'

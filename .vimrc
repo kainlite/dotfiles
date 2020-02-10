@@ -401,6 +401,7 @@ let g:terraform_align=0
 
 " Enable auto-fmt for rust files
 let g:rustfmt_autosave = 1
+let g:racer_experimental_completer = 1
 
 " Syntastic Config
 set statusline+=%#warningmsg#
