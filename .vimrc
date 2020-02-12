@@ -195,7 +195,11 @@ autocmd FileType make set sw=4 sts=4 noet
 " For everything else use this default to prevent the tab _casqueada_
 autocmd Filetype * set sw=4 sts=4  ts=4 tw=0 et
 
-autocmd BufRead * retab
+" autocmd BufRead * retab
+
+autocmd BufReadPost quickfix setlocal modifiable
+              \ | silent exe 'g/^/s//\=line(".")." "/'
+              " \ | setlocal nomodifiable
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR
@@ -268,10 +272,11 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 
 " autocmd VimEnter * NERDTree
-autocmd BufWinEnter * NERDTreeMirror
+" autocmd BufWinEnter * NERDTreeMirror
 let NERDTreeMapOpenInTab='<ENTER>'
 
-map <leader>r :NERDTree<cr>
+map <leader>r :NERDTree<cr> :NERDTreeMirror<cr>
+map <leader>c :NERDTreeClose<cr>
 map <leader>t :tabedit<Space>
 map <leader>v :vsplit<Space>
 map <leader>h :split<Space>
@@ -341,6 +346,10 @@ let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_generate_tags = 1
 
+" Tagbar
+nmap <F10> :TagbarToggle<CR>
+
+" Surround shortcuts
 map <Leader>y <Plug>Yssurround=<cr>
 map <Leader>i <Plug>Yssurround-<cr>
 map <leader># ysiw#
@@ -402,6 +411,11 @@ let g:terraform_align=0
 " Enable auto-fmt for rust files
 let g:rustfmt_autosave = 1
 let g:racer_experimental_completer = 1
+let g:racer_insert_paren = 1
+let g:racer_no_default_keymappings = 1
+
+nmap <leader>def <Plug>(rust-def-vertical)
+nmap <leader>doc <Plug>(rust-doc-vertical)
 
 " Syntastic Config
 set statusline+=%#warningmsg#

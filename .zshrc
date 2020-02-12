@@ -147,6 +147,8 @@ export PATH="$HOME/.exenv/bin:$PATH"
 export PATH="/home/kainlite/.chefdk/gem/ruby/2.3.0/bin:$PATH"
 export PATH="$HOME/.tfenv/bin:$PATH"
 
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # load the erlang vm manager
 # source $HOME/.evm/scripts/evm
 
