@@ -147,6 +147,7 @@ noremap <leader>s :update<CR>
 
 " Yank directly to the clipboard
 map <C-C> :%y+<CR>
+noremap <leader>j "+y
 
 " Move between the quicklist files
 map <F11> :cp<CR>
@@ -397,6 +398,9 @@ vmap <Leader>f :Tabularize /:\zs<CR>
 let terraform_fmt_on_save=1
 let g:syntastic_terraform_tffilter_plan = 1
 let g:terraform_align=0
+
+" Enable auto-fmt for rs files
+let g:rustfmt_autosave = 1
 
 " Syntastic Config
 set statusline+=%#warningmsg#

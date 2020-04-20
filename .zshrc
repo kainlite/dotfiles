@@ -147,6 +147,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.exenv/bin:$PATH"
 export PATH="$HOME/.tfenv/bin:$PATH"
+export PATH="$HOME/.helmenv/bin:$PATH"
 export PATH="$HOME/.chefdk/gem/ruby/2.3.0/bin:$PATH"
 
 # load the erlang vm manager

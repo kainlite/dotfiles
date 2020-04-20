@@ -104,4 +104,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 " To identify bad indentation on files
 Plug 'inkarkat/vim-IndentConsistencyCop'
 
+" Yaml
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 filetype on
