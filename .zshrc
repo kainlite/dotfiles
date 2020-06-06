@@ -238,21 +238,11 @@ bindkey "${terminfo[kend]}" end-of-line
 # GBT magic
 export GBT__HOME='/usr/share/gbt'
 source "$GBT__HOME/sources/gbts/cmd/local.sh"
-alias docker='gbt_docker'
-# alias mysql='gbt_mysql'
-# alias screen='gbt_screen'
-# alias ssh='gbt_ssh'
-alias su='gbt_su'
-alias vagrant='gbt_vagrant'
 
 # GBT Configuration
 export GBT_CAR_DIR_FG='40;40;40'
 export GBT_CAR_DIR_BG='146;231;116'
-export GBT_CAR_BG='90;90;90'
-export GBT_CAR_FG='250;189;47'
-export GBT_CAR_OS_DISPLAY=0
-export GBT_CAR_STATUS_DISPLAY=0
+export GBT_CAR_KUBECTL_FORMAT='{{ Namespace }} {{ Icon }} {{ Context }} '
+export GBT_CAR_GIT_STATUS_CLEAN_FG='light_green'
 export GBT_CAR_DIR_DEPTH='9999'
-
-source '/opt/kube-ps1/kube-ps1.sh'
-PROMPT='$(kube_ps1) '$PROMPT
+export GBT_CARS='Status, Os, Hostname, Dir, Git, Kubectl, Sign'
