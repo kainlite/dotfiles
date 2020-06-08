@@ -30,6 +30,7 @@ zstyle ':completion:*' special-dirs true
 
 # Colorize terminal
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+export BAT_PAGER=""
 
 # Some aliases
 alias ls='ls -G'
@@ -233,27 +234,23 @@ if [[ -z "${SSH_AUTH_SOCK}" ]]; then
   export SSH_AUTH_SOCK
 fi
 
-# bindkey "${terminfo[khome]}" beginning-of-line
-# bindkey "${terminfo[kend]}" end-of-line
-
-# GBT magic
-export GBT__HOME='/usr/share/gbt'
-source "$GBT__HOME/sources/gbts/cmd/local.sh"
-alias docker='gbt_docker'
-# alias mysql='gbt_mysql'
-# alias screen='gbt_screen'
-# alias ssh='gbt_ssh'
-alias su='gbt_su'
-alias vagrant='gbt_vagrant'
-
 # GBT Configuration
+export GBT__HOME='/usr/share/gbt'
+source $GBT__HOME/sources/gbts/cmd/local.sh
+
+# Local
+alias ssh='gbt_ssh'
+alias docker='gbt_docker'
 export GBT_CAR_DIR_FG='40;40;40'
 export GBT_CAR_DIR_BG='146;231;116'
-export GBT_CAR_BG='90;90;90'
-export GBT_CAR_FG='250;189;47'
-export GBT_CAR_OS_DISPLAY=0
-export GBT_CAR_STATUS_DISPLAY=0
+export GBT_CAR_KUBECTL_FORMAT='{{ Namespace }} {{ Icon }} {{ Context }} '
+export GBT_CAR_GIT_STATUS_CLEAN_FG='light_green'
 export GBT_CAR_DIR_DEPTH='9999'
+export GBT_CARS='Status, Os, Hostname, Dir, Git, Kubectl, Sign'
+
+# Remote
+export GBT__THEME_REMOTE_CARS='Status, Os, Hostname, Dir, Git, Sign'
+export GBT__AUTO_ALIASES='0'
 
 # Make the screen looks ok :/
 # export QT_AUTO_SCREEN_SCALE_FACTOR=1
@@ -261,7 +258,6 @@ unset QA_AUTO_SCREEN_SCALE_FACTOR
 export QT_SCALE_FACTOR=1.5
 export GDK_SCALE=2
 
-PROMPT='$(kube_ps1) '$PROMPT
 export SBT_CREDENTIALS=~/.ivy2/.nexus_credentials
 
 PATH="/home/gabriel/perl5/bin${PATH:+:${PATH}}"; export PATH;
