@@ -235,9 +235,6 @@ if [[ -z "${SSH_AUTH_SOCK}" ]]; then
 fi
 
 # GBT Configuration
-export GBT__HOME='/usr/share/gbt'
-source $GBT__HOME/sources/gbts/cmd/local.sh
-
 # Local
 alias ssh='gbt_ssh'
 alias docker='gbt_docker'
@@ -251,6 +248,11 @@ export GBT_CARS='Status, Os, Hostname, Dir, Git, Kubectl, Sign'
 # Remote
 export GBT__THEME_REMOTE_CARS='Status, Os, Hostname, Dir, Git, Sign'
 export GBT__AUTO_ALIASES='0'
+
+export GBT__HOME=/usr/share/gbt
+source $GBT__HOME/sources/gbts/cmd/local.sh
+
+export PROMPT='$(gbt $?)'
 
 # Make the screen looks ok :/
 # export QT_AUTO_SCREEN_SCALE_FACTOR=1
