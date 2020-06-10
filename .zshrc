@@ -18,9 +18,9 @@ setopt hist_no_store
 # export VTE_CJK_WIDTH=wide
 
 # Initialize completion
-autoload -U compinit
-compinit -C
-unsetopt correct
+autoload -Uz compinit
+compinit
+ZSH_AUTOSUGGEST_IGNORE_WIDGETS+=(expand-or-complete)
 
 # Added slash when changing dirs
 zstyle ':completion:*' special-dirs true
