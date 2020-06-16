@@ -248,6 +248,8 @@ export GBT_CAR_DIR_BG='146;231;116'
 export GBT_CAR_KUBECTL_FORMAT='{{ Namespace }} {{ Icon }} {{ Context }} '
 export GBT_CAR_GIT_STATUS_CLEAN_FG='light_green'
 export GBT_CAR_DIR_DEPTH='9999'
+export GBT_CAR_SIGN_USER_TEXT='$'
+export GBT_CAR_SIGN_WRAP=1
 export GBT_CARS='Status, Os, Hostname, Dir, Git, Kubectl, Sign'
 
 # Remote
