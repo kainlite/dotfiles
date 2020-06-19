@@ -237,24 +237,24 @@ fi
 
 # GBT Configuration
 # Local
-alias ssh='gbt_ssh'
-alias docker='gbt_docker'
-export GBT_CAR_DIR_FG='40;40;40'
-export GBT_CAR_DIR_BG='146;231;116'
-export GBT_CAR_KUBECTL_FORMAT='{{ Namespace }} {{ Icon }} {{ Context }} '
-export GBT_CAR_GIT_STATUS_CLEAN_FG='light_green'
-export GBT_CAR_DIR_DEPTH='9999'
-export GBT_CAR_SIGN_FORMAT=' {{ Symbol }} '
-export GBT_CAR_SIGN_USER_TEXT='$'
-export GBT_CAR_SIGN_WRAP=1
-export GBT_CARS='Status, Os, Hostname, Dir, Git, Kubectl, Sign'
+# alias ssh='gbt_ssh'
+# alias docker='gbt_docker'
+# export GBT_CAR_DIR_FG='40;40;40'
+# export GBT_CAR_DIR_BG='146;231;116'
+# export GBT_CAR_KUBECTL_FORMAT='{{ Namespace }} {{ Icon }} {{ Context }} '
+# export GBT_CAR_GIT_STATUS_CLEAN_FG='light_green'
+# export GBT_CAR_DIR_DEPTH='9999'
+# export GBT_CAR_SIGN_FORMAT=' {{ Symbol }} '
+# export GBT_CAR_SIGN_USER_TEXT='$'
+# export GBT_CAR_SIGN_WRAP=1
+# export GBT_CARS='Status, Os, Hostname, Dir, Git, Kubectl, Sign'
 
 # Remote
-export GBT__THEME_REMOTE_CARS='Status, Os, Hostname, Dir, Git, Sign'
-export GBT__AUTO_ALIASES='0'
+# export GBT__THEME_REMOTE_CARS='Status, Os, Hostname, Dir, Git, Sign'
+# export GBT__AUTO_ALIASES='0'
 
-export GBT__HOME=/usr/share/gbt
-source $GBT__HOME/sources/gbts/cmd/local.sh
+# export GBT__HOME=/usr/share/gbt
+# source $GBT__HOME/sources/gbts/cmd/local.sh
 
 # export PROMPT='$(gbt $?)'
 
