@@ -157,7 +157,8 @@ export PATH="$HOME/.chefdk/gem/ruby/2.3.0/bin:$PATH"
 # eval "$(exenv init -)"
 
 # Nvm
-# source ~/.nvm/nvm.sh
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.dotfiles/.nvm" || printf %s "${XDG_CONFIG_HOME}/.dotfiles/.nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Cargo
 source $HOME/.cargo/env
@@ -255,7 +256,10 @@ export GBT__AUTO_ALIASES='0'
 export GBT__HOME=/usr/share/gbt
 source $GBT__HOME/sources/gbts/cmd/local.sh
 
-export PROMPT='$(gbt $?)'
+# export PROMPT='$(gbt $?)'
+
+eval "$(starship init zsh)"
+
 
 # Make the screen looks ok :/
 # export QT_AUTO_SCREEN_SCALE_FACTOR=1
@@ -270,3 +274,13 @@ PERL5LIB="/home/gabriel/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5L
 PERL_LOCAL_LIB_ROOT="/home/gabriel/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/gabriel/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/gabriel/perl5"; export PERL_MM_OPT;
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/gabriel/Webs/allergan/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/gabriel/Webs/allergan/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/gabriel/Webs/allergan/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/sls.zsh ]] && . /home/gabriel/Webs/allergan/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /home/gabriel/Webs/allergan/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/slss.zsh ]] && . /home/gabriel/Webs/allergan/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/slss.zsh
