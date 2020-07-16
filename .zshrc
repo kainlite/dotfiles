@@ -158,7 +158,20 @@ export PATH="$HOME/.chefdk/gem/ruby/2.3.0/bin:$PATH"
 
 # Nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.dotfiles/.nvm" || printf %s "${XDG_CONFIG_HOME}/.dotfiles/.nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
+
+# auto-switch
+autoload -U add-zsh-hook
+load-nvmrc() {
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use
+  # elif [[ $(nvm version) != $(nvm version default)  ]]; then
+  #   echo "Reverting to nvm default version"
+  #   nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
 
 # Cargo
 source $HOME/.cargo/env

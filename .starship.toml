@@ -11,3 +11,9 @@ add_newline = false
 
 [kubernetes]
 disabled = false
+
+[kubernetes.context_aliases]
+"arn:aws:eks:us-west-2:680008785996:cluster/rtw" = "rtw-dev"
+
+[directory]
+truncate_to_repo = false
