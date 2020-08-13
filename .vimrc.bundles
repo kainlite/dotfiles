@@ -57,6 +57,13 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'elmcast/elm-vim'
 
+" Js
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'jparise/vim-graphql'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+
 " Alignment
 Plug 'godlygeek/tabular'
 
