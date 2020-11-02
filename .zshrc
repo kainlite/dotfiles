@@ -52,13 +52,10 @@ alias dockerrmv="docker ps --filter status=dead --filter status=exited -aq | xar
 alias dockerrmi="docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs -r docker rmi"
 
 # Somewhat important aliases
-alias cat='bat -p'
+alias cat='bat -P --style=plain'
 alias pping='prettyping --nolegend'
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
-alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
-alias help='tldr'
-alias man='tldr'
 alias vim='nvim'
 
 # Nicer history
@@ -174,7 +171,7 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 # Cargo
-source $HOME/.cargo/env
+# source $HOME/.cargo/env
 
 # Add paths
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
@@ -239,9 +236,6 @@ eval "$(direnv hook zsh)"
 # urxvt
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
-# Disable bell
-xset -b
-
 if [[ -z "${SSH_AUTH_SOCK}" ]]; then
   dbus-update-activation-environment --systemd DISPLAY
   eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
@@ -288,6 +282,8 @@ PERL_LOCAL_LIB_ROOT="/home/gabriel/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB
 PERL_MB_OPT="--install_base \"/home/gabriel/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/gabriel/perl5"; export PERL_MM_OPT;
 
+export AWS_VAULT_KEYCHAIN_NAME=login
+
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
 [[ -f /home/gabriel/Webs/allergan/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/gabriel/Webs/allergan/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/serverless.zsh
@@ -297,3 +293,4 @@ PERL_MM_OPT="INSTALL_BASE=/home/gabriel/perl5"; export PERL_MM_OPT;
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [[ -f /home/gabriel/Webs/allergan/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/slss.zsh ]] && . /home/gabriel/Webs/allergan/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/slss.zsh
+

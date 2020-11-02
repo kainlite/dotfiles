@@ -76,6 +76,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'XadillaX/json-formatter.vim'
 Plug 'leshill/vim-json'
 Plug 'google/vim-jsonnet'
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+
 
 Plug 'morhetz/gruvbox'
 

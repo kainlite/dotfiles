@@ -2,6 +2,10 @@
 " This is kainlite vimrc
 
 " Load bundles
+if has('pythonx')
+  set pyxversion=3
+endif
+
 if filereadable(expand("~/.vimrc.bundles"))
   call plug#begin('~/.vim/plugged')
   source ~/.vimrc.bundles
@@ -238,8 +242,8 @@ nnoremap <leader>. :nohlsearch<cr>
 nnoremap _ts :silent !tmux set status<CR>
 
 " for linux and windows users (using the control key)
-map <c-a> gT
-map <c-s> gt
+map <C-a> gT
+map <C-s> gt
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Disable arrow keys in command and visual mode
@@ -395,39 +399,9 @@ nmap <Leader>f :Tabularize /:\zs<CR>
 vmap <Leader>f :Tabularize /:\zs<CR>
 
 " Enable auto-fmt for terraform files
-let terraform_fmt_on_save=1
-let g:syntastic_terraform_tffilter_plan = 1
+let terraform_fmt_on_save=0
+let g:syntastic_terraform_tffilter_plan = 0
 let g:terraform_align=0
-
-" Enable auto-fmt for rs files
-let g:rustfmt_autosave = 1
-
-" Syntastic Config
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" (Optional)Remove Info(Preview) window
-set completeopt-=preview
-
-" (Optional)Hide Info(Preview) window after completions
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-" (Optional) Enable terraform plan to be include in filter
-let g:syntastic_terraform_tffilter_plan = 1
-
-" (Optional) Default: 0, enable(1)/disable(0) plugin's keymapping
-let g:terraform_completion_keys = 1
-
-" (Optional) Default: 1, enable(1)/disable(0) terraform module registry completion
-let g:terraform_registry_module_completion = 1
-
 
 " let g:deoplete#omni_patterns = {}
 " let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
@@ -441,7 +415,44 @@ call deoplete#custom#option('omni_patterns', {
       \ 'terraform': '[^ *\t"{=$]\w*',
       \})
 
+call deoplete#custom#var('tabnine', {
+\ 'line_limit': 500,
+\ 'max_num_results': 20,
+\ })
+
 call deoplete#initialize()
 call neomake#configure#automake('w')
 
+" Enable auto-fmt for rs files
+let g:rustfmt_autosave = 1
+
+" Syntastic Config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+" (Optional)Remove Info(Preview) window
+set completeopt-=preview
+
+" (Optional)Hide Info(Preview) window after completions
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" (Optional) Enable terraform plan to be include in filter
+let g:syntastic_terraform_tffilter_plan = 0
+
+" (Optional) Default: 0, enable(1)/disable(0) plugin's keymapping
+let g:terraform_completion_keys = 1
+
+" (Optional) Default: 1, enable(1)/disable(0) terraform module registry completion
+let g:terraform_registry_module_completion = 1
+
+
 call MapCR()
+
+set conceallevel=0
