@@ -16,7 +16,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sleuth'
+" Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails'
 
@@ -57,13 +57,6 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'elmcast/elm-vim'
 
-" Js
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'jparise/vim-graphql'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-
 " Alignment
 Plug 'godlygeek/tabular'
 
@@ -79,13 +72,12 @@ Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink
 Plug 'SirVer/ultisnips'
 Plug 'ctrlpvim/ctrlp.vim'
 
-" Rust
-Plug 'racer-rust/vim-racer'
-
 " Templating
 Plug 'XadillaX/json-formatter.vim'
 Plug 'leshill/vim-json'
 Plug 'google/vim-jsonnet'
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+
 
 Plug 'morhetz/gruvbox'
 
@@ -114,6 +106,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 " To identify bad indentation on files
 Plug 'inkarkat/vim-IndentConsistencyCop'
 
-Plug 'junegunn/fzf'
+" Yaml
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 filetype on

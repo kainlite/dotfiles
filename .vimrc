@@ -110,6 +110,7 @@ set numberwidth=2
 set showtabline=2
 set winwidth=79
 set ttimeoutlen=50
+set conceallevel=0
 
 " Maintain undo history between sessions
 set undofile
@@ -195,7 +196,7 @@ autocmd FileType make set sw=4 sts=4 noet
 " For everything else use this default to prevent the tab _casqueada_
 autocmd Filetype * set sw=4 sts=4  ts=4 tw=0 et
 
-" autocmd BufRead * retab
+autocmd BufRead * retab
 
 autocmd BufReadPost quickfix setlocal modifiable
               \ | silent exe 'g/^/s//\=line(".")." "/'
@@ -260,6 +261,7 @@ nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 " Strip annoying whitespaces
 function! <SID>StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.
+    set modifiable
     let _s=@/
     let l = line(".")
     let c = col(".")
@@ -362,7 +364,7 @@ autocmd FileType eruby let b:surround_35 = "#{\r}"
 if &term =~ '^screen' && exists('$TMUX')
     set mouse+=a
     " tmux knows the extended mouse mode
-    set ttymouse=xterm2
+    " set ttymouse=xterm2
     " tmux will send xterm-style keys when xterm-keys is on
     execute "set <xUp>=\e[1;*A"
     execute "set <xDown>=\e[1;*B"
