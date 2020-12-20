@@ -1,5 +1,8 @@
 DISABLE_AUTO_TITLE=true
 
+# Patch for alacritty on wayland :shrug:
+WINIT_UNIX_BACKEND=x11
+
 ZSH_THEME=gbt
 # Set custom prompt
 ZSH=$HOME/.oh-my-zsh
