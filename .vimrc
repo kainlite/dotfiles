@@ -54,6 +54,14 @@ augroup resCur
   autocmd BufWinEnter * call ResCur()
 augroup END
 
+" Truffle
+augroup quickfix
+  autocmd!
+  autocmd QuickFixCmdPost make nested copen
+augroup END
+
+let test#custom_runners = {'Solidity': ['Truffle']}
+
 "Use TAB to complete when typing words, else inserts TABs as usual.
 "Uses dictionary and source files to find matching words to complete.
 
@@ -409,6 +417,9 @@ vmap <Leader>f :Tabularize /:\zs<CR>
 let terraform_fmt_on_save=1
 let g:syntastic_terraform_tffilter_plan = 1
 let g:terraform_align=0
+
+" js
+let g:syntastic_javascript_checkers=['eslint']
 
 " Enable auto-fmt for rust files
 let g:rustfmt_autosave = 1

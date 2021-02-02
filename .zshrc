@@ -129,7 +129,9 @@ alias zshrc="nvim ~/.zshrc"
 ttyctl -f
 
 # Initialize VM
-export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+export NPM_PACKAGES="${HOME}/.npm"
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$NODE_PATH
 
 # Python packages
 USER_BASE_PATH=$(python -m site --user-base)
@@ -238,3 +240,5 @@ bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
 
 eval "$(starship init zsh)"
+
+. /home/kainlite/.nix-profile/etc/profile.d/nix.sh

@@ -109,4 +109,8 @@ Plug 'inkarkat/vim-IndentConsistencyCop'
 " Yaml
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Truffle
+Plug 'dmdque/solidity.vim'
+Plug 'tomlion/vim-solidity'
+
 filetype on
