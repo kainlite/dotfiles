@@ -242,3 +242,7 @@ bindkey "${terminfo[kend]}" end-of-line
 eval "$(starship init zsh)"
 
 . /home/kainlite/.nix-profile/etc/profile.d/nix.sh
+
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^T' autosuggest-toggle
+bindkey '\t' end-of-line
