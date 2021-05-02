@@ -7,7 +7,6 @@ ZSH_THEME=gbt
 # Set custom prompt
 ZSH=$HOME/.oh-my-zsh
 DISABLE_CORRECTION="true"
-# DISABLE_UPDATE_PROMPT="true"
 
 # Configuring history
 unsetopt share_history
@@ -148,18 +147,13 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.exenv/bin:$PATH"
 
-export PATH="/home/kainlite/.chefdk/gem/ruby/2.3.0/bin:$PATH"
 export PATH="$HOME/.tfenv/bin:$PATH"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# load the erlang vm manager
-# source $HOME/.evm/scripts/evm
-
-# eval "$(exenv init -)"
 
 # Nvm
-# source ~/.nvm/nvm.sh
+source ~/.nvm/nvm.sh
 
 # Add paths
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
@@ -167,9 +161,6 @@ export PATH="$HOME/bin:$PATH:$HOME/Android/sdk/platform-tools"
 
 # Cargo
 source $HOME/.cargo/env
-
-# Krew path
-PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Go path
 export GOPATH=$HOME/Webs/go
@@ -211,10 +202,6 @@ c() { cd ~/Webs/$1; }
 _c() { _files -W ~/Webs -/; }
 compdef _c c
 
-# if [[ -e '/usr/share/doc/pkgfile/command-not-found.zsh' ]]; then
-#   source '/usr/share/doc/pkgfile/command-not-found.zsh'
-# fi
-
 # Allow minikube to use docker env
 if pgrep -f minikube > /dev/null
 then
@@ -241,8 +228,23 @@ bindkey "${terminfo[kend]}" end-of-line
 
 eval "$(starship init zsh)"
 
-. /home/kainlite/.nix-profile/etc/profile.d/nix.sh
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
 
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-bindkey '^T' autosuggest-toggle
-bindkey '\t' end-of-line
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc

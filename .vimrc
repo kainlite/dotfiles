@@ -177,8 +177,8 @@ autocmd Filetype * set sw=2 sts=2  ts=2 tw=0 et
 "for ruby, autoindent with two spaces, always expand tabs
 autocmd FileType rb,ruby,haml,eruby,yml,yaml,html,tmpl,javascript,sass,cucumber,js,jsx,ex,eex set ai sw=2 sts=2 et
 
-autocmd FileType c,cpp set ai tabstop=4 softtabstop=4 shiftwidth=4 et
-autocmd FileType python set sw=4 sts=4 et
+autocmd FileType c,cpp set ai tabstop=2 softtabstop=2 shiftwidth=2 et
+autocmd FileType python set sw=2 sts=2 et
 autocmd Filetype prolog set syntax=prolog et
 
 autocmd BufNewFile,BufRead *.ejs set filetype=html
@@ -191,18 +191,18 @@ autocmd BufRead mkd  set ai formatoptions=tcroqn2 comments=n:&gt; et
 autocmd BufRead markdown  set ai formatoptions=tcroqn2 comments=n:&gt; et
 autocmd Filetype txt set tw=0 noet
 
-autocmd Filetype json set filetype=js sw=4 ts=4 et
-autocmd Filetype jsonnet set filetype=js sw=4 ts=4 et
-autocmd Filetype libjsonnet set filetype=js sw=4 ts=4 et
+autocmd Filetype json set filetype=js sw=2 ts=2 et
+autocmd Filetype jsonnet set filetype=js sw=2 ts=2 et
+autocmd Filetype libjsonnet set filetype=js sw=2 ts=2 et
 
 autocmd BufNewFile,BufRead *.prawn setf ruby et
 
 au BufRead,BufNewFile *.gotpl,*.gohtml set filetype=gohtmltmpl et
 
-autocmd FileType make set sw=4 sts=4 noet
+autocmd FileType make set sw=2 sts=2 noet
 
 " For everything else use this default to prevent the tab _casqueada_
-autocmd Filetype * set sw=4 sts=4  ts=4 tw=0 et
+autocmd Filetype * set sw=2 sts=2 ts=2 tw=0 et
 
 autocmd BufRead * retab
 
@@ -231,12 +231,6 @@ nnoremap k gk
 nnoremap gk k
 nnoremap j gj
 nnoremap gj j
-
-" Move around splits with <c-hjkl>
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
 
 " Can't be bothered to understand ESC vs <c-c> in insert mode
 imap <c-c> <esc>
@@ -419,7 +413,9 @@ let g:syntastic_terraform_tffilter_plan = 1
 let g:terraform_align=0
 
 " js
-let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
 
 " Enable auto-fmt for rust files
 let g:rustfmt_autosave = 1
@@ -440,13 +436,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" (Optional)Remove Info(Preview) window
-set completeopt-=preview
-
-" (Optional)Hide Info(Preview) window after completions
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
 " (Optional) Enable terraform plan to be include in filter
 let g:syntastic_terraform_tffilter_plan = 0
 
@@ -456,20 +445,55 @@ let g:terraform_completion_keys = 1
 " (Optional) Default: 1, enable(1)/disable(0) terraform module registry completion
 let g:terraform_registry_module_completion = 1
 
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_eslint_maker = {
+    \ 'args': ['--format', 'compact', '--fix'],
+    \ 'errorformat': '%f: line %l\, col %c\, %m'
+    \ }
 
-" let g:deoplete#omni_patterns = {}
-" let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
-" let g:deoplete#enable_at_startup = 1
-" call deoplete#initialize()
+augroup my_neomake_hooks
+  au!
+  autocmd User NeomakeJobFinished :checktime
+augroup END
 
-let g:deoplete#omni_patterns = {}
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+set cmdheight=1
+set completeopt=longest,menuone
 
-call deoplete#custom#option('omni_patterns', {
-\ 'complete_method': 'omnifunc',
-\ 'terraform': '[^ *\t"{=$]\w*',
-\})
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
-call deoplete#initialize()
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 call neomake#configure#automake('w')
 
 call MapCR()

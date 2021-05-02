@@ -2,6 +2,9 @@ set nocompatible
 
 filetype off
 
+" Autocompletion
+" Plug 'ervandew/supertab'
+
 " tpopes stuff
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-fugitive'
@@ -16,17 +19,12 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-" Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails'
-
-" Autocompletion
-Plug 'ervandew/supertab'
 
 " Navigation
 Plug 'scrooloose/nerdtree'
 Plug 'Nopik/vim-nerdtree-direnter'
-" Plug 'ap/vim-buftabline'
 
 " Toggle quickfix
 Plug 'milkypostman/vim-togglelist'
@@ -61,44 +59,38 @@ Plug 'elmcast/elm-vim'
 Plug 'godlygeek/tabular'
 
 " Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'hashivim/vim-terraform'
+Plug 'vim-syntastic/syntastic'
+Plug 'juliosueiras/vim-terraform-completion'
+Plug 'majutsushi/tagbar'
+
+" Other
+Plug 'neomake/neomake'
+Plug 'Yggdroot/indentLine'
+
 Plug 'tomtom/tlib_vim'
 Plug 'othree/html5.vim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
 " Go
 Plug 'fatih/vim-go'
 Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-Plug 'SirVer/ultisnips'
 Plug 'ctrlpvim/ctrlp.vim'
 
 " Templating
 Plug 'XadillaX/json-formatter.vim'
 Plug 'leshill/vim-json'
 Plug 'google/vim-jsonnet'
-Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 
-
+" Style
 Plug 'morhetz/gruvbox'
 
 " Gists
 Plug 'keith/gist.vim'
-
-" Terraform
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
-Plug 'hashivim/vim-terraform'
-Plug 'vim-syntastic/syntastic'
-Plug 'juliosueiras/vim-terraform-completion'
-Plug 'majutsushi/tagbar'
-Plug 'neomake/neomake'
-Plug 'Yggdroot/indentLine'
 
 " To catch events from tmux
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -106,8 +98,12 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 " To identify bad indentation on files
 Plug 'inkarkat/vim-IndentConsistencyCop'
 
-" Yaml
+" Completion and snippets engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-snippets'
+Plug 'neoclide/coc-tsserver'
+Plug 'neoclide/coc-prettier'
+Plug 'neoclide/coc-tabnine'
 
 " Truffle
 Plug 'dmdque/solidity.vim'
