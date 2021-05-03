@@ -1,4 +1,4 @@
-" vim:set ts=2 sts=2 sw=2 expandtab:
+" vim:set ts=2 sts=2 sw=2 expandtab
 " This is kainlite vimrc
 
 " Load bundles
@@ -157,7 +157,6 @@ noremap <leader>j "+y
 map <F11> :cp<CR>
 map <F12> :cn<CR>
 
-
 " " Elm format on save
 " let g:elm_format_autosave = 1
 
@@ -173,7 +172,7 @@ autocmd FileType text setlocal textwidth=78
 
 autocmd Filetype * set sw=2 sts=2  ts=2 tw=0 et
 
-autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,jsx set ai ts=2 sw=2 sts=2 et
+autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,jsx,js set ai ts=2 sw=2 sts=2 et
 
 autocmd FileType c,cpp set ai tabstop=4 softtabstop=4 shiftwidth=4 et
 autocmd FileType python set sw=4 sts=4 et
@@ -189,9 +188,9 @@ autocmd BufRead mkd  set ai formatoptions=tcroqn2 comments=n:&gt; et
 autocmd BufRead markdown  set ai formatoptions=tcroqn2 comments=n:&gt; et
 autocmd Filetype txt set tw=0 noet
 
-autocmd Filetype json set filetype=js sw=4 ts=4 et
-autocmd Filetype jsonnet set filetype=js sw=4 ts=4 et
-autocmd Filetype libjsonnet set filetype=js sw=4 ts=4 et
+autocmd Filetype json set filetype=js sw=2 ts=2 et
+autocmd Filetype jsonnet set filetype=js sw=2 ts=2 et
+autocmd Filetype libjsonnet set filetype=js sw=2 ts=2 et
 
 autocmd BufNewFile,BufRead *.prawn setf ruby et
 
@@ -255,6 +254,7 @@ map <Down> <Nop>
 
 " Autocall and key binding
 autocmd BufWritePre *.rb,*.erb,*.py,*.js,*.html,*.txt,*.csv,*.tsv,*.jsx,*.ex,*.eex,* call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre * call <SID>StripTrailingWhitespaces()
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 
 " Strip annoying whitespaces
@@ -399,28 +399,10 @@ nmap <Leader>f :Tabularize /:\zs<CR>
 vmap <Leader>f :Tabularize /:\zs<CR>
 
 " Enable auto-fmt for terraform files
-let terraform_fmt_on_save=0
+let terraform_fmt_on_save=1
 let g:syntastic_terraform_tffilter_plan = 0
-let g:terraform_align=0
+let g:terraform_align=1
 
-" let g:deoplete#omni_patterns = {}
-" let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
-" let g:deoplete#enable_at_startup = 1
-" call deoplete#initialize()
-
-let g:deoplete#omni_patterns = {}
-
-call deoplete#custom#option('omni_patterns', {
-      \ 'complete_method': 'omnifunc',
-      \ 'terraform': '[^ *\t"{=$]\w*',
-      \})
-
-call deoplete#custom#var('tabnine', {
-\ 'line_limit': 500,
-\ 'max_num_results': 20,
-\ })
-
-call deoplete#initialize()
 call neomake#configure#automake('w')
 
 " Enable auto-fmt for rs files
@@ -452,6 +434,54 @@ let g:terraform_completion_keys = 1
 " (Optional) Default: 1, enable(1)/disable(0) terraform module registry completion
 let g:terraform_registry_module_completion = 1
 
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_eslint_maker = {
+    \ 'args': ['--format', 'compact', '--fix'],
+    \ 'errorformat': '%f: line %l\, col %c\, %m'
+    \ }
+
+augroup my_neomake_hooks
+  au!
+  autocmd User NeomakeJobFinished :checktime
+augroup END
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+set cmdheight=1
+set completeopt=longest,menuone
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 call MapCR()
 

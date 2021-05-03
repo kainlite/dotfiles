@@ -16,17 +16,12 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails'
-
-" Autocompletion
-Plug 'ervandew/supertab'
 
 " Navigation
 Plug 'scrooloose/nerdtree'
 Plug 'Nopik/vim-nerdtree-direnter'
-" Plug 'ap/vim-buftabline'
 
 " Toggle quickfix
 Plug 'milkypostman/vim-togglelist'
@@ -65,11 +60,20 @@ Plug 'tomtom/tlib_vim'
 Plug 'othree/html5.vim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'hashivim/vim-terraform'
+Plug 'vim-syntastic/syntastic'
+Plug 'juliosueiras/vim-terraform-completion'
+Plug 'majutsushi/tagbar'
+
+" Other
+Plug 'neomake/neomake'
+Plug 'Yggdroot/indentLine'
 
 " Go
 Plug 'fatih/vim-go'
 Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-Plug 'SirVer/ultisnips'
 Plug 'ctrlpvim/ctrlp.vim'
 
 " Templating
@@ -78,7 +82,12 @@ Plug 'leshill/vim-json'
 Plug 'google/vim-jsonnet'
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 
-
+" Completion and snippets engine
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-snippets'
+Plug 'neoclide/coc-tsserver'
+Plug 'neoclide/coc-prettier'
+Plug 'neoclide/coc-tabnine'
 Plug 'morhetz/gruvbox'
 
 " Gists
@@ -94,9 +103,7 @@ else
 endif
 
 Plug 'hashivim/vim-terraform'
-Plug 'vim-syntastic/syntastic'
 Plug 'juliosueiras/vim-terraform-completion'
-Plug 'majutsushi/tagbar'
 Plug 'neomake/neomake'
 Plug 'Yggdroot/indentLine'
 

@@ -56,12 +56,12 @@ alias cat='bat -P --style=plain'
 alias pping='prettyping --nolegend'
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
-alias vim='nvim'
 
 # Nicer history
 export HISTSIZE=10000000
 export SAVEHIST=$HISTSIZE
 export HISTFILE="$HOME/.history"
+export CHECKPOINT_DISABLE=1
 
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
@@ -78,7 +78,8 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 # Use vim as the editor
-export EDITOR=vim
+export EDITOR=nvim
+export KUBE_EDITOR=nvim
 # GNU Screen sets -o vi if EDITOR=vi, so we have to force it back.
 set -o vi
 
@@ -139,7 +140,7 @@ export PATH=$PATH:$USER_BASE_PATH/bin
 # archlinux-java set java-8-openjdk/jre
 export JAVA_HOME=/usr/lib/jvm/default-runtime
 
-plugins=(git ruby bundler git-extras tmux archlinux systemd vagrant rbenv kubectl safe-paste terraform kube-ps1)
+plugins=(git ruby bundler git-extras tmux archlinux systemd vagrant rbenv history kubectl safe-paste terraform kube-ps1)
 
 source $ZSH/oh-my-zsh.sh
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -194,6 +195,11 @@ alias s="screen"
 alias sr="screen -r"
 alias hugs="hugs -98 -E'vim'"
 
+# kubectl
+# source <(kubectl completion zsh)
+alias k="kubectl"
+complete -F __start_kubectl k
+
 # Restore the last backgrounded task with Ctrl-V
 function foreground_task() {
   fg
@@ -220,10 +226,6 @@ c() { cd ~/Webs/$1; }
 _c() { _files -W ~/Webs -/; }
 compdef _c c
 
-# if [[ -e '/usr/share/doc/pkgfile/command-not-found.zsh' ]]; then
-#   source '/usr/share/doc/pkgfile/command-not-found.zsh'
-# fi
-
 # Allow minikube to use docker env
 if pgrep -f minikube > /dev/null
 then
@@ -236,38 +238,6 @@ eval "$(direnv hook zsh)"
 # urxvt
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
-if [[ -z "${SSH_AUTH_SOCK}" ]]; then
-  dbus-update-activation-environment --systemd DISPLAY
-  eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-  export SSH_AUTH_SOCK
-fi
-
-# GBT Configuration
-# Local
-# alias ssh='gbt_ssh'
-# alias docker='gbt_docker'
-# export GBT_CAR_DIR_FG='40;40;40'
-# export GBT_CAR_DIR_BG='146;231;116'
-# export GBT_CAR_KUBECTL_FORMAT='{{ Namespace }} {{ Icon }} {{ Context }} '
-# export GBT_CAR_GIT_STATUS_CLEAN_FG='light_green'
-# export GBT_CAR_DIR_DEPTH='9999'
-# export GBT_CAR_SIGN_FORMAT=' {{ Symbol }} '
-# export GBT_CAR_SIGN_USER_TEXT='$'
-# export GBT_CAR_SIGN_WRAP=1
-# export GBT_CARS='Status, Os, Hostname, Dir, Git, Kubectl, Sign'
-
-# Remote
-# export GBT__THEME_REMOTE_CARS='Status, Os, Hostname, Dir, Git, Sign'
-# export GBT__AUTO_ALIASES='0'
-
-# export GBT__HOME=/usr/share/gbt
-# source $GBT__HOME/sources/gbts/cmd/local.sh
-
-# export PROMPT='$(gbt $?)'
-
-eval "$(starship init zsh)"
-
-
 # Make the screen looks ok :/
 # export QT_AUTO_SCREEN_SCALE_FACTOR=1
 unset QA_AUTO_SCREEN_SCALE_FACTOR
@@ -276,7 +246,7 @@ export GDK_SCALE=2
 
 export SBT_CREDENTIALS=~/.ivy2/.nexus_credentials
 
-PATH="/home/gabriel/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PATH="$(pyenv root)/shims:/usr/local/bin:/usr/bin:/bin:/home/gabriel/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/gabriel/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/gabriel/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/gabriel/perl5\""; export PERL_MB_OPT;
@@ -284,13 +254,37 @@ PERL_MM_OPT="INSTALL_BASE=/home/gabriel/perl5"; export PERL_MM_OPT;
 
 export AWS_VAULT_KEYCHAIN_NAME=login
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /home/gabriel/Webs/allergan/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/gabriel/Webs/allergan/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /home/gabriel/Webs/allergan/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/sls.zsh ]] && . /home/gabriel/Webs/allergan/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /home/gabriel/Webs/allergan/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/slss.zsh ]] && . /home/gabriel/Webs/allergan/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/slss.zsh
+if [[ -z "${SSH_AUTH_SOCK}" ]]; then
+  eval $(ssh-agent)
+  ssh-add -K /Users/kainlite/.ssh/id_rsa
+else
+  ssh-add -K /Users/kainlite/.ssh/id_rsa
+fi
 
+eval "$(starship init zsh)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
