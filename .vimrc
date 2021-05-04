@@ -298,7 +298,7 @@ nnoremap <C-m> :bprev<CR>
 nnoremap <C-X> :bd<CR>
 
 " set mode paste in insert mode and line number
-set pastetoggle=<C-p>
+set pastetoggle=<C-b>
 noremap <leader>n :set paste<CR>:put  *<CR>:set nopaste<CR>
 nnoremap <leader>b :set number!<CR>
 
