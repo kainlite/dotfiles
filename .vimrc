@@ -461,6 +461,8 @@ set shortmess+=c
 set cmdheight=1
 set completeopt=longest,menuone
 
+let g:UltiSnipsExpandTrigger="<tab>"
+
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 if has("patch-8.1.1564")
