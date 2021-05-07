@@ -75,6 +75,7 @@ Plug 'othree/html5.vim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'isRuslan/vim-es6'
 
 " Go
 Plug 'fatih/vim-go'
