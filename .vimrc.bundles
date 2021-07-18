@@ -55,6 +55,10 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'elmcast/elm-vim'
 
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'jparise/vim-graphql'
+
 " Alignment
 Plug 'godlygeek/tabular'
 
