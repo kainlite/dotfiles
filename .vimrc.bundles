@@ -107,11 +107,32 @@ Plug 'inkarkat/vim-IndentConsistencyCop'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-snippets'
 Plug 'neoclide/coc-tsserver'
-Plug 'neoclide/coc-prettier'
+Plug 'neoclide/coc-prettier', {'branch': 'release'}
 Plug 'neoclide/coc-tabnine'
 
 " Truffle
 Plug 'dmdque/solidity.vim'
-Plug 'tomlion/vim-solidity'
+Plug 'thesis/vim-solidity'
+" Plug 'sohkai/syntastic-local-solhint'
+
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install && yarn add prettier prettier-plugin-solidity',
+  \ 'for': [
+    \ 'javascript',
+    \ 'typescript',
+    \ 'css',
+    \ 'less',
+    \ 'scss',
+    \ 'json',
+    \ 'graphql',
+    \ 'markdown',
+    \ 'vue',
+    \ 'lua',
+    \ 'php',
+    \ 'python',
+    \ 'ruby',
+    \ 'html',
+    \ 'swift',
+    \ 'solidity'] }
 
 filetype on

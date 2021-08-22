@@ -210,6 +210,8 @@ autocmd BufReadPost quickfix setlocal modifiable
               \ | silent exe 'g/^/s//\=line(".")." "/'
               " \ | setlocal nomodifiable
 
+autocmd BufWritePre *.sol PrettierAsync
+
 autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -436,7 +438,7 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 
 " (Optional) Enable terraform plan to be include in filter
 let g:syntastic_terraform_tffilter_plan = 0
@@ -452,6 +454,10 @@ let g:neomake_javascript_eslint_maker = {
     \ 'args': ['--format', 'compact', '--fix'],
     \ 'errorformat': '%f: line %l\, col %c\, %m'
     \ }
+
+" Prettier binary
+let g:prettier#autoformat = 1
+let g:prettier#exec_cmd_path = '~/.vim/plugged/vim-prettier/node_modules/.bin/prettier'
 
 augroup my_neomake_hooks
   au!
@@ -474,6 +480,7 @@ else
   set signcolumn=yes
 endif
 
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 let g:coc_global_extensions = ['coc-tsserver']
 
 " Use tab for trigger completion with characters ahead and navigate.
