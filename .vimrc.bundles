@@ -66,9 +66,10 @@ Plug 'godlygeek/tabular'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'hashivim/vim-terraform'
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'majutsushi/tagbar'
+Plug 'dense-analysis/ale'
 
 " Other
 Plug 'neomake/neomake'
@@ -104,10 +105,10 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'inkarkat/vim-IndentConsistencyCop'
 
 " Completion and snippets engine
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim'
 Plug 'neoclide/coc-snippets'
 Plug 'neoclide/coc-tsserver'
-Plug 'neoclide/coc-prettier', {'branch': 'release'}
+Plug 'neoclide/coc-prettier'
 Plug 'neoclide/coc-tabnine'
 
 " Truffle

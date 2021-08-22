@@ -162,8 +162,8 @@ map <F11> :cp<CR>
 map <F12> :cn<CR>
 
 
-" " Elm format on save
-" let g:elm_format_autosave = 1
+" Elm format on save
+let g:elm_format_autosave = 1
 
 " Disable scratch window for omnicompletion
 set completeopt-=preview
@@ -209,10 +209,6 @@ autocmd BufRead * retab
 autocmd BufReadPost quickfix setlocal modifiable
               \ | silent exe 'g/^/s//\=line(".")." "/'
               " \ | setlocal nomodifiable
-
-autocmd BufWritePre *.sol PrettierAsync
-
-autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR
@@ -411,16 +407,6 @@ vmap <Leader>f= :Tabularize /=<CR>
 nmap <Leader>f :Tabularize /:\zs<CR>
 vmap <Leader>f :Tabularize /:\zs<CR>
 
-" Enable auto-fmt for terraform files
-let terraform_fmt_on_save=1
-let g:syntastic_terraform_tffilter_plan = 1
-let g:terraform_align=0
-
-" js
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = 'eslint_d'
-
 " Enable auto-fmt for rust files
 let g:rustfmt_autosave = 1
 let g:racer_experimental_completer = 1
@@ -430,34 +416,15 @@ let g:racer_no_default_keymappings = 1
 nmap <leader>def <Plug>(rust-def-vertical)
 nmap <leader>doc <Plug>(rust-doc-vertical)
 
-" Syntastic Config
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-
-" (Optional) Enable terraform plan to be include in filter
-let g:syntastic_terraform_tffilter_plan = 0
-
-" (Optional) Default: 0, enable(1)/disable(0) plugin's keymapping
-let g:terraform_completion_keys = 1
-
-" (Optional) Default: 1, enable(1)/disable(0) terraform module registry completion
-let g:terraform_registry_module_completion = 1
-
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_javascript_eslint_maker = {
     \ 'args': ['--format', 'compact', '--fix'],
     \ 'errorformat': '%f: line %l\, col %c\, %m'
     \ }
 
-" Prettier binary
-let g:prettier#autoformat = 1
-let g:prettier#exec_cmd_path = '~/.vim/plugged/vim-prettier/node_modules/.bin/prettier'
+" Fix files with prettier, and then ESLint.
+let b:ale_fixers = {'javascript': ['prettier', 'eslint'], 'solidity': ['prettier']}
+let g:ale_fix_on_save = 1
 
 augroup my_neomake_hooks
   au!
@@ -480,7 +447,6 @@ else
   set signcolumn=yes
 endif
 
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
 let g:coc_global_extensions = ['coc-tsserver']
 
 " Use tab for trigger completion with characters ahead and navigate.
