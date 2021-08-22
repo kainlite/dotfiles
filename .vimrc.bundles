@@ -66,7 +66,6 @@ Plug 'godlygeek/tabular'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'hashivim/vim-terraform'
-" Plug 'vim-syntastic/syntastic'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'majutsushi/tagbar'
 Plug 'dense-analysis/ale'
@@ -114,7 +113,6 @@ Plug 'neoclide/coc-tabnine'
 " Truffle
 Plug 'dmdque/solidity.vim'
 Plug 'thesis/vim-solidity'
-" Plug 'sohkai/syntastic-local-solhint'
 
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install && yarn add prettier prettier-plugin-solidity',
