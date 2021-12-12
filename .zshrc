@@ -136,6 +136,9 @@ export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/
 USER_BASE_PATH=$(python -m site --user-base)
 export PATH=$PATH:$USER_BASE_PATH/bin
 
+# Ruby
+export PATH=$PATH:/home/kainlite/.gem/ruby/3.0.0/bin
+
 
 # Java exports
 # archlinux-java set java-8-openjdk/jre
@@ -252,3 +255,5 @@ load-nvmrc
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
+
+test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"

@@ -21,6 +21,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails'
+Plug 'github/copilot.vim'
 
 " Navigation
 Plug 'scrooloose/nerdtree'
@@ -57,6 +58,7 @@ Plug 'elmcast/elm-vim'
 
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 
 " Alignment
