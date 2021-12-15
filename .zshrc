@@ -144,7 +144,7 @@ export PATH=$PATH:/home/kainlite/.gem/ruby/3.0.0/bin
 # archlinux-java set java-8-openjdk/jre
 export JAVA_HOME=/usr/lib/jvm/default-runtime
 
-plugins=(git ruby bundler git-extras tmux archlinux systemd vagrant rbenv kubectl safe-paste terraform)
+plugins=(asdf git ruby bundler git-extras tmux archlinux systemd vagrant rbenv kubectl safe-paste terraform)
 
 source $ZSH/oh-my-zsh.sh
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -255,5 +255,3 @@ load-nvmrc
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
-
-test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"

@@ -55,6 +55,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'elmcast/elm-vim'
+Plug 'mhinz/vim-mix-format'
 
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -106,7 +107,8 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'inkarkat/vim-IndentConsistencyCop'
 
 " Completion and snippets engine
-Plug 'neoclide/coc.nvim'
+Plug 'elixir-lsp/elixir-ls', { 'do': { -> g:ElixirLS.compile() } }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-snippets'
 Plug 'neoclide/coc-tsserver'
 Plug 'neoclide/coc-prettier'

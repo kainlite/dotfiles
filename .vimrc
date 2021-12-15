@@ -168,6 +168,9 @@ let g:elm_format_autosave = 1
 " Disable scratch window for omnicompletion
 set completeopt-=preview
 
+" Elixir format
+let g:mix_format_on_save = 0
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -198,6 +201,8 @@ autocmd Filetype libjsonnet set filetype=js sw=2 ts=2 et
 autocmd BufNewFile,BufRead *.prawn setf ruby et
 
 au BufRead,BufNewFile *.gotpl,*.gohtml set filetype=gohtmltmpl et
+
+autocmd FileType elixir setlocal formatprg=mix\ format\ -
 
 autocmd FileType make set sw=2 sts=2 noet
 
@@ -423,8 +428,76 @@ let g:neomake_javascript_eslint_maker = {
     \ }
 
 " Fix files with prettier, and then ESLint.
-let b:ale_fixers = {'javascript': ['prettier', 'eslint'], 'solidity': ['prettier']}
+let g:ale_linters={
+\  'eruby': ['erb'],
+\  'javascript': ['eslint'],
+\  'jsx': ['eslint'],
+\  'elixir': ['elixir-ls', 'credo']
+\ }
+let b:ale_fixers = {'javascript': ['prettier', 'eslint'], 'elixir': ['mix_format'], 'solidity': ['prettier']}
+let g:ale_fixers={ 'elixir': ['mix_format'], 'solidity': ['solc']}
+let g:ale_elixir_elixir_ls_release='/home/kainlite/.elixirls/release'
+let g:ale_elixir_elixir_ls_config = { 'elixirLS': { 'dialyzerEnabled': v:false } }
 let g:ale_fix_on_save = 1
+let g:ale_lint_on_save = 1
+let g:coc_global_extensions = ['coc-elixir', 'coc-diagnostic']
+
+nnoremap <F8> :ALEFix<CR>
+
+let g:ElixirLS = {}
+let ElixirLS.path = stdpath('config').'/plugged/elixir-ls'
+let ElixirLS.lsp = ElixirLS.path.'/release/language_server.sh'
+let ElixirLS.cmd = join([
+        \ 'cp .release-tool-versions .tool-versions &&',
+        \ 'asdf install &&',
+        \ 'mix do',
+        \ 'local.hex --force --if-missing,',
+        \ 'local.rebar --force,',
+        \ 'deps.get,',
+        \ 'compile,',
+        \ 'elixir_ls.release &&',
+        \ 'rm .tool-versions'
+        \ ], ' ')
+
+function ElixirLS.on_stdout(_job_id, data, _event)
+  let self.output[-1] .= a:data[0]
+  call extend(self.output, a:data[1:])
+endfunction
+
+let ElixirLS.on_stderr = function(ElixirLS.on_stdout)
+
+function ElixirLS.on_exit(_job_id, exitcode, _event)
+  if a:exitcode[0] == 0
+    echom '>>> ElixirLS compiled'
+  else
+    echoerr join(self.output, ' ')
+    echoerr '>>> ElixirLS compilation failed'
+  endif
+endfunction
+
+function ElixirLS.compile()
+  let me = copy(g:ElixirLS)
+  let me.output = ['']
+  echom '>>> compiling ElixirLS'
+  let me.id = jobstart('cd ' . me.path . ' && git pull && ' . me.cmd, me)
+endfunction
+
+" If you want to wait on the compilation only when running :PlugUpdate
+" then have the post-update hook use this function instead:
+
+" function ElixirLS.compile_sync()
+"   echom '>>> compiling ElixirLS'
+"   silent call system(g:ElixirLS.cmd)
+"   echom '>>> ElixirLS compiled'
+" endfunction
+
+
+" Then, update the Elixir language server
+call coc#config('elixir', {
+  \ 'command': g:ElixirLS.lsp,
+  \ 'filetypes': ['elixir', 'eelixir']
+  \})
+call coc#config('elixir.pathToElixirLS', g:ElixirLS.lsp)
 
 augroup my_neomake_hooks
   au!
