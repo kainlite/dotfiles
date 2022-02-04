@@ -21,7 +21,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails'
-Plug 'github/copilot.vim'
 
 " Navigation
 Plug 'scrooloose/nerdtree'
@@ -57,13 +56,11 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'elmcast/elm-vim'
 Plug 'mhinz/vim-mix-format'
 
-Plug 'leafgarland/typescript-vim'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'jparise/vim-graphql'
-
 " Alignment
 Plug 'godlygeek/tabular'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'jparise/vim-graphql'
 
 " Snippets
 Plug 'SirVer/ultisnips'
@@ -100,15 +97,12 @@ Plug 'morhetz/gruvbox'
 " Gists
 Plug 'keith/gist.vim'
 
-" To catch events from tmux
-Plug 'tmux-plugins/vim-tmux-focus-events'
-
 " To identify bad indentation on files
 Plug 'inkarkat/vim-IndentConsistencyCop'
 
 " Completion and snippets engine
 Plug 'elixir-lsp/elixir-ls', { 'do': { -> g:ElixirLS.compile() } }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim'
 Plug 'neoclide/coc-snippets'
 Plug 'neoclide/coc-tsserver'
 Plug 'neoclide/coc-prettier'
@@ -117,25 +111,5 @@ Plug 'neoclide/coc-tabnine'
 " Truffle
 Plug 'dmdque/solidity.vim'
 Plug 'thesis/vim-solidity'
-
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install && yarn add prettier prettier-plugin-solidity',
-  \ 'for': [
-    \ 'javascript',
-    \ 'typescript',
-    \ 'css',
-    \ 'less',
-    \ 'scss',
-    \ 'json',
-    \ 'graphql',
-    \ 'markdown',
-    \ 'vue',
-    \ 'lua',
-    \ 'php',
-    \ 'python',
-    \ 'ruby',
-    \ 'html',
-    \ 'swift',
-    \ 'solidity'] }
 
 filetype on

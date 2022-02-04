@@ -1,6 +1,9 @@
 " vim:set ts=2 sts=2 sw=2 expandtab:
 " This is kainlite vimrc
 
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath=&runtimepath
+
 " Load bundles
 if filereadable(expand("~/.vimrc.bundles"))
     call plug#begin('~/.vim/plugged')
@@ -427,14 +430,18 @@ let g:neomake_javascript_eslint_maker = {
     \ 'errorformat': '%f: line %l\, col %c\, %m'
     \ }
 
+augroup my_neomake_hooks
+  au!
+  autocmd User NeomakeJobFinished :checktime
+augroup END
+
 " Fix files with prettier, and then ESLint.
 let g:ale_linters={
 \  'eruby': ['erb'],
-\  'javascript': ['eslint'],
 \  'jsx': ['eslint'],
 \  'elixir': ['elixir-ls', 'credo']
 \ }
-let b:ale_fixers = {'javascript': ['prettier', 'eslint'], 'elixir': ['mix_format'], 'solidity': ['prettier']}
+let b:ale_fixers = {'elixir': ['mix_format'], 'solidity': ['prettier']}
 let g:ale_fixers={ 'elixir': ['mix_format'], 'solidity': ['solc']}
 let g:ale_elixir_elixir_ls_release='/home/kainlite/.elixirls/release'
 let g:ale_elixir_elixir_ls_config = { 'elixirLS': { 'dialyzerEnabled': v:false } }
