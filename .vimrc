@@ -311,11 +311,19 @@ noremap <leader>n :set paste<CR>:put  *<CR>:set nopaste<CR>
 nnoremap <leader>b :set number!<CR>
 
 " switch lines upside down and reverse
-nmap <silent> <C-k> [e
-nmap <silent> <C-j> ]e
+" nmap <silent> <C-k> [e
+" nmap <silent> <C-j> ]e
+" vmap <silent> <C-k> [egv
+" vmap <silent> <C-j> ]egv
 
-vmap <silent> <C-k> [egv
-vmap <silent> <C-j> ]egv
+" Move lines
+nnoremap <c-j> :m .+1<CR>==
+nnoremap <c-k> :m .-2<CR>==
+inoremap <c-j> <Esc>:m .+1<CR>==gi
+inoremap <c-k> <Esc>:m .-2<CR>==gi
+vnoremap <c-j> :m '>+1<CR>gv=gv
+vnoremap <c-k> :m '<-2<CR>gv=gv
+
 
 " duplicate line, preserve cursor
 noremap <C-d> mzyyp`z
