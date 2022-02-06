@@ -21,9 +21,6 @@ Plug 'Nopik/vim-nerdtree-direnter'
 " Toggle quickfix
 Plug 'milkypostman/vim-togglelist'
 
-" Solarized
-Plug 'altercation/vim-colors-solarized'
-
 " Args magic
 Plug 'nelstrom/vim-qargs'
 
@@ -55,7 +52,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'jparise/vim-graphql'
 
 " Snippets
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
@@ -99,6 +96,7 @@ Plug 'neoclide/coc-snippets'
 Plug 'neoclide/coc-tsserver'
 Plug 'neoclide/coc-prettier'
 Plug 'neoclide/coc-tabnine'
+Plug 'neoclide/coc-json'
 
 " Truffle
 Plug 'dmdque/solidity.vim'
