@@ -2,9 +2,6 @@ set nocompatible
 
 filetype off
 
-" Autocompletion
-" Plug 'ervandew/supertab'
-
 " tpopes stuff
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
@@ -57,7 +54,6 @@ Plug 'honza/vim-snippets'
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'majutsushi/tagbar'
-Plug 'dense-analysis/ale'
 
 " Other
 Plug 'neomake/neomake'

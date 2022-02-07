@@ -147,7 +147,6 @@ map <C-C> :%y+<CR>
 map <F11> :cp<CR>
 map <F12> :cn<CR>
 
-
 " Elm format on save
 let g:elm_format_autosave = 1
 
@@ -195,11 +194,10 @@ autocmd FileType make set sw=2 sts=2 noet
 " For everything else use this default to prevent the tab _casqueada_
 autocmd Filetype * set sw=2 sts=2 ts=2 tw=0 et
 
-autocmd BufRead * retab
-
 autocmd BufReadPost quickfix setlocal modifiable
               \ | silent exe 'g/^/s//\=line(".")." "/'
-              " \ | setlocal nomodifiable
+
+autocmd BufRead * retab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR
@@ -277,27 +275,16 @@ map <leader>v :vsplit<Space>
 map <leader>h :split<Space>
 map <leader>a :A<cr>
 map <leader>z :R<cr>
-
 map <leader>g :GoRun<cr>
 map <leader>m :GoBuild<cr>
 map <leader>gt :GoTest<cr>
 
 map <leader>p :%!python -m json.tool<cr>
 
-nnoremap <C-N> :bnext<CR>
-nnoremap <C-m> :bprev<CR>
-" nnoremap <C-X> :bd<CR>
-
 " set mode paste in insert mode and line number
 set pastetoggle=<C-b>
 noremap <leader>n :set paste<CR>:put  *<CR>:set nopaste<CR>
 nnoremap <leader>b :set number!<CR>
-
-" switch lines upside down and reverse
-" nmap <silent> <C-k> [e
-" nmap <silent> <C-j> ]e
-" vmap <silent> <C-k> [egv
-" vmap <silent> <C-j> ]egv
 
 " Move lines
 nnoremap <c-j> :m .+1<CR>==
@@ -306,7 +293,6 @@ inoremap <c-j> <Esc>:m .+1<CR>==gi
 inoremap <c-k> <Esc>:m .-2<CR>==gi
 vnoremap <c-j> :m '>+1<CR>gv=gv
 vnoremap <c-k> :m '<-2<CR>gv=gv
-
 
 " duplicate line, preserve cursor
 noremap <C-d> mzyyp`z
@@ -330,27 +316,11 @@ autocmd VimEnter * :IndentGuidesEnable
 " Toggler
 nmap <script> <silent> <leader>w :call ToggleQuickfixList()<CR>
 
-" erb mappings
-" =============
-" Surround.vim
-" =============
-" Use v or # to get a variable interpolation (inside of a string)}
-" ysiw#   Wrap the token under the cursor in #{}
-" v...s#  Wrap the selection in #{}
-let g:surround_113 = "#{\r}"   " v
-" Select text in an ERb file with visual mode and then press ysaw- or ysaw=
-" Or yss- to do entire line.
-let g:surround_45 = "<% \r %>"    " -
-let g:surround_61 = "<%= \r %>"   " =
-
 " Auto generate imports go on save
 let g:go_fmt_command = "goimports"
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_generate_tags = 1
-
-" Tagbar
-nmap <F10> :TagbarToggle<CR>
 
 " Surround shortcuts
 map <Leader>y <Plug>Yssurround=<cr>
@@ -426,21 +396,7 @@ augroup my_neomake_hooks
   autocmd User NeomakeJobFinished :checktime
 augroup END
 
-" Fix files with prettier, and then ESLint.
-let g:ale_linters={
-\  'eruby': ['erb'],
-\  'jsx': ['eslint'],
-\  'elixir': ['elixir-ls', 'credo']
-\ }
-let b:ale_fixers = {'elixir': ['mix_format'], 'solidity': ['prettier']}
-let g:ale_fixers={ 'elixir': ['mix_format'], 'solidity': ['solc']}
-let g:ale_elixir_elixir_ls_release='/home/kainlite/.elixirls/release'
-let g:ale_elixir_elixir_ls_config = { 'elixirLS': { 'dialyzerEnabled': v:false } }
-let g:ale_fix_on_save = 1
-let g:ale_lint_on_save = 1
-let g:coc_global_extensions = ['coc-elixir', 'coc-diagnostic']
-
-nnoremap <F8> :ALEFix<CR>
+let g:coc_global_extensions = ['coc-elixir', 'coc-diagnostic', 'coc-tsserver']
 
 let g:ElixirLS = {}
 let ElixirLS.path = stdpath('config').'/plugged/elixir-ls'
@@ -516,8 +472,6 @@ else
   set signcolumn=yes
 endif
 
-let g:coc_global_extensions = ['coc-tsserver']
-
 nnoremap <silent> K :call CocAction('doHover')<CR>
 function! ShowDocIfNoDiagnostic(timer_id)
   if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
@@ -542,17 +496,7 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
 nmap <leader>do <Plug>(coc-codeaction)
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-f> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-f> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
+imap <C-f> <C-x>
 
 call neomake#configure#automake('w')
 
