@@ -185,6 +185,8 @@ autocmd Filetype libjsonnet set filetype=js sw=2 ts=2 et
 
 autocmd BufNewFile,BufRead *.prawn setf ruby et
 
+autocmd BufNewFile,BufRead *.fe,*.rs set filetype=rust et
+
 au BufRead,BufNewFile *.gotpl,*.gohtml set filetype=gohtmltmpl et
 
 autocmd FileType elixir setlocal formatprg=mix\ format\ -
@@ -503,5 +505,5 @@ call neomake#configure#automake('w')
 call MapCR()
 
 function! InstallCocPlugins()
-  :call coc#util#install_extension(["coc-json", "coc-prettier", "coc-snippets", "coc-tabnine", "coc-tsserver", "coc-ultisnips"])
+  :call coc#util#install_extension(["coc-json", "coc-prettier", "coc-snippets", "coc-tabnine", "coc-tsserver", "coc-ultisnips", "coc-rls", "coc-rust-analyzer"])
 endfunction
