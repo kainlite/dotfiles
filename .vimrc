@@ -165,7 +165,7 @@ autocmd Filetype * set sw=2 sts=2  ts=2 tw=0 et
 "for ruby, autoindent with two spaces, always expand tabs
 autocmd FileType rb,ruby,haml,eruby,yml,yaml,html,tmpl,javascript,sass,cucumber,js,jsx,ex,eex set ai sw=2 sts=2 et
 
-autocmd FileType c,cpp set ai tabstop=2 softtabstop=2 shiftwidth=2 et
+autocmd FileType rs,c,cpp set ai tabstop=2 softtabstop=2 shiftwidth=2 et
 autocmd FileType python set sw=2 sts=2 et
 autocmd Filetype prolog set syntax=prolog et
 
