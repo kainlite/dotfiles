@@ -510,3 +510,7 @@ call MapCR()
 function! InstallCocPlugins()
   :call coc#util#install_extension(["coc-json", "coc-prettier", "coc-snippets", "coc-tabnine", "coc-tsserver", "coc-ultisnips", "coc-rls", "coc-rust-analyzer"])
 endfunction
+
+lua << EOF
+require'lspconfig'.solang.setup{}
+EOF

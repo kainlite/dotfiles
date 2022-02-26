@@ -104,5 +104,6 @@ Plug 'neovim/nvim-lspconfig'
 " General
 Plug 'sheerun/vim-polyglot'
 Plug 'TovarishFin/vim-solidity'
+Plug 'neovim/nvim-lspconfig'
 
 filetype on
