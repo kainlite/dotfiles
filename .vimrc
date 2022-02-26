@@ -250,6 +250,7 @@ map <Down> <Nop>
 " Autocall and key binding
 autocmd BufWritePre *.rb,*.erb,*.py,*.js,*.html,*.txt,*.csv,*.tsv,*.jsx,*.ex,*.eex,* call <SID>StripTrailingWhitespaces()
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
+nnoremap <F6> :UndotreeToggle<CR>
 
 " Strip annoying whitespaces
 function! <SID>StripTrailingWhitespaces()

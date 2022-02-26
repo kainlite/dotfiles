@@ -2,6 +2,9 @@ set nocompatible
 
 filetype off
 
+" Undo magic
+Plug 'mbbill/undotree'
+
 " tpopes stuff
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
