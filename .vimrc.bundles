@@ -99,6 +99,10 @@ Plug 'neoclide/coc-json'
 
 " Truffle
 Plug 'dmdque/solidity.vim'
-Plug 'thesis/vim-solidity'
+Plug 'neovim/nvim-lspconfig'
+
+" General
+Plug 'sheerun/vim-polyglot'
+Plug 'TovarishFin/vim-solidity'
 
 filetype on

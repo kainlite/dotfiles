@@ -64,7 +64,7 @@ augroup quickfix
 augroup END
 
 let test#custom_runners = {'Solidity': ['Truffle']}
-:set dictionary="/usr/dict/words"
+set dictionary="/usr/dict/words"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
@@ -186,6 +186,8 @@ autocmd Filetype libjsonnet set filetype=js sw=2 ts=2 et
 autocmd BufNewFile,BufRead *.prawn setf ruby et
 
 autocmd BufNewFile,BufRead *.fe,*.rs set filetype=rust et
+
+autocmd BufNewFile,BufRead *.sol set filetype=solidity sw=2 ts=2 et
 
 au BufRead,BufNewFile *.gotpl,*.gohtml set filetype=gohtmltmpl et
 
