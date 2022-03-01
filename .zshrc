@@ -41,6 +41,7 @@ alias webcamtest="mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev
 alias truefree="free -m | awk 'NR==3 {print \$4 \" MB\"}'"
 alias dockerrmv="docker ps --filter status=dead --filter status=exited -aq | xargs docker rm -v"
 alias dockerrmi="docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs -r docker rmi"
+alias update_submodules="cd ~/.dotfiles && git pull --recurse-submodules"
 
 # Somewhat important aliases
 alias cat='bat -p'
