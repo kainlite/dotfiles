@@ -21,9 +21,6 @@ Plug 'Nopik/vim-nerdtree-direnter'
 " Toggle quickfix
 Plug 'milkypostman/vim-togglelist'
 
-" Args magic
-Plug 'nelstrom/vim-qargs'
-
 " Git changes real time
 Plug 'airblade/vim-gitgutter'
 
@@ -40,7 +37,6 @@ Plug 'Raimondi/delimitMate'
 Plug 'moll/vim-node'
 Plug 'vim-ruby/vim-ruby'
 Plug 'rust-lang/rust.vim'
-Plug 'elixir-lang/vim-elixir'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'elmcast/elm-vim'
 Plug 'mhinz/vim-mix-format'
@@ -52,19 +48,18 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'jparise/vim-graphql'
 
 " Snippets
-" Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'hashivim/vim-terraform'
+Plug 'SirVer/ultisnips'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'majutsushi/tagbar'
 
 " Other
-Plug 'neomake/neomake'
 Plug 'Yggdroot/indentLine'
 
 Plug 'tomtom/tlib_vim'
 Plug 'othree/html5.vim'
-Plug 'thoughtbot/vim-rspec'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'isRuslan/vim-es6'
@@ -89,21 +84,26 @@ Plug 'keith/gist.vim'
 Plug 'inkarkat/vim-IndentConsistencyCop'
 
 " Completion and snippets engine
+Plug 'elixir-editors/vim-elixir'
 Plug 'elixir-lsp/elixir-ls', { 'do': { -> g:ElixirLS.compile() } }
+Plug 'elixir-lang/vim-elixir'
+
+" Truffle
+Plug 'dmdque/solidity.vim'
+
+" General
+Plug 'sheerun/vim-polyglot'
+Plug 'TovarishFin/vim-solidity'
+" Plug 'dense-analysis/ale'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'rhysd/vim-lsp-ale'
+
+" Coc
 Plug 'neoclide/coc.nvim'
 Plug 'neoclide/coc-snippets'
 Plug 'neoclide/coc-tsserver'
 Plug 'neoclide/coc-prettier'
 Plug 'neoclide/coc-tabnine'
 Plug 'neoclide/coc-json'
-
-" Truffle
-Plug 'dmdque/solidity.vim'
-Plug 'neovim/nvim-lspconfig'
-
-" General
-Plug 'sheerun/vim-polyglot'
-Plug 'TovarishFin/vim-solidity'
-Plug 'neovim/nvim-lspconfig'
 
 filetype on

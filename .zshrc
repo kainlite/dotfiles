@@ -3,7 +3,6 @@ DISABLE_AUTO_TITLE=true
 # Patch for alacritty on wayland :shrug:
 WINIT_UNIX_BACKEND=x11
 
-ZSH_THEME=gbt
 # Set custom prompt
 ZSH=$HOME/.oh-my-zsh
 DISABLE_CORRECTION="true"
@@ -15,9 +14,6 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 setopt hist_reduce_blanks
 setopt hist_no_store
-
-# gnome-terminal wide chars
-# export VTE_CJK_WIDTH=wide
 
 # Initialize completion
 autoload -Uz compinit
@@ -38,9 +34,6 @@ alias gc='git commit -S '
 alias git='LANGUAGE=en_US.UTF-8 git'
 alias glog='git log --graph --color'
 alias glogs='git log --stat --color -p'
-alias dotfiles_update="cd ~/.dotfiles; rake update; cd -"
-alias meteors='meteor --settings settings.json'
-alias mt='DEBUG=1 JASMINE_DEBUG=1 VELOCITY_DEBUG=1 mrt --settings settings.json'
 alias node='node --harmony'
 alias pacupgrade='pacaur -Syua'
 alias sshcam="ssh $REMOTEHOST ffmpeg -an -f video4linux2 -s 640x480 -i /dev/video0 -r 10 -b:v 500k -f matroska - | mplayer - -idle -demuxer matroska"
@@ -51,11 +44,8 @@ alias dockerrmi="docker images --no-trunc | grep '<none>' | awk '{ print $3 }' |
 
 # Somewhat important aliases
 alias cat='bat -p'
-alias pping='prettyping --nolegend'
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
-alias help='tldr'
-alias man='tldr'
 alias vim='nvim'
 
 # Nicer history
@@ -100,11 +90,8 @@ function cdf() { cd *$1*/ } # stolen from @topfunky
 
 # Autostart tmux
 set -g xterm-keys on
-# export TERM=screen-256color
-# set -g default-terminal "screen-256color"
 
 # This config doesn't add spaces to the end of the line, but home/end doesn't work
-# export TERM=tmux-256color
 export ZSH_TMUX_TERM=tmux-256color
 set -g default-terminal "tmux-256color"
 ZSH_TMUX_AUTOSTART="true"
@@ -136,34 +123,26 @@ export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/
 USER_BASE_PATH=$(python -m site --user-base)
 export PATH=$PATH:$USER_BASE_PATH/bin
 
-# Ruby
-export PATH=$PATH:/home/kainlite/.gem/ruby/3.0.0/bin
-
-
 # Java exports
 # archlinux-java set java-8-openjdk/jre
 export JAVA_HOME=/usr/lib/jvm/default-runtime
 
-plugins=(asdf git ruby bundler git-extras tmux archlinux systemd vagrant rbenv kubectl safe-paste terraform)
+plugins=(asdf git git-extras tmux archlinux systemd vagrant kubectl safe-paste terraform)
 
 source $ZSH/oh-my-zsh.sh
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.exenv/bin:$PATH"
 
+# Tfenv
 export PATH="$HOME/.tfenv/bin:$PATH"
-
-export PATH="$HOME/.cargo/bin:$PATH"
-
 
 # Nvm
 source ~/.nvm/nvm.sh
 
 # Add paths
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
-export PATH="$HOME/bin:$PATH:$HOME/Android/sdk/platform-tools"
 
 # Cargo
 source $HOME/.cargo/env
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Go path
 export GOPATH=$HOME/Webs/go
@@ -214,9 +193,6 @@ fi
 # Direnv
 eval "$(direnv hook zsh)"
 
-# urxvt
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
-
 # Disable bell
 xset -b
 
@@ -228,8 +204,6 @@ fi
 
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
-
-eval "$(starship init zsh)"
 
 autoload -U add-zsh-hook
 load-nvmrc() {
@@ -252,8 +226,6 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
-
 export PATH=$PATH:~/.nix-profile/bin
+
+eval "$(starship init zsh)"

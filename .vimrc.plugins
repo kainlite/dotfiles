@@ -1,0 +1,171 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ALE Linter and fixer
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_linters={
+\  'javascript': ['eslint'],
+\  'jsx': ['eslint'],
+\  'elixir': ['elixir-ls'],
+\  'rust': ['analyzer']
+\ }
+let g:ale_fixers={
+\   'elixir': ['mix_format'],
+\   'solidity': ['solc'],
+\   'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines']
+\ }
+" let g:ale_elixir_elixir_ls_release=''
+" let g:ale_elixir_elixir_ls_config = { 'elixirLS': { 'dialyzerEnabled': v:false } }
+" let g:ale_solidity_solc_executable=$SOLC_BIN
+" let g:ale_solidity_solc_options=$SOLC_LIBRARIES
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed='never'
+let g:ale_linters_explicit = 0
+let g:ale_set_highlights = 0
+let g:ale_completion_enabled = 1
+let g:ale_completion_autoimport = 1
+
+set omnifunc=ale#completion#OmniFunc
+
+nnoremap <leader>g :ALEGoToDefinition<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tabularize
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <Leader>f= :Tabularize /=<CR>
+vmap <Leader>f= :Tabularize /=<CR>
+nmap <Leader>f :Tabularize /:\zs<CR>
+vmap <Leader>f :Tabularize /:\zs<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Surround
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <Leader>y <Plug>Yssurround=<cr>
+map <Leader>i <Plug>Yssurround-<cr>
+map <leader># ysiw#
+imap <C-c> <CR><Esc>O
+
+autocmd FileType ruby let b:surround_35 = "#{\r}"
+autocmd FileType eruby let b:surround_35 = "#{\r}"
+
+" Toggler
+nmap <script> <silent> <leader>w :call ToggleQuickfixList()<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Git
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gl :Glog<CR>
+nnoremap <Leader>gp :Git push<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Nerdtree
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" autocmd VimEnter * NERDTree
+" autocmd BufWinEnter * NERDTreeMirror
+let NERDTreeMapOpenInTab='<ENTER>'
+nnoremap <F6> :UndotreeToggle<CR>
+
+map <leader>r :NERDTree<cr> :NERDTreeMirror<cr>
+map <leader>c :NERDTreeClose<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Lua extra config (testing lspconfig)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" lua << EOF
+"" require'lspconfig'.solang.setup{}
+"" EOF
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Neomake
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" augroup my_neomake_hooks
+"   au!
+"   autocmd User NeomakeJobFinished :checktime
+" augroup END
+"
+" call neomake#configure#automake('w')
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ElixirLS
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ElixirLS = {}
+let ElixirLS.path = stdpath('config').'/plugged/elixir-ls'
+let ElixirLS.lsp = ElixirLS.path.'/release/language_server.sh'
+" let ElixirLS.cmd = join([
+"         \ 'cp .release-tool-versions .tool-versions &&',
+"         \ 'asdf install &&',
+"         \ 'mix do',
+"         \ 'local.hex --force --if-missing,',
+"         \ 'local.rebar --force,',
+"         \ 'deps.get,',
+"         \ 'compile,',
+"         \ 'elixir_ls.release &&',
+"         \ 'rm .tool-versions'
+"         \ ], ' ')
+
+function ElixirLS.on_stdout(_job_id, data, _event)
+  let self.output[-1] .= a:data[0]
+  call extend(self.output, a:data[1:])
+endfunction
+
+let ElixirLS.on_stderr = function(ElixirLS.on_stdout)
+
+function ElixirLS.on_exit(_job_id, exitcode, _event)
+  if a:exitcode[0] == 0
+    echom '>>> ElixirLS compiled'
+  else
+    echoerr join(self.output, ' ')
+    echoerr '>>> ElixirLS compilation failed'
+  endif
+endfunction
+
+function ElixirLS.compile()
+  let me = copy(g:ElixirLS)
+  let me.output = ['']
+  echom '>>> compiling ElixirLS'
+  let me.id = jobstart('cd ' . me.path . ' && git pull && ' . me.cmd, me)
+endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Coc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:coc_global_extensions = ['coc-elixir', 'coc-diagnostic', 'coc-tsserver', 'coc-rls']
+
+call coc#config('elixir', {
+  \ 'command': g:ElixirLS.lsp,
+  \ 'filetypes': ['elixir', 'eelixir']
+  \})
+call coc#config('elixir.pathToElixirLS', g:ElixirLS.lsp)
+
+nnoremap <silent> K :call CocAction('doHover')<CR>
+function! ShowDocIfNoDiagnostic(timer_id)
+  if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
+    silent call CocActionAsync('doHover')
+  endif
+endfunction
+
+function! s:show_hover_doc()
+  call timer_start(500, 'ShowDocIfNoDiagnostic')
+endfunction
+
+autocmd CursorHoldI * :call <SID>show_hover_doc()
+autocmd CursorHold * :call <SID>show_hover_doc()
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
+nmap <leader>do <Plug>(coc-codeaction)
+
+function! InstallCocPlugins()
+  :call coc#util#install_extension(["coc-json", "coc-prettier", "coc-snippets", "coc-tabnine", "coc-tsserver", "coc-ultisnips", "coc-rls", "coc-rust-analyzer"])
+endfunction
