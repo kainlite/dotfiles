@@ -1,0 +1,11 @@
+add_newline = false
+
+[directory]
+truncation_length = 3
+truncate_to_repo = false
+
+[kubernetes]
+disabled = false
+
+# [kubernetes.context_aliases]
+# "dev.local.cluster.k8s" = "dev"

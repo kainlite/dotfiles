@@ -1,24 +1,27 @@
 [submodule ".rbenv"]
-	path = .rbenv
-	url = https://github.com/sstephenson/rbenv.git
+  path = .rbenv
+  url = https://github.com/sstephenson/rbenv.git
 [submodule ".pyenv"]
-	path = .pyenv
-	url = https://github.com/yyuu/pyenv.git
+  path = .pyenv
+  url = https://github.com/yyuu/pyenv.git
 [submodule ".oh-my-zsh"]
-	path = .oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
+  path = .oh-my-zsh
+  url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule ".nvm"]
-	path = .nvm
-	url = https://github.com/creationix/nvm.git
+  path = .nvm
+  url = https://github.com/creationix/nvm.git
 [submodule ".exenv"]
-	path = .exenv
-	url = https://github.com/mururu/exenv.git
+  path = .exenv
+  url = https://github.com/mururu/exenv.git
 [submodule ".evm"]
-	path = .evm
-	url = https://github.com/robisonsantos/evm
+  path = .evm
+  url = https://github.com/robisonsantos/evm
 [submodule ".tpm"]
-	path = .tpm
-	url = https://github.com/tmux-plugins/tpm
+  path = .tpm
+  url = https://github.com/tmux-plugins/tpm
 [submodule ".tfenv"]
-	path = .tfenv
-	url = https://github.com/tfutils/tfenv
+  path = .tfenv
+  url = https://github.com/tfutils/tfenv
+[submodule ".starship"]
+  path = .starship
+  url = https://github.com/starship/starship
