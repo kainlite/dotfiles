@@ -1,34 +1,35 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ALE Linter and fixer
+" ALE Linter and fixer (testing)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ale_linters={
-\  'javascript': ['eslint'],
-\  'jsx': ['eslint'],
-\  'elixir': ['elixir-ls'],
-\  'rust': ['analyzer']
-\ }
-let g:ale_fixers={
-\   'elixir': ['mix_format'],
-\   'solidity': ['solc'],
-\   'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines']
-\ }
-" let g:ale_elixir_elixir_ls_release=''
-" let g:ale_elixir_elixir_ls_config = { 'elixirLS': { 'dialyzerEnabled': v:false } }
-" let g:ale_solidity_solc_executable=$SOLC_BIN
-" let g:ale_solidity_solc_options=$SOLC_LIBRARIES
-let g:ale_fix_on_save = 1
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed='never'
-let g:ale_linters_explicit = 0
-let g:ale_set_highlights = 0
-let g:ale_completion_enabled = 1
-let g:ale_completion_autoimport = 1
+" let g:ale_linters={
+" \  'javascript': ['eslint'],
+" \  'jsx': ['eslint'],
+" \  'elixir': ['elixir-ls'],
+" \  'rust': ['analyzer']
+" \ }
 
-set omnifunc=ale#completion#OmniFunc
+" let g:ale_fixers={
+" \   'elixir': ['mix_format'],
+" \   'solidity': ['solc'],
+" \   'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines']
+" \ }
+" " let g:ale_elixir_elixir_ls_release=''
+" " let g:ale_elixir_elixir_ls_config = { 'elixirLS': { 'dialyzerEnabled': v:false } }
+" " let g:ale_solidity_solc_executable=$SOLC_BIN
+" " let g:ale_solidity_solc_options=$SOLC_LIBRARIES
+" let g:ale_fix_on_save = 1
+" let g:ale_lint_on_enter = 0
+" let g:ale_lint_on_insert_leave = 0
+" let g:ale_lint_on_save = 1
+" let g:ale_lint_on_text_changed='never'
+" let g:ale_linters_explicit = 0
+" let g:ale_set_highlights = 0
+" let g:ale_completion_enabled = 1
+" let g:ale_completion_autoimport = 1
 
-nnoremap <leader>g :ALEGoToDefinition<CR>
+" set omnifunc=ale#completion#OmniFunc
+
+" nnoremap <leader>g :ALEGoToDefinition<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tabularize
@@ -74,11 +75,58 @@ map <leader>r :NERDTree<cr> :NERDTreeMirror<cr>
 map <leader>c :NERDTreeClose<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ultisnips
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:UltiSnipsSnippetDirectories=["~/.vim/my-snippets"]
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Lua extra config (testing lspconfig)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" lua << EOF
-"" require'lspconfig'.solang.setup{}
-"" EOF
+lua << EOF
+-- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+-- local opts = { noremap=true, silent=true }
+-- vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+-- vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+-- vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+-- vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+-- local on_attach = function(client, bufnr)
+--   -- Enable completion triggered by <c-x><c-o>
+--   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+--
+--   -- Mappings.
+--   -- See `:help vim.lsp.*` for documentation on any of the below functions
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+-- end
+--
+-- -- Use a loop to conveniently call 'setup' on multiple servers and
+-- -- map buffer local keybindings when the language server attaches
+-- local servers = { 'solidity_ls', 'rust_analyzer', 'tsserver' }
+-- for _, lsp in pairs(servers) do
+--   require('lspconfig')[lsp].setup {
+--     on_attach = on_attach,
+--     flags = {
+--       -- This will be the default in neovim 0.7+
+--       debounce_text_changes = 150,
+--     }
+--   }
+-- end
+EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Neomake
@@ -167,5 +215,5 @@ nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
 nmap <leader>do <Plug>(coc-codeaction)
 
 function! InstallCocPlugins()
-  :call coc#util#install_extension(["coc-json", "coc-prettier", "coc-snippets", "coc-tabnine", "coc-tsserver", "coc-ultisnips", "coc-rls", "coc-rust-analyzer"])
+  :call coc#util#install_extension(["coc-json", "coc-prettier", "coc-snippets", "coc-tabnine", "coc-tsserver", "coc-ultisnips", "coc-rls", "coc-rust-analyzer", "coc-solidity"])
 endfunction
