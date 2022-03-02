@@ -132,8 +132,8 @@ syntax on
 " Use the default filetype settings, so that mail gets 'tw' set to 72,
 " 'cindent' is on in C files, etc.
 " Also load indent files, to automatically do language-dependent indenting.
-filetype plugin indent on
 filetype indent on
+filetype plugin indent on
 " use emacs-style tab completion when selecting files, etc
 set wildmode=longest,list
 " make tab completion for files/buffers act like bash
@@ -155,8 +155,11 @@ map <F12> :cn<CR>
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clear all autocmds in the group
-autocmd Filetype * set sw=2 sts=2 ts=2 tw=0 et
-autocmd BufRead * retab
+augroup vimrc
+  autocmd!
+  autocmd Filetype * set sw=2 sts=2  ts=2 tw=0 et
+  autocmd BufRead * retab
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR
