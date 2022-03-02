@@ -1,0 +1,53 @@
+{
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": [
+    "html",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "solidity"
+  ],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "html",
+    "markdown",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "graphql",
+    "solidity"
+  ],
+  "tsserver": {
+    "maxTsServerMemory": 1024
+  },
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    },
+    "solidity": {
+      "command": "solc",
+      "args": ["--lsp"],
+      "rootPatterns": [".git/"],
+      "filetypes": ["solidity"]
+    }
+  },
+  "codeLens.enable": false,
+  "diagnostic-languageserver.filetypes": {
+    "elixir": ["mix_credo", "mix_credo_compile"],
+    "eelixir": ["mix_credo", "mix_credo_compile"]
+  },
+  "snippets": {
+    "ultisnips": {
+      "directories": ["~/.dotfiles/snippets"]
+    }
+  },
+  "html": {
+    "enable": true,
+    "filetypes": ["html", "xhtml"]
+  }
+}
