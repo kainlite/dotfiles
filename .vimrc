@@ -77,9 +77,9 @@ set hidden
 " remember more commands and search history
 set history=10000
 set expandtab
-setlocal tabstop=2
-setlocal shiftwidth=2
-setlocal softtabstop=2
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set autoindent
 set cindent
 set smartindent
@@ -202,7 +202,7 @@ map <Down> <Nop>
 autocmd BufWritePre *.rb,*.erb,*.py,*.js,*.html,*.txt,*.csv,*.tsv,*.jsx,*.ex,*.eex,* call <SID>StripTrailingWhitespaces()
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 nnoremap <silent> <F5> :Format<CR>
-autocmd Filetype * setlocal sw=2 sts=2  ts=2 tw=0 et
+autocmd FileType * set tabstop=2|set shiftwidth=2|set expandtab
 
 " Strip annoying whitespaces
 function! <SID>StripTrailingWhitespaces()

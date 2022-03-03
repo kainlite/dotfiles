@@ -101,7 +101,6 @@ Plug 'TovarishFin/vim-solidity', { 'branch': 'master', 'do': 'npm install'}
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets'
 Plug 'neoclide/coc-tsserver'
-Plug 'neoclide/coc-prettier'
 Plug 'neoclide/coc-tabnine'
 Plug 'neoclide/coc-json'
 
