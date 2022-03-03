@@ -95,10 +95,10 @@ Plug 'elixir-lsp/elixir-ls', { 'do': { -> g:ElixirLS.compile() } }
 Plug 'elixir-lang/vim-elixir'
 
 " Solidity
-Plug 'TovarishFin/vim-solidity'
+Plug 'TovarishFin/vim-solidity', { 'branch': 'master', 'do': 'npm install'}
 
 " Coc
-Plug 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets'
 Plug 'neoclide/coc-tsserver'
 Plug 'neoclide/coc-prettier'
@@ -107,8 +107,8 @@ Plug 'neoclide/coc-json'
 
 " Testing
 " Plug 'neovim/nvim-lspconfig'
-" Plug 'dense-analysis/ale'
 " Plug 'prabirshrestha/vim-lsp'
+" Plug 'dense-analysis/ale'
 " Plug 'rhysd/vim-lsp-ale'
 
 filetype on

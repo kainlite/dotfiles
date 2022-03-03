@@ -77,9 +77,9 @@ set hidden
 " remember more commands and search history
 set history=10000
 set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+setlocal tabstop=2
+setlocal shiftwidth=2
+setlocal softtabstop=2
 set autoindent
 set cindent
 set smartindent
@@ -149,17 +149,8 @@ map <F11> :cp<CR>
 map <F12> :cn<CR>
 
 " Don't pass messages to |ins-completion-menu|.
-" set completeopt=menu,preview,noselect,noinsert
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CUSTOM AUTOCMDS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Clear all autocmds in the group
-augroup vimrc
-  autocmd!
-  autocmd Filetype * set sw=2 sts=2  ts=2 tw=0 et
-  autocmd BufRead * retab
-augroup END
+set shortmess+=c
+set completeopt=menu,preview,noselect,noinsert
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR
@@ -173,6 +164,7 @@ colorscheme gruvbox
 " STATUS LINE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set statusline=%<%f\ (%{&ft})\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
@@ -209,6 +201,8 @@ map <Down> <Nop>
 " Autocall and key binding
 autocmd BufWritePre *.rb,*.erb,*.py,*.js,*.html,*.txt,*.csv,*.tsv,*.jsx,*.ex,*.eex,* call <SID>StripTrailingWhitespaces()
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
+nnoremap <silent> <F5> :Format<CR>
+autocmd Filetype * setlocal sw=2 sts=2  ts=2 tw=0 et
 
 " Strip annoying whitespaces
 function! <SID>StripTrailingWhitespaces()

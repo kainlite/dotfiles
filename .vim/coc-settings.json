@@ -11,6 +11,7 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "html",
+    "rust",
     "markdown",
     "javascript",
     "javascriptreact",
@@ -46,6 +47,7 @@
       "directories": ["~/.dotfiles/snippets"]
     }
   },
+  "prettier.resolveGlobalModules": true,
   "html": {
     "enable": true,
     "filetypes": ["html", "xhtml"]
