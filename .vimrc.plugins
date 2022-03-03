@@ -108,9 +108,9 @@ let g:coc_global_extensions = [
 \   'coc-rust-analyzer',
 \   'coc-solidity',
 \   'coc-yaml',
+\   'coc-prettier',
 \   'coc-rls',
 \ ]
-" \   'coc-prettier',
 
 call coc#config('elixir', {
   \ 'command': g:ElixirLS.lsp,

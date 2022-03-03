@@ -5,8 +5,7 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact",
-    "solidity"
+    "typescriptreact"
   ],
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
@@ -47,7 +46,7 @@
       "directories": ["~/.dotfiles/snippets"]
     }
   },
-  "prettier.resolveGlobalModules": true,
+  "prettier.resolveGlobalModules": false,
   "html": {
     "enable": true,
     "filetypes": ["html", "xhtml"]
