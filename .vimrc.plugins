@@ -165,14 +165,17 @@ function! s:show_documentation()
   endif
 endfunction
 
+let g:prettier#autoformat = 1
+
 " Autoformat
 augroup autoformat
   autocmd!
   " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json,rust,javascript,html,css setl formatexpr=CocAction('formatSelected')
+  autocmd FileType typescript,json,rust,javascript,html,css,solidity setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
+  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html,*.sol Prettier
   autocmd BufRead silent! * Format
   autocmd Filetype * setlocal sw=2 sts=2  ts=2 tw=0 et
   autocmd BufRead * retab

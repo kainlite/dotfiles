@@ -4,6 +4,7 @@ filetype off
 
 " General
 Plug 'sheerun/vim-polyglot'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 
 " Undo magic
 Plug 'mbbill/undotree'

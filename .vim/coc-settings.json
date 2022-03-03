@@ -37,9 +37,16 @@
     }
   },
   "codeLens.enable": false,
+  "diagnostic.checkCurrentLine": true,
   "diagnostic-languageserver.filetypes": {
     "elixir": ["mix_credo", "mix_credo_compile"],
-    "eelixir": ["mix_credo", "mix_credo_compile"]
+    "eelixir": ["mix_credo", "mix_credo_compile"],
+    "solidity": ["solc", "solhint"],
+    "javascript": ["eslint"],
+    "typescript": ["eslint"]
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "solidity": ["solc", "solhint"]
   },
   "snippets": {
     "ultisnips": {
