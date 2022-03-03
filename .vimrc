@@ -44,9 +44,9 @@ endif
 "  %    :  saves and restores the buffer list
 "  n... :  where to save the viminfo files
 if has('nvim')
-set viminfo='50,\"1000,:200,%,n~/.nviminfo
+  set viminfo='50,\"1000,:200,%,n~/.nviminfo
 else
-set viminfo='50,\"1000,:200,%,n~/.viminfo
+  set viminfo='50,\"1000,:200,%,n~/.viminfo
 endif
 
 function! ResCur()
@@ -179,7 +179,7 @@ imap <c-c> <esc>
 
 " Clear the search buffer when hitting return
 function! MapCR()
-    nnoremap <cr> :nohlsearch<cr>
+  nnoremap <cr> :nohlsearch<cr>
 endfunction
 
 nnoremap <leader><leader> <c-^>
@@ -192,7 +192,7 @@ map <c-s> gt
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Disable arrow keys in command and visual mode
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <Left> <Nop>
 map <Right> <Nop>
 map <Up> <Nop>
@@ -206,17 +206,17 @@ autocmd Filetype * setlocal sw=2 sts=2  ts=2 tw=0 et
 
 " Strip annoying whitespaces
 function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    set modifiable
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-    retab
+  " Preparation: save last search, and cursor position.
+  set modifiable
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+  retab
 endfunction
 
 map <leader>t :tabedit<Space>
@@ -251,40 +251,40 @@ autocmd VimEnter * :IndentGuidesEnable
 
 " Fix arrows for vim
 if &term =~ '^screen' && exists('$TMUX')
-    set mouse+=a
-    " tmux knows the extended mouse mode
-    " set ttymouse=xterm2
-    " tmux will send xterm-style keys when xterm-keys is on
-    execute "set <xUp>=\e[1;*A"
-    execute "set <xDown>=\e[1;*B"
-    execute "set <xRight>=\e[1;*C"
-    execute "set <xLeft>=\e[1;*D"
-    map <Esc>OH <Home>
-    map! <Esc>OH <Home>
-    map <Esc>OF <End>
-    map! <Esc>OF <End>
-    execute "set <Insert>=\e[2;*~"
-    execute "set <Delete>=\e[3;*~"
-    execute "set <PageUp>=\e[5;*~"
-    execute "set <PageDown>=\e[6;*~"
-    execute "set <xF1>=\e[1;*P"
-    execute "set <xF2>=\e[1;*Q"
-    execute "set <xF3>=\e[1;*R"
-    execute "set <xF4>=\e[1;*S"
-    execute "set <F5>=\e[15;*~"
-    execute "set <F6>=\e[17;*~"
-    execute "set <F7>=\e[18;*~"
-    execute "set <F8>=\e[19;*~"
-    execute "set <F9>=\e[20;*~"
-    execute "set <F10>=\e[21;*~"
-    execute "set <F11>=\e[23;*~"
-    execute "set <F12>=\e[24;*~"
+  set mouse+=a
+  " tmux knows the extended mouse mode
+  " set ttymouse=xterm2
+  " tmux will send xterm-style keys when xterm-keys is on
+  execute "set <xUp>=\e[1;*A"
+  execute "set <xDown>=\e[1;*B"
+  execute "set <xRight>=\e[1;*C"
+  execute "set <xLeft>=\e[1;*D"
+  map <Esc>OH <Home>
+  map! <Esc>OH <Home>
+  map <Esc>OF <End>
+  map! <Esc>OF <End>
+  execute "set <Insert>=\e[2;*~"
+  execute "set <Delete>=\e[3;*~"
+  execute "set <PageUp>=\e[5;*~"
+  execute "set <PageDown>=\e[6;*~"
+  execute "set <xF1>=\e[1;*P"
+  execute "set <xF2>=\e[1;*Q"
+  execute "set <xF3>=\e[1;*R"
+  execute "set <xF4>=\e[1;*S"
+  execute "set <F5>=\e[15;*~"
+  execute "set <F6>=\e[17;*~"
+  execute "set <F7>=\e[18;*~"
+  execute "set <F8>=\e[19;*~"
+  execute "set <F9>=\e[20;*~"
+  execute "set <F10>=\e[21;*~"
+  execute "set <F11>=\e[23;*~"
+  execute "set <F12>=\e[24;*~"
 endif
 
 if has('gui_running')
-    " Make shift-insert work like in Xterm
-    map <S-Insert> <MiddleMouse>
-    map! <S-Insert> <MiddleMouse>
+  " Make shift-insert work like in Xterm
+  map <S-Insert> <MiddleMouse>
+  map! <S-Insert> <MiddleMouse>
 endif
 
 imap <C-f> <C-x>
