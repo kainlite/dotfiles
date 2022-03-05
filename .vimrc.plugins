@@ -108,8 +108,6 @@ let g:coc_global_extensions = [
 \   'coc-rust-analyzer',
 \   'coc-solidity',
 \   'coc-yaml',
-\   'coc-prettier',
-\   'coc-rls',
 \ ]
 
 call coc#config('elixir', {

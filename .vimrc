@@ -107,6 +107,7 @@ set showtabline=2
 set winwidth=79
 set ttimeoutlen=50
 set conceallevel=0
+set updatetime=1000
 
 " Maintain undo history between sessions
 set undofile
