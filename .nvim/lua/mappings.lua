@@ -38,6 +38,23 @@ nnoremap("<S-TAB>", ":bprevious<CR>")
 vnoremap("<", "<gv")
 vnoremap(">", ">gv")
 
+-- Swap lines
+nnoremap("c-j", ":m .+1<CR>==")
+nnoremap("c-k", ":m .-2<CR>==")
+inoremap("c-j", "<Esc>:m .+1<CR>==gi")
+inoremap("c-k", "<Esc>:m .-2<CR>==gi")
+vnoremap("c-j", ":m '>+1<CR>gv=gv")
+vnoremap("c-k", ":m '<-2<CR>gv=gv")
+
+--  duplicate line, preserve cursor
+nnoremap("C-d", "mzyyp`z")
+
+-- Force save
+nnoremap("w!!", "execute 'silent! write !sudo tee % >/dev/null' <bar> edit!")
+
+-- Yank directly to the clipboard
+nnoremap("C-C", ":%y+<CR>")
+
 -- Better window navigation
 -- nnoremap("<C-h>", "<C-w>h")
 -- nnoremap("<C-j>", "<C-w>j")
@@ -81,5 +98,5 @@ vnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
 
 -- Telescope
 nnoremap("<C-f>", ':lua require("utils/telescope").search_files()<CR>')
-nnoremap("/", ':lua require("utils/telescope").search_in_buffer()<CR>')
+nnoremap("<C-/>", ':lua require("utils/telescope").search_in_buffer()<CR>')
 inoremap("<C-f>", '<Esc> :lua require("utils/telescope").search_in_buffer()<CR>')

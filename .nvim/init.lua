@@ -24,17 +24,17 @@ require("config/symbols-outline")
 require("config/telescope")
 require("config/tree-sitter")
 require("config/typescript")
+require("config/remember")
 require("config/ui")
-require("remember")
 
 vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 require("catppuccin").setup({
-	integration = {
-		nvimtree = {
-			enabled = true,
-			show_root = false, -- makes the root folder not transparent
-			transparent_panel = true, -- make the panel transparent
-		},
-	},
+  integration = {
+    nvimtree = {
+      enabled = true,
+      show_root = false, -- makes the root folder not transparent
+      transparent_panel = true, -- make the panel transparent
+    },
+  },
 })
 vim.cmd([[colorscheme catppuccin]])
