@@ -42,6 +42,4 @@ vim.opt.listchars:append("eol:↴")
 
 vim.opt.laststatus = 3
 
--- vim.opt.undofile
-vim.opt.undodir = "~/.vim/undodir"
--- vim.opt.viminfo = "50,\"1000,:200,%,n~/.nviminfo"
+vim.opt.undofile = true
