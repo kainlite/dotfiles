@@ -23,9 +23,12 @@ require("packer").startup(function(use)
     end,
   })
 
-  use({ "simrat39/symbols-outline.nvim", config = function()
+  use({
+    "simrat39/symbols-outline.nvim",
+    config = function()
       require("symbols-outline").setup()
-  end })
+    end,
+  })
 
   use({
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
@@ -53,7 +56,7 @@ require("packer").startup(function(use)
 
   -- Dracula
   -- use({ "darker-dracula/vim", as = "dracula" })
-  use { "catppuccin/nvim", as = "catppuccin" }
+  use({ "catppuccin/nvim", as = "catppuccin" })
   -- Git in the gutter
   use("lewis6991/gitsigns.nvim")
   -- dev-icons
@@ -131,7 +134,7 @@ require("packer").startup(function(use)
   -- rust
   use("simrat39/rust-tools.nvim")
   use("simrat39/inlay-hints.nvim")
-  use"lvimuser/lsp-inlayhints.nvim"
+  use("lvimuser/lsp-inlayhints.nvim")
   -- Debugging
   use("mfussenegger/nvim-dap")
   use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
@@ -161,6 +164,10 @@ require("packer").startup(function(use)
   })
   -- Dev goodies
   use("tpope/vim-scriptease")
+
+  -- remember
+  use("https://git.sr.ht/~jhn/remember.nvim")
+
   -- Faster stuff lol
   use("lewis6991/impatient.nvim")
   use({
