@@ -1,3 +1,7 @@
+local cnoremap = function(lhs, rhs, silent)
+  vim.api.nvim_set_keymap("c", lhs, rhs, { noremap = true, silent = false })
+end
+
 local nnoremap = function(lhs, rhs, silent)
   vim.api.nvim_set_keymap("n", lhs, rhs, { noremap = true, silent = silent })
 end
@@ -14,21 +18,23 @@ local vnoremap = function(lhs, rhs)
   vim.api.nvim_set_keymap("v", lhs, rhs, { noremap = true })
 end
 
+local function map(mode, lhs, rhs, opts)
+  local options = { noremap = true }
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
+  end
+
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
 -- smartquit
 nnoremap("qq", '<cmd>lua require("utils/smartquit")()<CR>', true)
-
--- Use alt + hjkl to resize windows
-nnoremap("<M-j>", ":resize -2<CR>")
-nnoremap("<M-k>", ":resize +2<CR>")
-nnoremap("<M-h>", ":vertical resize -2<CR>")
-nnoremap("<M-l>", ":vertical resize +2<CR>")
 
 -- Escape redraws the screen and removes any search highlighting.
 nnoremap("<esc>", ":noh<return><esc>")
 
 -- Easy CAPS
 inoremap("<c-u>", "<ESC>viwUi")
-
 -- TAB in normal mode will move to text buffer
 nnoremap("<TAB>", ":bnext<CR>")
 -- SHIFT-TAB will go back
@@ -39,21 +45,19 @@ vnoremap("<", "<gv")
 vnoremap(">", ">gv")
 
 -- Swap lines
-nnoremap("c-j", ":m .+1<CR>==")
-nnoremap("c-k", ":m .-2<CR>==")
-inoremap("c-j", "<Esc>:m .+1<CR>==gi")
-inoremap("c-k", "<Esc>:m .-2<CR>==gi")
-vnoremap("c-j", ":m '>+1<CR>gv=gv")
-vnoremap("c-k", ":m '<-2<CR>gv=gv")
+nnoremap("<c-j>", ":m .+1<CR>==")
+nnoremap("<c-k>", ":m .-2<CR>==")
+inoremap("<c-j>", "<Esc>:m .+1<CR>==gi")
+inoremap("<c-k>", "<Esc>:m .-2<CR>==gi")
+vnoremap("<c-j>", ":m '>+1<CR>gv=gv")
+vnoremap("<c-k>", ":m '<-2<CR>gv=gv")
 
 --  duplicate line, preserve cursor
-nnoremap("C-d", "mzyyp`z")
-
--- Force save
-nnoremap("w!!", "execute 'silent! write !sudo tee % >/dev/null' <bar> edit!")
+nnoremap("<C-d>", "mzyyp`z")
 
 -- Yank directly to the clipboard
-nnoremap("C-C", ":%y+<CR>")
+map("v", "<C-c>", ":%y+<CR>")
+map("n", "<C-c>", ":%y+<CR>")
 
 -- Better window navigation
 -- nnoremap("<C-h>", "<C-w>h")
