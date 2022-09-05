@@ -69,7 +69,7 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 # Use vim as the editor
-export EDITOR=vim
+export EDITOR=nvim
 # GNU Screen sets -o vi if EDITOR=vi, so we have to force it back.
 set -o vi
 
@@ -157,7 +157,7 @@ alias ccopy="xclip -sel clip"
 alias cpaste="xclip -sel clip -o"
 alias s="screen"
 alias sr="screen -r"
-alias hugs="hugs -98 -E'vim'"
+alias hugs="hugs -98 -E'nvim'"
 
 # Restore the last backgrounded task with Ctrl-V
 function foreground_task() {
