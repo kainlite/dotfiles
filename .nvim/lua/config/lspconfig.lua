@@ -20,6 +20,7 @@ setup_auto_format("ts")
 setup_auto_format("py")
 setup_auto_format("dart")
 setup_auto_format("lua", "lua require('stylua-nvim').format_file()")
+setup_auto_format("hcl")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
@@ -133,6 +134,8 @@ require("lspconfig").gopls.setup({
     },
   },
 })
+
+require("lspconfig").terraformls.setup({})
 
 -- require("lspconfig").sumneko_lua.setup({
 --   settings = {
