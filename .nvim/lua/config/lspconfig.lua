@@ -149,6 +149,11 @@ lspconfig.elixirls.setup({
   },
 })
 
+lspconfig.efm.setup({
+  capabilities = capabilities,
+  filetypes = { "elixir" },
+})
+
 -- require("lspconfig").sumneko_lua.setup({
 --   settings = {
 --     Lua = {
