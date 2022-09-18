@@ -138,6 +138,17 @@ require("lspconfig").gopls.setup({
 require("lspconfig").terraformls.setup({})
 require("lspconfig").tflint.setup({})
 
+lspconfig.elixirls.setup({
+  cmd = { "/usr/bin/elixir-ls" },
+  capabilities = capabilities,
+  settings = {
+    elixirLS = {
+      dialyzerEnabled = false,
+      fetchDeps = false,
+    },
+  },
+})
+
 -- require("lspconfig").sumneko_lua.setup({
 --   settings = {
 --     Lua = {
