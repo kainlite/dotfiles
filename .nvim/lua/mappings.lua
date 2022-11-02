@@ -106,7 +106,7 @@ nnoremap("<C-/>", ':lua require("utils/telescope").search_in_buffer()<CR>')
 inoremap("<C-f>", '<Esc> :lua require("utils/telescope").search_in_buffer()<CR>')
 
 -- autoformat tf
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
-  pattern = {"*.tf", "*.tfvars"},
-  callback = vim.lsp.buf.formatting_sync,
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*.tf", "*.tfvars" },
+  callback = vim.lsp.buf.format,
 })
