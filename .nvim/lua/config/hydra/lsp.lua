@@ -2,6 +2,7 @@ local Hydra = require("hydra")
 
 local hint = [[
  _a_: Code Actions 
+ _q_: Close tab 
 ]]
 
 Hydra({
@@ -23,6 +24,6 @@ Hydra({
       end,
       { desc = "Show code actions" },
     },
-    { "q", nil, { exit = true, nowait = true, desc = "exit" } },
+    { "q", nil, { exit = true, nowait = true, desc = "Close tab" } },
   },
 })

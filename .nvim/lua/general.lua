@@ -26,7 +26,7 @@ vim.opt.showtabline = 4
 vim.opt.updatetime = 300
 vim.opt.timeoutlen = 500
 vim.opt.formatoptions:remove("cro")
-vim.opt.clipboard = "unnamedplus"
+-- vim.opt.clipboard = "unnamedplus"
 vim.opt.autochdir = true
 vim.opt.termguicolors = true
 vim.opt.textwidth = 120

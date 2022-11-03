@@ -27,7 +27,7 @@ setup_auto_format("ex")
 setup_auto_format("exs")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 -----------------------
 -- Webdev
@@ -91,34 +91,17 @@ require("lspconfig").yamlls.setup({
 -----------------------
 -- Lua
 -----------------------
-local luadev = require("lua-dev").setup({
-  lspconfig = {
-    capabilities = capabilities,
-    cmd = { "lua-language-server" },
-    on_attach = function(c, b)
-      ih.on_attach(c, b)
-    end,
-    settings = {
-      Lua = {
-        hint = {
-          enable = true,
-        },
-      },
-    },
-  },
+require("neodev").setup({})
+
+lspconfig.sumneko_lua.setup({
   settings = {
     Lua = {
-      workspace = {
-        library = {
-          ["/usr/share/nvim/runtime/lua"] = true,
-          ["/usr/share/nvim/runtime/lua/lsp"] = true,
-          ["/usr/share/awesome/lib"] = true,
-        },
+      completion = {
+        callSnippet = "Replace",
       },
     },
   },
 })
-require("lspconfig").sumneko_lua.setup(luadev)
 
 require("lspconfig").gopls.setup({
   on_attach = function(c, b)
