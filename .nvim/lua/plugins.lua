@@ -114,6 +114,8 @@ require("packer").startup(function(use)
   use("hrsh7th/cmp-emoji")
   use("hrsh7th/cmp-nvim-lsp-signature-help")
 
+  use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
+
   -- snips
   use("L3MON4D3/LuaSnip")
 
@@ -170,6 +172,7 @@ require("packer").startup(function(use)
 
   -- Faster stuff lol
   use("lewis6991/impatient.nvim")
+
   use({
     "NvChad/nvim-colorizer.lua",
     config = function()
