@@ -43,3 +43,6 @@ vim.opt.listchars:append("eol:↴")
 vim.opt.laststatus = 3
 
 vim.opt.undofile = true
+
+-- disable editorconfig support
+vim.g.editorconfig_enable = false
