@@ -48,6 +48,7 @@ alias cat='bat -p'
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 alias vim='nvim'
+export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Nicer history
 export HISTSIZE=10000000

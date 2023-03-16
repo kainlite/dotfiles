@@ -114,7 +114,25 @@ require("packer").startup(function(use)
   use("hrsh7th/cmp-emoji")
   use("hrsh7th/cmp-nvim-lsp-signature-help")
 
-  use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
+  -- Try copilot once more
+  -- use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
+  -- copilot
+  use({
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({})
+    end,
+  })
+
+  use({
+  "zbirenbaum/copilot-cmp",
+  after = { "copilot.lua" },
+  config = function ()
+    require("copilot_cmp").setup()
+  end
+  })
 
   -- snips
   use("L3MON4D3/LuaSnip")
@@ -228,3 +246,4 @@ require("packer").startup(function(use)
     end,
   })
 end)
+

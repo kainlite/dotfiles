@@ -23,7 +23,7 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
   sources = {
-    { name = 'cmp_tabnine' },
+    { name = 'copilot' },
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "path" },

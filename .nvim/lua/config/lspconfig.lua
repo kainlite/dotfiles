@@ -93,7 +93,7 @@ require("lspconfig").yamlls.setup({
 -----------------------
 require("neodev").setup({})
 
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
   settings = {
     Lua = {
       completion = {
@@ -140,13 +140,3 @@ lspconfig.efm.setup({
   capabilities = capabilities,
   filetypes = { "elixir", "ex" },
 })
-
--- require("lspconfig").sumneko_lua.setup({
---   settings = {
---     Lua = {
---       hint = {
---         enable = true,
---       },
---     },
---   },
--- })
