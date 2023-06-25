@@ -68,7 +68,7 @@ require("packer").startup(function(use)
   -- Code actions ui thingy
   use("hood/popui.nvim")
   -- lsp progress thingy
-  use("j-hui/fidget.nvim")
+  use({ "j-hui/fidget.nvim", tag = "legacy" })
   -- startup screen
   use("mhinz/vim-startify")
 
