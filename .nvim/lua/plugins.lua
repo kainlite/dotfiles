@@ -64,7 +64,10 @@ require("lazy").setup({
     end,
   },
 
-  { "catppuccin/nvim", as = "catppuccin" },
+  {
+    "catppuccin/nvim",
+    as = "catppuccin",
+  },
   -- Git in the gutter
   "lewis6991/gitsigns.nvim",
   -- dev-icons

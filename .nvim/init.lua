@@ -31,7 +31,7 @@ require("catppuccin").setup({
   integration = {
     nvimtree = {
       enabled = true,
-      show_root = false, -- makes the root folder not transparent
+      show_root = true, -- makes the root folder not transparent
       transparent_panel = true, -- make the panel transparent
     },
   },
