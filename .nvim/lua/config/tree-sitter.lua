@@ -43,7 +43,6 @@ require("nvim-treesitter.configs").setup({
     use_virtual_text = true,
     lint_events = { "BufWrite", "CursorHold" },
   },
-  context_commentstring = { enable = true },
   rainbow = {
     enable = false,
     -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for

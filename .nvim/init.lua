@@ -24,7 +24,6 @@ require("config/symbols-outline")
 require("config/telescope")
 require("config/tree-sitter")
 require("config/typescript")
-require("config/remember")
 require("config/ui")
 
 vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha

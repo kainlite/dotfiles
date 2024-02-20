@@ -46,3 +46,6 @@ vim.opt.undofile = true
 
 -- disable editorconfig support
 vim.g.editorconfig_enable = false
+
+-- nvim-ts-context-commetstring
+vim.g.skip_ts_context_commentstring_module = true

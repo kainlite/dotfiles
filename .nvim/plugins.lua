@@ -122,9 +122,7 @@ require("lazy").setup({
   "hrsh7th/cmp-nvim-lsp-signature-help",
 
   --
-  -- use("github/copilot.vim")
-  --
-  -- use({
+  -- {
   --   "zbirenbaum/copilot.lua",
   --   cmd = "Copilot",
   --   event = "InsertEnter",
@@ -134,15 +132,15 @@ require("lazy").setup({
   --       panel = { enabled = false },
   --     })
   --   end,
-  -- })
+  -- },
 
-  -- use({
+  -- {
   --   "zbirenbaum/copilot-cmp",
-  --   after = { "copilot.lua" },
+  --   dependencies = { "copilot.lua" },
   --   config = function()
   --     require("copilot_cmp").setup()
   --   end,
-  -- })
+  -- },
 
   -- Fancy autocompletion icons
   { "onsails/lspkind.nvim" },
@@ -150,16 +148,11 @@ require("lazy").setup({
   -- snips
   "L3MON4D3/LuaSnip",
 
-  "JoosepAlviste/nvim-ts-context-commentstring",
-
   -- tree-sitter
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-  },
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   "nvim-treesitter/playground",
-
   "windwp/nvim-ts-autotag",
+  "JoosepAlviste/nvim-ts-context-commentstring",
   "p00f/nvim-ts-rainbow",
 
   -- Lua dev
