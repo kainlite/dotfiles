@@ -28,7 +28,7 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- smartquit
-nnoremap("qq", '<cmd>lua require("utils/smartquit")()<CR>', true)
+nnoremap("qq", '<cmd>lua require("utils/smartquit")()<CR> :bnext<CR>', true)
 
 -- Escape redraws the screen and removes any search highlighting.
 nnoremap("<esc>", ":noh<return><esc>")
