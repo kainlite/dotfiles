@@ -195,9 +195,6 @@ require("lazy").setup({
   -- Dev goodies
   "tpope/vim-scriptease",
 
-  -- Faster stuff lol
-  "lewis6991/impatient.nvim",
-
   {
     "NvChad/nvim-colorizer.lua",
     config = function()

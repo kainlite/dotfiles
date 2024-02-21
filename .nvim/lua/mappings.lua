@@ -60,10 +60,6 @@ map("v", "<C-c>", ":%y+<CR>")
 map("n", "<C-c>", ":%y+<CR>")
 
 -- Better window navigation
--- nnoremap("<C-h>", "<C-w>h")
--- nnoremap("<C-j>", "<C-w>j")
--- nnoremap("<C-k>", "<C-w>k")
--- nnoremap("<C-l>", "<C-w>l")
 inoremap("<C-k>", '<cmd>lua require("config/luasnip").navigate(1)<CR>', true)
 snoremap("<C-k>", '<cmd>lua require("config/luasnip").navigate(1)<CR>', true)
 inoremap("<C-j>", '<cmd>lua require("config/luasnip").navigate(-1)<CR>', true)

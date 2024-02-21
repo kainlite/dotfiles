@@ -12,7 +12,6 @@ require("config/fidget")
 require("config/flutter-tools")
 require("config/gitsigns")
 require("config/hydra")
-require("config/indent-blankline")
 require("config/lspconfig")
 require("config/luasnip")
 require("config/nvim-autopairs")
@@ -34,6 +33,7 @@ require("catppuccin").setup({
       show_root = true, -- makes the root folder not transparent
       transparent_panel = true, -- make the panel transparent
     },
+    bufferline = true,
   },
 })
 vim.cmd([[colorscheme catppuccin]])

@@ -19,6 +19,7 @@ require("lazy").setup({
   -- Top buffer/tab line
   {
     "akinsho/nvim-bufferline.lua",
+    after = "catppuccin",
     config = function()
       require("bufferline").setup({
         options = {
@@ -29,6 +30,7 @@ require("lazy").setup({
           show_buffer_close_icons = true,
           diagnostics = "nvim_lsp",
         },
+        highlights = require("catppuccin.groups.integrations.bufferline").get(),
       })
     end,
   },
@@ -43,7 +45,6 @@ require("lazy").setup({
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     config = function()
-      -- require("lsp_lines").setup()
     end,
   },
 
@@ -72,6 +73,8 @@ require("lazy").setup({
   "lewis6991/gitsigns.nvim",
   -- dev-icons
   "kyazdani42/nvim-web-devicons",
+
+  -- auto-indent
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   -- statusline
   { "feline-nvim/feline.nvim" },
