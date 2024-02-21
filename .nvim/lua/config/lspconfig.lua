@@ -22,14 +22,14 @@ setup_auto_format("dart")
 setup_auto_format("lua", "lua require('stylua-nvim').format_file()")
 setup_auto_format("hcl")
 
-setup_auto_format("eex")
-setup_auto_format("ex")
-setup_auto_format("exs")
+-- setup_auto_format("eex")
+-- setup_auto_format("ex")
+-- setup_auto_format("exs")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+-- vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 
 -----------------------
 -- Webdev
@@ -127,8 +127,8 @@ require("lspconfig").gopls.setup({
 require("lspconfig").terraformls.setup({})
 require("lspconfig").tflint.setup({})
 
-lspconfig.elixirls.setup({
-  cmd = { "/usr/bin/elixir-ls" },
+require("lspconfig").elixirls.setup({
+  cmd = { "elixir-ls" },
   capabilities = capabilities,
   settings = {
     elixirLS = {
@@ -138,7 +138,7 @@ lspconfig.elixirls.setup({
   },
 })
 
-lspconfig.efm.setup({
+require("lspconfig").efm.setup({
   capabilities = capabilities,
   filetypes = { "elixir", "ex" },
 })
