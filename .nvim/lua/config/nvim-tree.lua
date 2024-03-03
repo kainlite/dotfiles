@@ -4,4 +4,5 @@ require("nvim-tree").setup({
     update_root = false,
     update_cwd = true,
   },
+  sync_root_with_cwd = true,
 })
