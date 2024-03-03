@@ -44,8 +44,7 @@ require("lazy").setup({
 
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    config = function()
-    end,
+    config = function() end,
   },
 
   {
@@ -267,5 +266,19 @@ require("lazy").setup({
         },
       })
     end,
+  },
+
+  -- git interface
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+
+      -- Only one of these is needed, not both.
+      "nvim-telescope/telescope.nvim", -- optional
+      "ibhagwan/fzf-lua", -- optional
+    },
+    config = true,
   },
 })

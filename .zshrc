@@ -146,6 +146,9 @@ export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
 source $HOME/.cargo/env
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# Mamba
+source /opt/mambaforge/etc/profile.d/conda.sh
+
 # Go path
 export GOPATH=$HOME/Webs/go
 export PATH=$PATH:$GOPATH/bin
@@ -198,11 +201,9 @@ eval "$(direnv hook zsh)"
 # Disable bell
 xset -b
 
-if [[ -z "${SSH_AUTH_SOCK}" ]]; then
-  dbus-update-activation-environment --systemd DISPLAY
-  eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-  export SSH_AUTH_SOCK
-fi
+# if [ -n "$DESKTOP_SESSION" ];then
+#   eval $(ssh-agent)
+# fi
 
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
