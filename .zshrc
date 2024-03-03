@@ -201,9 +201,9 @@ eval "$(direnv hook zsh)"
 # Disable bell
 xset -b
 
-# if [ -n "$DESKTOP_SESSION" ];then
-#   eval $(ssh-agent)
-# fi
+if [[ -z "${SSH_CONNECTION}" ]]; then
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+fi
 
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
