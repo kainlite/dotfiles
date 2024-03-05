@@ -22,6 +22,9 @@ setup_auto_format("dart")
 setup_auto_format("lua", "lua require('stylua-nvim').format_file()")
 setup_auto_format("hcl")
 
+setup_auto_format("ex")
+setup_auto_format("exs")
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
