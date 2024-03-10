@@ -32,6 +32,7 @@ vim.opt.termguicolors = true
 vim.opt.textwidth = 120
 vim.opt.colorcolumn = "120"
 
+vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.completeopt = "menuone,noinsert,noselect"
