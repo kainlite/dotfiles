@@ -1,3 +1,5 @@
+# zmodload zsh/zprof
+
 DISABLE_AUTO_TITLE=true
 
 # Patch for alacritty on wayland :shrug:
@@ -232,3 +234,5 @@ load-nvmrc
 export PATH=$PATH:~/.nix-profile/bin
 
 eval "$(starship init zsh)"
+
+# zprof

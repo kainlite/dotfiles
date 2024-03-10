@@ -25,6 +25,8 @@ setup_auto_format("hcl")
 setup_auto_format("ex")
 setup_auto_format("exs")
 
+setup_auto_format("sol")
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
