@@ -20,6 +20,12 @@ require("nvim-treesitter.configs").setup({
     "markdown",
     "typescript",
     "yaml",
+    "eex",
+    "elixir",
+    "erlang",
+    "heex",
+    "html",
+                "surface",
   },
 
   ts_funky_keywords = { enable = true },
