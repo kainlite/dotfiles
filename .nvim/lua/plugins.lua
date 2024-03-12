@@ -302,4 +302,47 @@ require("lazy").setup({
     lazy = false,
     priority = 100,
   },
+
+  -- https://github.com/jackMort/ChatGPT.nvim
+  {
+    "jackMort/ChatGPT.nvim",
+    dependencies = {
+      { "MunifTanjim/nui.nvim" },
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope.nvim" },
+    },
+    -- event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup({
+        actions_paths = { "~/code/dotfiles/nvim-lazyvim/chatgpt-actions.json" },
+        openai_params = {
+          model = "gpt-4",
+          max_tokens = 4000,
+        },
+        openai_edit_params = {
+          model = "gpt-3.5-turbo",
+          temperature = 0,
+          top_p = 1,
+          n = 1,
+        },
+      })
+    end,
+  },
+
+  {
+    -- help:
+    -- /modellist
+    -- /model  <model name from model list>
+    -- /replace <number from code suggestion>
+    -- exit with CTRL+C
+    "dustinblackman/oatmeal.nvim",
+    cmd = { "Oatmeal" },
+    keys = {
+      { "<leader>m", mode = "n", desc = "Start Oatmeal session" },
+    },
+    opts = {
+      backend = "ollama",
+      model = "codellama:latest",
+    },
+  },
 })

@@ -102,6 +102,9 @@ nnoremap("<C-/>", ':lua require("utils/telescope").search_in_buffer()<CR>')
 inoremap("<C-f>", '<Esc> :lua require("utils/telescope").search_in_buffer()<CR>')
 nnoremap("<C-p>", ':Telescope neovim-project discover<CR>')
 
+-- ChatGPT
+nnoremap("<leader>c", ":ChatGPT<CR>")
+
 -- autoformat tf
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*.tf", "*.tfvars" },
