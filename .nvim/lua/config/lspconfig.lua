@@ -24,6 +24,7 @@ setup_auto_format("hcl")
 
 setup_auto_format("ex")
 setup_auto_format("exs")
+setup_auto_format("heex")
 
 setup_auto_format("sol")
 
