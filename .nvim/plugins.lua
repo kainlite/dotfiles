@@ -129,8 +129,6 @@ require("lazy").setup({
   "hrsh7th/cmp-emoji",
   "hrsh7th/cmp-nvim-lsp-signature-help",
 
-  -- "github/copilot.vim",
-
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
