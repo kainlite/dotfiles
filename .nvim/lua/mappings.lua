@@ -106,7 +106,6 @@ nnoremap("<C-f>", ':lua require("utils/telescope").search_files()<CR>')
 nnoremap("<C-h>", ':lua require("utils/telescope").search_in_buffer()<CR>')
 nnoremap("<C-g>", ":Telescope scope buffers<CR>")
 inoremap("<C-f>", '<Esc> :lua require("utils/telescope").search_in_buffer()<CR>')
-nnoremap("<C-p>", ":Telescope neovim-project discover<CR>")
 
 -- ChatGPT
 nnoremap("<leader>c", ":ChatGPT<CR>")
@@ -139,7 +138,7 @@ vim.keymap.set({ "i", "s" }, "<C-E>", function()
 end, { silent = true })
 
 local possession = require("nvim-possession")
-vim.keymap.set("n", "<leader>sl", function()
+vim.keymap.set("n", "<C-p>", function()
   possession.list()
 end)
 vim.keymap.set("n", "<leader>sn", function()

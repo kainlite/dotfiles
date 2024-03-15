@@ -192,13 +192,6 @@ require("lazy").setup({
   "tpope/vim-surround",
   -- Comment stuff out
   "tpope/vim-commentary",
-  -- Set root directory properly
-  {
-    "ahmedkhalf/project.nvim",
-    config = function()
-      require("project_nvim").setup({})
-    end,
-  },
   -- Dev goodies
   "tpope/vim-scriptease",
 
@@ -269,28 +262,6 @@ require("lazy").setup({
       "ibhagwan/fzf-lua", -- optional
     },
     config = true,
-  },
-
-  -- Project
-  {
-    "coffebar/neovim-project",
-    opts = {
-      projects = { -- define project roots
-        "~/Webs/*",
-      },
-      last_session_on_startup = true,
-    },
-    init = function()
-      -- enable saving the state of plugins in the session
-      vim.opt.sessionoptions:append("globals") -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
-    end,
-    dependencies = {
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-telescope/telescope.nvim" },
-      { "Shatur/neovim-session-manager" },
-    },
-    lazy = false,
-    priority = 100,
   },
 
   -- https://github.com/jackMort/ChatGPT.nvim
