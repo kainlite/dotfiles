@@ -37,7 +37,7 @@ vim.opt.smartcase = true
 
 vim.opt.completeopt = "menuone,noinsert,noselect"
 
-vim.opt.shortmess:append("c")
+vim.opt.shortmess:append("cI")
 
 vim.opt.list = false
 vim.opt.listchars:append("space:⋅")

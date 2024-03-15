@@ -19,7 +19,7 @@ require("lazy").setup({
   -- Top buffer/tab line
   {
     "akinsho/nvim-bufferline.lua",
-    after = "catppuccin",
+    dependencies = "catppuccin/nvim",
     config = function()
       require("bufferline").setup({
         options = {
@@ -66,7 +66,6 @@ require("lazy").setup({
 
   {
     "catppuccin/nvim",
-    as = "catppuccin",
   },
   -- Git in the gutter
   "lewis6991/gitsigns.nvim",
@@ -81,8 +80,6 @@ require("lazy").setup({
   "hood/popui.nvim",
   -- lsp progress thingy
   { "j-hui/fidget.nvim", tag = "legacy" },
-  -- startup screen
-  "mhinz/vim-startify",
 
   -- =====================
   -- TELESCOPE
@@ -143,7 +140,7 @@ require("lazy").setup({
 
   {
     "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
+    dependencies = { "copilot.lua" },
     config = function()
       require("copilot_cmp").setup()
     end,
@@ -170,8 +167,6 @@ require("lazy").setup({
   -- Lua dev
   "folke/lua-dev.nvim",
   "ckipp01/stylua-nvim",
-  -- flutter
-  "akinsho/flutter-tools.nvim",
   -- ts
   "jose-elias-alvarez/typescript.nvim",
   -- rust
@@ -206,9 +201,6 @@ require("lazy").setup({
   },
   -- Dev goodies
   "tpope/vim-scriptease",
-
-  -- Faster stuff lol
-  "lewis6991/impatient.nvim",
 
   {
     "NvChad/nvim-colorizer.lua",
@@ -294,7 +286,7 @@ require("lazy").setup({
     end,
     dependencies = {
       { "nvim-lua/plenary.nvim" },
-      -- { "nvim-telescope/telescope.nvim", tag = "0.1.4" },
+      { "nvim-telescope/telescope.nvim" },
       { "Shatur/neovim-session-manager" },
     },
     lazy = false,
@@ -344,7 +336,12 @@ require("lazy").setup({
     },
   },
 
-  { "tiagovla/scope.nvim" },
+  {
+    "tiagovla/scope.nvim",
+    lazy = false,
+    config = true,
+    event = "VeryLazy",
+  },
   {
     "gennaro-tedesco/nvim-possession",
     lazy = false,
