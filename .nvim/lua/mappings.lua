@@ -98,9 +98,10 @@ vnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
 
 -- Telescope
 nnoremap("<C-f>", ':lua require("utils/telescope").search_files()<CR>')
-nnoremap("<C-/>", ':lua require("utils/telescope").search_in_buffer()<CR>')
+nnoremap("<C-h>", ':lua require("utils/telescope").search_in_buffer()<CR>')
+nnoremap("<C-g>", ":Telescope scope buffers<CR>")
 inoremap("<C-f>", '<Esc> :lua require("utils/telescope").search_in_buffer()<CR>')
-nnoremap("<C-p>", ':Telescope neovim-project discover<CR>')
+nnoremap("<C-p>", ":Telescope neovim-project discover<CR>")
 
 -- ChatGPT
 nnoremap("<leader>c", ":ChatGPT<CR>")

@@ -24,6 +24,7 @@ require("config/telescope")
 require("config/tree-sitter")
 require("config/typescript")
 require("config/ui")
+require("config/scope")
 
 vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 require("catppuccin").setup({

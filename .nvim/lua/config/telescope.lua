@@ -1,5 +1,6 @@
 local actions = require("telescope.actions")
 
+require("telescope").load_extension("scope")
 require("telescope").setup({
   defaults = {
     mappings = {
