@@ -354,6 +354,7 @@ require("lazy").setup({
         lazy = false,
         config = true,
       },
+      "ibhagwan/fzf-lua",
     },
     config = function()
       require("nvim-possession").setup({
