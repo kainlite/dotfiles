@@ -52,7 +52,6 @@ lspconfig.jsonls.setup({
 lspconfig.html.setup({
   capabilities = capabilities,
 })
-lspconfig.tailwindcss.setup({ capabilities = capabilities })
 lspconfig.svelte.setup({ capabilities = capabilities })
 lspconfig.emmet_ls.setup({
   capabilities = capabilities,
@@ -146,3 +145,24 @@ require("lspconfig").efm.setup({
   capabilities = capabilities,
   filetypes = { "elixir", "ex" },
 })
+
+require("lspconfig").tailwindcss.setup(vim.tbl_extend("force", capabilities, {
+  filetypes = { "html", "elixir", "eelixir", "heex",  },
+  capabilities = capabilities,
+  init_options = {
+    userLanguages = {
+      elixir = "html-eex",
+      eelixir = "html-eex",
+      heex = "html-eex",
+    },
+  },
+  settings = {
+    tailwindCSS = {
+      experimental = {
+        classRegex = {
+          'class[:]\\s*"([^"]*)"',
+        },
+      },
+    },
+  },
+}))

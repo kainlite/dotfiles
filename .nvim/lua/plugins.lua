@@ -126,6 +126,7 @@ require("lazy").setup({
   "hrsh7th/cmp-emoji",
   "hrsh7th/cmp-nvim-lsp-signature-help",
 
+  { "nvim-neotest/nvim-nio" },
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
@@ -150,6 +151,7 @@ require("lazy").setup({
   { "onsails/lspkind.nvim" },
 
   -- snips
+  { "rafamadriz/friendly-snippets" },
   {
     "L3MON4D3/LuaSnip",
     -- follow latest release.
