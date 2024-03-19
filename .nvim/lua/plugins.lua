@@ -36,6 +36,17 @@ require("lazy").setup({
   },
 
   {
+    "nvimdev/lspsaga.nvim",
+    config = function()
+      require("lspsaga").setup()
+    end,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+  },
+
+  {
     "simrat39/symbols-outline.nvim",
     config = function()
       require("symbols-outline").setup()
@@ -103,7 +114,6 @@ require("lazy").setup({
   -- =====================
   -- lsp stuff
   -- =====================
-  -- lsp stuff
   "neovim/nvim-lspconfig",
   "williamboman/nvim-lsp-installer",
   {
@@ -126,6 +136,7 @@ require("lazy").setup({
   "hrsh7th/cmp-emoji",
   "hrsh7th/cmp-nvim-lsp-signature-help",
 
+  "hrsh7th/cmp-cmdline",
   { "nvim-neotest/nvim-nio" },
   {
     "zbirenbaum/copilot.lua",

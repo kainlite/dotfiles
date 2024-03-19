@@ -4,7 +4,7 @@ require("general")
 require("mappings")
 require("statusline")
 
-require("config/compe")
+require("config/cmp")
 require("config/diagnostics")
 require("config/fidget")
 require("config/gitsigns")

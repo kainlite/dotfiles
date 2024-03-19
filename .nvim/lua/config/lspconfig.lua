@@ -35,6 +35,13 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 
+local on_attach = function(_, bufnr) end
+
+local lsp_options = {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  single_file_support = true,
+}
 -----------------------
 -- Webdev
 -----------------------
@@ -130,7 +137,7 @@ require("lspconfig").gopls.setup({
 require("lspconfig").terraformls.setup({})
 require("lspconfig").tflint.setup({})
 
-require("lspconfig").elixirls.setup({
+require("lspconfig").elixirls.setup(vim.tbl_extend("force", lsp_options, {
   cmd = { "elixir-ls" },
   capabilities = capabilities,
   settings = {
@@ -139,15 +146,15 @@ require("lspconfig").elixirls.setup({
       fetchDeps = false,
     },
   },
-})
+}))
 
 require("lspconfig").efm.setup({
   capabilities = capabilities,
   filetypes = { "elixir", "ex" },
 })
 
-require("lspconfig").tailwindcss.setup(vim.tbl_extend("force", capabilities, {
-  filetypes = { "html", "elixir", "eelixir", "heex",  },
+require("lspconfig").tailwindcss.setup(vim.tbl_extend("force", lsp_options, {
+  filetypes = { "html", "elixir", "eelixir", "heex" },
   capabilities = capabilities,
   init_options = {
     userLanguages = {

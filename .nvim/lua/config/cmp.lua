@@ -1,7 +1,5 @@
 local cmp = require("cmp")
 
-local compare = require("cmp.config.compare")
-
 local lspkind = require("lspkind")
 
 local has_words_before = function()
@@ -15,7 +13,7 @@ end
 cmp.setup({
   snippet = {
     expand = function(args)
-      require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+      require("luasnip").lsp_expand(args.body)
     end,
   },
   formatting = {
@@ -67,7 +65,7 @@ cmp.setup({
       require("copilot_cmp.comparators").prioritize,
 
       cmp.config.compare.offset,
-      cmp.config.compare.scopes, -- check this one out
+      -- cmp.config.compare.scopes, -- check this one out
       cmp.config.compare.exact,
       cmp.config.compare.score,
       cmp.config.compare.recently_used,
@@ -81,9 +79,9 @@ cmp.setup({
 })
 
 cmp.event:on("menu_opened", function()
-  vim.b.copilot_suggestion_hidden = false
+  vim.b.copilot_suggestion_hidden = true
 end)
 
 cmp.event:on("menu_closed", function()
-  vim.b.copilot_suggestion_hidden = false
+  vim.b.copilot_suggestion_hidden = true
 end)

@@ -32,6 +32,7 @@ export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 alias ls='ls -G'
 alias ll='ls -lG'
 alias gadd='git add --all .'
+alias gadde='mix format && git add --all .'
 alias gc='git commit -S '
 alias git='LANGUAGE=en_US.UTF-8 git'
 alias glog='git log --graph --color'
