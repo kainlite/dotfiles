@@ -150,3 +150,8 @@ end)
 vim.keymap.set("n", "<leader>sd", function()
   possession.delete()
 end)
+
+inoremap("<F1>", "<Esc>")
+nnoremap("<F1>", "<Esc>")
+snoremap("<F1>", "<Esc>")
+vnoremap("<F1>", "<Esc>")

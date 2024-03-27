@@ -304,7 +304,7 @@ require("lazy").setup({
           max_tokens = 4000,
         },
         openai_edit_params = {
-          model = "gpt-3.5-turbo",
+          model = "gpt-4",
           temperature = 0,
           top_p = 1,
           n = 1,
