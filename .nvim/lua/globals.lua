@@ -11,3 +11,5 @@ R = function(name)
   RELOAD(name)
   return require(name)
 end
+
+vim.cmd('command! -nargs=0 W :w')
