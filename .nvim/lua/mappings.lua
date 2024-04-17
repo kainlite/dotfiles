@@ -102,7 +102,7 @@ nnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", true)
 vnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
 
 -- Telescope
-nnoremap("<C-f>", ':lua require("utils/telescope").search_files()<CR>')
+nnoremap("<C-f>", ':lua require("telescope.builtin").find_files()<CR>')
 nnoremap("<C-h>", ':lua require("utils/telescope").search_in_buffer()<CR>')
 nnoremap("<C-g>", ":Telescope scope buffers<CR>")
 inoremap("<C-f>", '<Esc> :lua require("utils/telescope").search_in_buffer()<CR>')
