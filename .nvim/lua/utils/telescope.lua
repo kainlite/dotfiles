@@ -27,7 +27,7 @@ end
 
 function M.search_dotfiles()
   local opts = {
-    cwd = "~/dotfiles",
+    cwd = "~/.dotfiles",
   }
   require("telescope.builtin").git_files(opts)
 end
