@@ -106,6 +106,7 @@ nnoremap("<C-f>", ':lua require("telescope.builtin").find_files()<CR>')
 nnoremap("<C-h>", ':lua require("utils/telescope").search_in_buffer()<CR>')
 nnoremap("<C-g>", ":Telescope scope buffers<CR>")
 inoremap("<C-f>", '<Esc> :lua require("utils/telescope").search_in_buffer()<CR>')
+nnoremap("<C-u>", ':lua require("telescope.builtin").registers()<CR>')
 
 -- ChatGPT
 nnoremap("<leader>c", ":ChatGPT<CR>")
