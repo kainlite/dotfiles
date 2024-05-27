@@ -36,14 +36,14 @@ cmp.setup({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     }),
-    -- ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-    ["<Tab>"] = vim.schedule_wrap(function(fallback)
-      if cmp.visible() and has_words_before() then
-        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-      else
-        fallback()
-      end
-    end),
+    ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+    -- ["<Tab>"] = vim.schedule_wrap(function(fallback)
+    --   if cmp.visible() and has_words_before() then
+    --     cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+    --   else
+    --     fallback()
+    --   end
+    -- end),
     ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
   },
   window = {
@@ -51,8 +51,8 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
   sources = {
-    { name = "copilot", group_index = 2 },
     { name = "nvim_lsp", group_index = 2 },
+    { name = "copilot", group_index = 2 },
     { name = "luasnip", group_index = 2 },
     { name = "path", group_index = 2 },
     { name = "emoji", group_index = 2 },

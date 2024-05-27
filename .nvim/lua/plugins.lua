@@ -81,7 +81,7 @@ require("lazy").setup({
   -- Git in the gutter
   "lewis6991/gitsigns.nvim",
   -- dev-icons
-  "kyazdani42/nvim-web-devicons",
+  -- "kyazdani42/nvim-web-devicons",
 
   -- auto-indent
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },

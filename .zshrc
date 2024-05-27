@@ -150,7 +150,7 @@ source $HOME/.cargo/env
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # Mamba
-source /opt/mambaforge/etc/profile.d/conda.sh
+# source /opt/mambaforge/etc/profile.d/conda.sh
 
 # Go path
 export GOPATH=$HOME/Webs/go
