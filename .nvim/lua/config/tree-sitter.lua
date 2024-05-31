@@ -29,9 +29,9 @@ require("nvim-treesitter.configs").setup({
   },
 
   ts_funky_keywords = { enable = true },
-  autotag = {
-    enable = true,
-  },
+  -- autotag = {
+  --   enable = true,
+  -- },
   highlight = {
     enable = true,
     custom_captures = {
