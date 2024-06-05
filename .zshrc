@@ -237,5 +237,6 @@ export PATH=$PATH:~/.nix-profile/bin
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 eval "$(starship init zsh)"
+eval "$(atuin init zsh)"
 
 # zprof
