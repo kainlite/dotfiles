@@ -330,6 +330,8 @@ require("lazy").setup({
     },
   },
 
+  { 'brendalf/mix.nvim'},
+
   {
     "tiagovla/scope.nvim",
     lazy = false,
@@ -362,4 +364,6 @@ require("lazy").setup({
       })
     end,
   },
-})
+}
+)
+
