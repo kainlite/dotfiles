@@ -158,5 +158,6 @@ snoremap("<F1>", "<Esc>")
 vnoremap("<F1>", "<Esc>")
 
 -- gettext helper
-vnoremap("w", 'ygvc<%= gettext "<C-r>0" %><Esc>')
-vnoremap("e", "ygvc{ gettext <C-r>0 }<Esc>")
+vnoremap("<leader>w", 'ygvc<%= gettext "<C-r>0" %><Esc>')
+vnoremap("<leader>e", "ygvc{ gettext <C-r>0 }<Esc>")
+vnoremap("<leader>r", "ygvc gettext <C-r>0 <Esc>")
