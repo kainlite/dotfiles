@@ -54,7 +54,7 @@ alias vim='nvim'
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Nicer history
-export HISTSIZE=10000000
+export HISTSIZE=100000000
 export SAVEHIST=$HISTSIZE
 export HISTFILE="$HOME/.history"
 
@@ -240,3 +240,7 @@ eval "$(starship init zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
 
 # zprof
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/home/kainlite/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

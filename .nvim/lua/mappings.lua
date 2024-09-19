@@ -156,3 +156,7 @@ inoremap("<F1>", "<Esc>")
 nnoremap("<F1>", "<Esc>")
 snoremap("<F1>", "<Esc>")
 vnoremap("<F1>", "<Esc>")
+
+-- gettext helper
+vnoremap("w", 'ygvc<%= gettext "<C-r>0" %><Esc>')
+vnoremap("e", "ygvc{ gettext <C-r>0 }<Esc>")
