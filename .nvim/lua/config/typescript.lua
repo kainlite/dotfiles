@@ -1,6 +1,6 @@
 local ih = require("inlay-hints")
 
-require("lspconfig").tsserver.setup({
+require("lspconfig").ts_ls.setup({
   on_attach = function(c, b)
     ih.on_attach(c, b)
   end,
