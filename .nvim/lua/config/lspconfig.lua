@@ -2,6 +2,8 @@ local lspconfig = require("lspconfig")
 local setup_auto_format = require("utils.lsp").setup_auto_format
 local ih = require("inlay-hints")
 
+setup_auto_format("go")
+
 setup_auto_format("dart")
 setup_auto_format("rs")
 
@@ -20,6 +22,7 @@ setup_auto_format("ts")
 setup_auto_format("py")
 setup_auto_format("dart")
 setup_auto_format("lua", "lua require('stylua-nvim').format_file()")
+setup_auto_format("terraform")
 setup_auto_format("hcl")
 
 setup_auto_format("ex")
