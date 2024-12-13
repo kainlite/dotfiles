@@ -45,6 +45,7 @@ alias truefree="free -m | awk 'NR==3 {print \$4 \" MB\"}'"
 alias dockerrmv="docker ps --filter status=dead --filter status=exited -aq | xargs docker rm -v"
 alias dockerrmi="docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs -r docker rmi"
 alias update_submodules="cd ~/.dotfiles && git pull --recurse-submodules"
+alias clipcopy="wl-copy"
 
 # Somewhat important aliases
 alias cat='bat -p'
@@ -146,8 +147,8 @@ source ~/.nvm/nvm.sh
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
 
 # Cargo
-source $HOME/.cargo/env
-export PATH="$HOME/.cargo/bin:$PATH"
+# source $HOME/.cargo/env
+# export PATH="$HOME/.cargo/bin:$PATH"
 
 # Mamba
 # source /opt/mambaforge/etc/profile.d/conda.sh
