@@ -240,7 +240,4 @@ eval "$(starship init zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
 
 # zprof
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/home/kainlite/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+xset -dpms
