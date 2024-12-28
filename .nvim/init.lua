@@ -5,6 +5,7 @@ require("mappings")
 require("statusline")
 
 require("config/cmp")
+require("config/ai")
 require("config/diagnostics")
 require("config/fidget")
 require("config/gitsigns")

@@ -128,7 +128,9 @@ require("lazy").setup({
   },
 
   -- completion plugin
-  "hrsh7th/nvim-cmp",
+  {
+    "hrsh7th/nvim-cmp",
+  },
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-path",
   "saadparwaiz1/cmp_luasnip",
@@ -157,6 +159,14 @@ require("lazy").setup({
       require("copilot_cmp").setup()
     end,
   },
+  {
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = true,
+  },
 
   -- Fancy autocompletion icons
   { "onsails/lspkind.nvim" },
@@ -166,7 +176,7 @@ require("lazy").setup({
   {
     "L3MON4D3/LuaSnip",
     -- follow latest release.
-    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    version = "v2.*",
     -- install jsregexp (optional!).
     build = "make install_jsregexp",
     dependencies = { "rafamadriz/friendly-snippets" },
@@ -287,32 +297,6 @@ require("lazy").setup({
     config = true,
   },
 
-  -- https://github.com/jackMort/ChatGPT.nvim
-  {
-    "jackMort/ChatGPT.nvim",
-    dependencies = {
-      { "MunifTanjim/nui.nvim" },
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-telescope/telescope.nvim" },
-    },
-    -- event = "VeryLazy",
-    config = function()
-      require("chatgpt").setup({
-        actions_paths = { "~/code/dotfiles/nvim-lazyvim/chatgpt-actions.json" },
-        openai_params = {
-          model = "gpt-4",
-          max_tokens = 4000,
-        },
-        openai_edit_params = {
-          model = "gpt-4",
-          temperature = 0,
-          top_p = 1,
-          n = 1,
-        },
-      })
-    end,
-  },
-
   {
     -- help:
     -- /modellist
@@ -330,11 +314,11 @@ require("lazy").setup({
     },
   },
 
-  { 
-    'brendalf/mix.nvim',
+  {
+    "brendalf/mix.nvim",
     config = function()
       require("mix").setup()
-    end
+    end,
   },
 
   {
@@ -369,6 +353,4 @@ require("lazy").setup({
       })
     end,
   },
-}
-)
-
+})
