@@ -159,40 +159,11 @@ require("lazy").setup({
       require("copilot_cmp").setup()
     end,
   },
-  {
-    "olimorris/codecompanion.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = function()
-      require("codecompanion").setup({
-        strategies = {
-          chat = {
-            adapter = "gemini",
-          },
-          inline = {
-            adapter = "gemini",
-          },
-        },
-        adapters = {
-          gemini = function()
-            return require("codecompanion.adapters").extend("gemini", {
-              env = {
-                api_key = os.getenv("GEMINI_API_KEY"),
-              },
-            })
-          end,
-        },
-      })
-    end,
-  },
 
   -- Fancy autocompletion icons
   { "onsails/lspkind.nvim" },
 
   -- snips
-  { "rafamadriz/friendly-snippets" },
   {
     "L3MON4D3/LuaSnip",
     -- follow latest release.
@@ -205,8 +176,6 @@ require("lazy").setup({
     end,
   },
 
-  "JoosepAlviste/nvim-ts-context-commentstring",
-
   -- tree-sitter
   {
     "nvim-treesitter/nvim-treesitter",
@@ -214,18 +183,15 @@ require("lazy").setup({
   },
   "nvim-treesitter/playground",
 
-  "windwp/nvim-ts-autotag",
-  "p00f/nvim-ts-rainbow",
-
   -- Lua dev
   "folke/lua-dev.nvim",
   "ckipp01/stylua-nvim",
-  -- ts
-  "jose-elias-alvarez/typescript.nvim",
+
   -- rust
   "simrat39/rust-tools.nvim",
   "simrat39/inlay-hints.nvim",
   "lvimuser/lsp-inlayhints.nvim",
+
   -- Debugging
   "mfussenegger/nvim-dap",
   { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
@@ -307,12 +273,11 @@ require("lazy").setup({
   {
     "NeogitOrg/neogit",
     dependencies = {
-      "nvim-lua/plenary.nvim", -- required
-      "sindrets/diffview.nvim", -- optional - Diff integration
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
 
-      -- Only one of these is needed, not both.
-      "nvim-telescope/telescope.nvim", -- optional
-      "ibhagwan/fzf-lua", -- optional
+      "nvim-telescope/telescope.nvim",
+      -- "ibhagwan/fzf-lua", -- optional
     },
     config = true,
   },
@@ -323,12 +288,15 @@ require("lazy").setup({
     lazy = false,
     version = false,
     opts = {
-      provider = "gemini",
-      auto_suggestions_provider = "gemini",
+      provider = "claude",
+      auto_suggestions_provider = "claude",
       gemini = {
-        model = "gemini-2.0-flash-thinking-exp-1219"
+        model = "gemini-2.0-flash-thinking-exp-1219",
       },
-      hints = { enabled = false }
+      claude = {
+        model = "claude-3-5-sonnet-20241022",
+      },
+      hints = { enabled = false },
     },
     build = "make",
     dependencies = {
@@ -348,7 +316,7 @@ require("lazy").setup({
             drag_and_drop = {
               insert_mode = true,
             },
-            use_absolute_path = true,
+            use_absolute_path = false,
           },
         },
       },
