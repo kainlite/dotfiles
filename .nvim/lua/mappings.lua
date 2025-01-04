@@ -96,10 +96,11 @@ vnoremap("<C-space>", "<cmd>RustHoverRange<CR>")
 
 nnoremap("ge", "<cmd>lua vim.diagnostic.goto_prev()<CR>", true)
 nnoremap("gE", "<cmd>lua vim.diagnostic.goto_next()<CR>", true)
-nnoremap("<silent><leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", true)
-nnoremap("<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", true)
-nnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", true)
-vnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
+-- nnoremap("<silent><leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", true)
+-- nnoremap("<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", true)
+-- nnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", true)
+-- vnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
+nnoremap("<leader>a", "<cmd>AvanteToggle<CR>", true)
 
 -- Telescope
 nnoremap("<C-f>", ':lua require("utils/telescope").search_files()<CR>')
