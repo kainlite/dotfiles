@@ -165,27 +165,27 @@ require("lazy").setup({
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
-  config = function()
-    require("codecompanion").setup({
-      strategies = {
-        chat = {
-          adapter = "gemini",
+    config = function()
+      require("codecompanion").setup({
+        strategies = {
+          chat = {
+            adapter = "gemini",
+          },
+          inline = {
+            adapter = "gemini",
+          },
         },
-        inline = {
-          adapter = "gemini",
+        adapters = {
+          gemini = function()
+            return require("codecompanion.adapters").extend("gemini", {
+              env = {
+                api_key = os.getenv("GEMINI_API_KEY"),
+              },
+            })
+          end,
         },
-      },
-      adapters = {
-        gemini = function()
-          return require("codecompanion.adapters").extend("gemini", {
-            env = {
-              api_key = os.getenv("GEMINI_API_KEY"),
-            },
-          })
-        end,
-      },
-    })
-  end,
+      })
+    end,
   },
 
   -- Fancy autocompletion icons
@@ -318,20 +318,21 @@ require("lazy").setup({
   },
 
   {
-    -- help:
-    -- /modellist
-    -- /model  <model name from model list>
-    -- /replace <number from code suggestion>
-    -- exit with CTRL+C
-    "dustinblackman/oatmeal.nvim",
-    cmd = { "Oatmeal" },
-    keys = {
-      { "<leader>m", mode = "n", desc = "Start Oatmeal session" },
-    },
-    opts = {
-      backend = "ollama",
-      model = "codellama:latest",
-    },
+    "frankroeder/parrot.nvim",
+    dependencies = { "ibhagwan/fzf-lua", "nvim-lua/plenary.nvim" },
+    -- optionally include "rcarriga/nvim-notify" for beautiful notifications
+    config = function()
+      require("parrot").setup({
+        providers = {
+          -- anthropic = {
+          --   api_key = os.getenv("ANTHROPIC_API_KEY"),
+          -- },
+          gemini = {
+            api_key = os.getenv("GEMINI_API_KEY"),
+          },
+        },
+      })
+    end,
   },
 
   {
