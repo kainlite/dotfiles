@@ -1,8 +1,8 @@
 [user]
-    name = kainlite
-    email = kainlite@gmail.com
+  name = kainlite
+  email = kainlite@gmail.com
   username = kainlite
-	signingkey = F552EC090B110979
+  signingkey = F552EC090B110979
 [diff]
 [color]
   ui = auto
@@ -49,15 +49,15 @@
 [gist]
   username = kainlite
 [url "git@bitbucket.org:"]
-    insteadOf = https://bitbucket.org/
+  insteadOf = https://bitbucket.org/
 [github]
-    user = kainlite
+  user = kainlite
 [diff "sopsdiffer"]
-    textconv = sops -d
+  textconv = sops -d
 [pull]
-	rebase = true
+  rebase = true
 [commit]
-	gpgsign = true
+  gpgsign = true
 
 [user]
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIR/HOugZwoHz1mw5+vQjf9bqLd1yPlC21lPMkMIasHJ
@@ -67,4 +67,3 @@
 
 [gpg "ssh"]
   program = "/opt/1Password/op-ssh-sign"
-

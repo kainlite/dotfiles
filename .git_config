@@ -11,11 +11,5 @@
 	merge = refs/heads/master
 [submodule ".oh-my-zsh"]
 	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule ".pyenv"]
-	url = https://github.com/yyuu/pyenv.git
-[submodule ".rbenv"]
-	url = https://github.com/sstephenson/rbenv.git
-[submodule ".vim/bundle/vundle"]
-	url = https://github.com/gmarik/vundle.git
 [submodule ".nvm"]
 	url = https://github.com/creationix/nvm.git
