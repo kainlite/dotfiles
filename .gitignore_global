@@ -45,3 +45,4 @@ crash.log
 
 # plan files
 *.plan
+.git

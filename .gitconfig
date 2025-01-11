@@ -43,6 +43,7 @@
 [core]
   editor = nvim
   excludesfile = ~/.gitignore_global
+  hooksPath = /home/kainlite/.git_template/hooks
 
 [init]
   templatedir = ~/.git_template
