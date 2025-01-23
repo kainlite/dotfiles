@@ -242,4 +242,5 @@ eval "$(atuin init zsh --disable-up-arrow)"
 # zprof
 xset -dpms
 
+export GPG_TTY=$(tty)
 export $(envsubst < .env)

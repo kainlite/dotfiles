@@ -58,13 +58,15 @@
 [pull]
   rebase = true
 [commit]
-  gpgsign = true
+	gpgsign = true
 
 [user]
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIR/HOugZwoHz1mw5+vQjf9bqLd1yPlC21lPMkMIasHJ
+	signingkey = F552EC090B110979
 
 [gpg]
-  format = ssh
+  format = openpgp
+	program = gpg2
 
-[gpg "ssh"]
-  program = "/opt/1Password/op-ssh-sign"
+[tag]
+	gpgSign = true
