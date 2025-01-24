@@ -205,7 +205,7 @@ eval "$(direnv hook zsh)"
 xset -b
 
 if [[ -z "${SSH_CONNECTION}" ]]; then
-    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
 fi
 
 bindkey "${terminfo[khome]}" beginning-of-line
