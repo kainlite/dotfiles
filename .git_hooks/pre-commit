@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if [[ -f mix.exs ]]; then
+  mix format --check-formatted
+  exit_code=$?
+  if [ $exit_code -ne 0 ]; then
+      echo "❌ Commit blocked: fmt!"
+      mix format
+      exit 1
+  fi
+fi
+
+if [[ -f Cargo.toml ]]; then
+  cargo fmt -- --check
+  exit_code=$?
+  if [ $exit_code -ne 0 ]; then
+      echo "❌ Commit blocked: fmt!"
+      cargo fmt
+      exit 1
+  fi
+fi
+
+check
+exit_code=$?
+
+if [ $exit_code -ne 0 ]; then
+    echo "❌ Commit blocked: Failed checks"
+    exit 1
+fi
+
+~/.git_hooks/run-local-hook pre-commit

@@ -148,7 +148,7 @@ export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
 
 # Cargo
 # source $HOME/.cargo/env
-# export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Mamba
 # source /opt/mambaforge/etc/profile.d/conda.sh
@@ -203,7 +203,7 @@ fi
 eval "$(direnv hook zsh)"
 
 # Disable bell
-xset -b
+# xset -b
 
 if [[ -z "${SSH_CONNECTION}" ]]; then
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
@@ -241,7 +241,7 @@ eval "$(starship init zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
 
 # zprof
-xset -dpms
+# xset -dpms
 
 export GPG_TTY=$(tty)
 export $(envsubst < .env)
