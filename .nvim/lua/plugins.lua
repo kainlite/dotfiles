@@ -284,11 +284,19 @@ require("lazy").setup({
     opts = {
       provider = "claude",
       auto_suggestions_provider = "claude",
-      gemini = {
-        model = "gemini-2.0-flash-thinking-exp-1219",
-      },
-      claude = {
-        model = "claude-3-5-sonnet-20241022",
+      providers = {
+        openai = {
+          model = "gpt-4o",
+          api_key = os.getenv("OPENAI_API_KEY"),
+        },
+        anthropic = {
+          model = "claude-3-5-sonnet-20241022",
+          api_key = os.getenv("ANTHROPIC_API_KEY"),
+        },
+        google = {
+          model = "gemini-2.0-flash-thinking-exp-1219",
+          api_key = os.getenv("GOOGLE_API_KEY"),
+        },
       },
       hints = { enabled = false },
     },
