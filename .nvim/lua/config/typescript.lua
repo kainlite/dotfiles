@@ -1,9 +1,4 @@
-local ih = require("inlay-hints")
-
-require("lspconfig").ts_ls.setup({
-  on_attach = function(c, b)
-    ih.on_attach(c, b)
-  end,
+vim.lsp.config("ts_ls", {
   settings = {
     javascript = {
       inlayHints = {
@@ -29,3 +24,5 @@ require("lspconfig").ts_ls.setup({
     },
   },
 })
+
+vim.lsp.enable("ts_ls")

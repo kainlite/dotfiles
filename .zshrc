@@ -124,6 +124,7 @@ ttyctl -f
 export NPM_PACKAGES="${HOME}/.npm"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$NODE_PATH
+export LD_PRELOAD="$LD_PRELOAD:/usr/\$LIB/libgamemode.so.0"
 
 # Python packages
 USER_BASE_PATH=$(python -m site --user-base)

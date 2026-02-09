@@ -30,7 +30,7 @@ require("lazy").setup({
           show_buffer_close_icons = true,
           diagnostics = "nvim_lsp",
         },
-        highlights = require("catppuccin.groups.integrations.bufferline").get(),
+        highlights = {},
       })
     end,
   },
@@ -115,7 +115,6 @@ require("lazy").setup({
   -- lsp stuff
   -- =====================
   "neovim/nvim-lspconfig",
-  "williamboman/nvim-lsp-installer",
 
   -- completion plugin
   {
@@ -171,10 +170,9 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
   },
-  "nvim-treesitter/playground",
 
   -- Lua dev
-  "folke/lua-dev.nvim",
+  "folke/neodev.nvim",
   "ckipp01/stylua-nvim",
 
   -- rust
@@ -184,11 +182,23 @@ require("lazy").setup({
   lazy = false, -- This plugin is already lazy
 },
   "simrat39/inlay-hints.nvim",
-  "lvimuser/lsp-inlayhints.nvim",
 
   -- Debugging
   "mfussenegger/nvim-dap",
   { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+
+  -- =====================
+  -- AI
+  -- =====================
+  {
+    "greggh/claude-code.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("claude-code").setup()
+    end,
+  },
 
   -- =====================
   -- OTHERS
@@ -339,12 +349,6 @@ require("lazy").setup({
     end,
   },
 
-  {
-    "tiagovla/scope.nvim",
-    lazy = false,
-    config = true,
-    event = "VeryLazy",
-  },
   {
     "gennaro-tedesco/nvim-possession",
     lazy = false,

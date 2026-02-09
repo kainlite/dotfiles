@@ -320,10 +320,8 @@ local lol = {
   },
 }
 
-local ctp_feline = require("catppuccin.groups.integrations.feline")
-
-ctp_feline.setup({})
-
-R("feline").setup({
-  components = ctp_feline.get(),
+require("feline").setup({
+  components = {
+    active = lol,
+  },
 })
