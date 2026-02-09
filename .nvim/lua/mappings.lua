@@ -162,3 +162,6 @@ vnoremap("<F1>", "<Esc>")
 vnoremap("<leader>w", 'ygvc<%= gettext "<C-r>0" %><Esc>')
 vnoremap("<leader>e", "ygvc{ gettext <C-r>0 }<Esc>")
 vnoremap("<leader>r", "ygvc gettext(<C-r>0)<Esc>")
+
+-- Claude code
+vim.keymap.set('n', '<leader>cc', '<cmd>ClaudeCode<CR>', { desc = 'Toggle Claude Code' })
