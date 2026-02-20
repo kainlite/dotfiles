@@ -46,6 +46,7 @@ alias dockerrmv="docker ps --filter status=dead --filter status=exited -aq | xar
 alias dockerrmi="docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs -r docker rmi"
 alias update_submodules="cd ~/.dotfiles && git pull --recurse-submodules"
 alias clipcopy="wl-copy"
+alias zclaude="claude --settings ~/.claude/zai.json"
 
 # Somewhat important aliases
 alias cat='bat -p'
