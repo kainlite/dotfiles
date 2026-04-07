@@ -287,62 +287,6 @@ require("lazy").setup({
   },
 
   {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    lazy = false,
-    version = false,
-    opts = {
-      provider = "claude",
-      auto_suggestions_provider = "claude",
-      providers = {
-        openai = {
-          model = "gpt-4o",
-          api_key = os.getenv("OPENAI_API_KEY"),
-        },
-        anthropic = {
-          model = "claude-3-5-sonnet-20241022",
-          api_key = os.getenv("ANTHROPIC_API_KEY"),
-        },
-        google = {
-          model = "gemini-2.0-flash-thinking-exp-1219",
-          api_key = os.getenv("GOOGLE_API_KEY"),
-        },
-      },
-      hints = { enabled = false },
-    },
-    build = "make",
-    dependencies = {
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "hrsh7th/nvim-cmp",
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
-      {
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-            use_absolute_path = false,
-          },
-        },
-      },
-      {
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
-      },
-    },
-  },
-
-  {
     "brendalf/mix.nvim",
     config = function()
       require("mix").setup()

@@ -236,6 +236,7 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 export PATH=$PATH:~/.nix-profile/bin
+export PATH=$PATH:~/.foundry/bin
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
