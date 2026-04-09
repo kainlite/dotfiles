@@ -45,12 +45,10 @@
   excludesfile = ~/.gitignore_global
   hooksPath = /home/kainlite/.git_hooks
 
-[init]
-  templatedir = ~/.git_template
+# [init]
+#   templatedir = ~/.git_template
 [gist]
   username = kainlite
-[url "git@bitbucket.org:"]
-  insteadOf = https://bitbucket.org/
 [github]
   user = kainlite
 [diff "sopsdiffer"]
