@@ -1,60 +1,53 @@
-require("nvim-treesitter")
+-- Languages to install treesitter parsers for
+local languages = {
+  "bash",
+  "c",
+  "cpp",
+  "css",
+  "diff",
+  "dockerfile",
+  "eex",
+  "elixir",
+  "erlang",
+  "gitcommit",
+  "gitignore",
+  "go",
+  "graphql",
+  "hcl",
+  "heex",
+  "html",
+  "javascript",
+  "json",
+  "jsonc",
+  "lua",
+  "make",
+  "markdown",
+  "markdown_inline",
+  "python",
+  "query",
+  "regex",
+  "rust",
+  "solidity",
+  "sql",
+  "surface",
+  "terraform",
+  "toml",
+  "tsx",
+  "typescript",
+  "vim",
+  "vimdoc",
+  "yaml",
+  "zig",
+}
 
-require("nvim-treesitter.configs").setup({
-  ensure_installed = {
-    "c",
-    "lua",
-    "rust",
-    "cpp",
-    "dockerfile",
-    "bash",
-    "elixir",
-    "css",
-    "go",
-    "javascript",
-    "html",
-    "go",
-    "json",
-    "solidity",
-    "tsx",
-    "markdown",
-    "typescript",
-    "yaml",
-    "eex",
-    "elixir",
-    "erlang",
-    "heex",
-    "html",
-                "surface",
-  },
+-- Install parsers
+require("nvim-treesitter").install(languages)
 
-  ts_funky_keywords = { enable = true },
-  -- autotag = {
-  --   enable = true,
-  -- },
-  highlight = {
-    enable = true,
-    custom_captures = {
-      -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
-      -- ["property"] = "TSFunction"
-    },
-  },
-  playground = {
-    enable = true,
-    disable = {},
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-  },
-  query_linter = {
-    enable = true,
-    use_virtual_text = true,
-    lint_events = { "BufWrite", "CursorHold" },
-  },
-  rainbow = {
-    enable = false,
-    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-    max_file_lines = nil, -- Do not enable for files with more than n lines, int
-    -- colors = {}, -- table of hex strings
-    -- termcolors = {} -- table of colour name strings
-  },
+-- Enable treesitter features for all filetypes that have a parser available
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function()
+    if pcall(vim.treesitter.start) then
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
+  end,
 })

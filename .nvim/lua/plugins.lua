@@ -168,6 +168,7 @@ require("lazy").setup({
   -- tree-sitter
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     build = ":TSUpdate",
   },
 
