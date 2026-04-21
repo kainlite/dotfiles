@@ -1,36 +1,36 @@
-vim.opt.termguicolors = true
-require("plugins")
-require("globals")
-require("general")
-require("mappings")
-require("statusline")
+-- Leader keys must be set before lazy loads plugins that bind leader mappings.
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
 
-require("config/cmp")
-require("config/diagnostics")
-require("config/fidget")
-require("config/gitsigns")
-require("config/lspconfig")
-require("config/luasnip")
-require("config/nvim-autopairs")
-require("config/nvim-dap-ui")
-require("config/nvim-tree")
-require("config/rustacean")
-require("config/symbols-outline")
-require("config/telescope")
-require("config/tree-sitter")
-require("config/typescript")
-require("config/ui")
-require("config/scope")
+-- Disable netrw early so oil.nvim can take over file:// URIs.
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
-vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
-require("catppuccin").setup({
-  integration = {
-    nvimtree = {
-      enabled = true,
-      show_root = true, -- makes the root folder not transparent
-      transparent_panel = true, -- make the panel transparent
-    },
-    bufferline = true,
-  },
+-- Faster startup: cache compiled Lua modules.
+vim.loader.enable()
+
+require("options")
+require("autocmds")
+require("keymaps")
+
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+  spec = { { import = "plugins" } },
+  change_detection = { notify = false },
+  install = { colorscheme = { "catppuccin" } },
+  rocks = { enabled = false },
+  ui = { border = "rounded" },
 })
-vim.cmd([[colorscheme catppuccin]])
