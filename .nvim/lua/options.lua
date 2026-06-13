@@ -43,7 +43,9 @@ opt.conceallevel = 0
 opt.updatetime = 300
 opt.timeoutlen = 500
 opt.autoread = true
-opt.autochdir = true
+-- Keep cwd at the project root; autochdir made the Snacks explorer
+-- re-root itself into whatever folder the current file lives in.
+opt.autochdir = false
 
 opt.tabstop = 2
 opt.shiftwidth = 2

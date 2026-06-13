@@ -1,18 +1,4 @@
 return {
-  -- Copilot as a background suggestion provider for blink.cmp
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    opts = {
-      suggestion = { enabled = false },
-      panel = { enabled = false },
-      filetypes = {
-        ["."] = true,
-      },
-    },
-  },
-
   -- Snippets
   {
     "L3MON4D3/LuaSnip",
@@ -29,7 +15,8 @@ return {
   },
 
   -- blink.cmp: fast completion engine (replaces nvim-cmp + all cmp-* sources).
-  -- Default keymap: Tab/S-Tab next/prev, CR accept, C-Space trigger, C-e abort.
+  -- Keymap: Tab/S-Tab next/prev item (then snippet jump), CR accept,
+  -- C-Space trigger, C-e abort.
   {
     "saghen/blink.cmp",
     event = "InsertEnter",
@@ -37,10 +24,13 @@ return {
     dependencies = {
       "rafamadriz/friendly-snippets",
       "L3MON4D3/LuaSnip",
-      "fang2hou/blink-copilot",
     },
     opts = {
-      keymap = { preset = "default" },
+      keymap = {
+        preset = "enter",
+        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+      },
       appearance = { nerd_font_variant = "mono" },
       completion = {
         accept = { auto_brackets = { enabled = true } },
@@ -50,19 +40,13 @@ return {
           auto_show_delay_ms = 150,
           window = { border = "rounded" },
         },
-        list = { selection = { preselect = true, auto_insert = false } },
+        -- preselect = false so <CR> inserts a newline unless an item was
+        -- explicitly selected with Tab (recommended with the enter preset).
+        list = { selection = { preselect = false, auto_insert = false } },
       },
       snippets = { preset = "luasnip" },
       sources = {
-        default = { "lsp", "copilot", "path", "snippets", "buffer" },
-        providers = {
-          copilot = {
-            name = "copilot",
-            module = "blink-copilot",
-            score_offset = 100,
-            async = true,
-          },
-        },
+        default = { "lsp", "path", "snippets", "buffer" },
       },
       signature = { enabled = true, window = { border = "rounded" } },
       cmdline = {
